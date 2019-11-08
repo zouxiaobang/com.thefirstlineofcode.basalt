@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+		http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>com.firstlinecode.basalt</groupId>
+		<artifactId>com.firstlinecode.basalt</artifactId>
+		<version>1.1.0.RELEASE</version>
+	</parent>
+
+	<groupId>com.firstlinecode.basalt</groupId>
+	<artifactId>com.firstlinecode.basalt.xeps</artifactId>
+	<packaging>pom</packaging>
+	<name>XMPP XEP Protocol Libraries</name>
+
+	<modules>
+		<module>com.firstlinecode.basalt.xeps.ping</module>
+		<module>com.firstlinecode.basalt.xeps.disco</module>
+		<module>com.firstlinecode.basalt.xeps.rsm</module>
+		<module>com.firstlinecode.basalt.xeps.muc</module>
+		<module>com.firstlinecode.basalt.xeps.xdata</module>
+		<module>com.firstlinecode.basalt.xeps.delay</module>
+		<module>com.firstlinecode.basalt.xeps.address</module>
+		<module>com.firstlinecode.basalt.xeps.oob</module>
+		<module>com.firstlinecode.basalt.xeps.ibr</module>
+	</modules>
+
+</project>

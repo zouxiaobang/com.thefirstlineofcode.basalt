@@ -1,0 +1,34 @@
+#-----------------------------------------------------------------
+# Use this file to add customized Bnd instructions for the bundle
+#-----------------------------------------------------------------
+
+Basalt-Parsers: protocol-chain=iq|null->subscribe|urn:lep:subscription;\
+ class=com.firstlinecode.basalt.leps.im.subscription.Subscribe;\
+ type=naming-convention,\
+ protocol-chain=iq|null->subscribed|urn:lep:subscription;\
+ class=com.firstlinecode.basalt.leps.im.subscription.Subscribed;\
+ type=simple,\
+ protocol-chain=iq|null->unsubscribe|urn:lep:subscription;\
+ class=com.firstlinecode.basalt.leps.im.subscription.Unsubscribe;\
+ type=simple,\
+ protocol-chain=iq|null->unsubscribed|urn:lep:subscription;\
+ class=com.firstlinecode.basalt.leps.im.subscription.Unsubscribed;\
+ type=naming-convention,\
+ protocol-chain=message|null->trace|urn:lep:traceable;\
+ class=com.firstlinecode.basalt.leps.im.message.traceable.Trace;\
+ type=naming-convention,\
+ protocol-chain=iq|null->trace|urn:lep:traceable;\
+ class=com.firstlinecode.basalt.leps.im.message.traceable.Trace;\
+ type=naming-convention
+Basalt-Translators: class=com.firstlinecode.basalt.leps.im.subscription.Subscribe;\
+ type=naming-convention,\
+ protocol=subscribed|urn:lep:subscription;\
+ class=com.firstlinecode.basalt.leps.im.subscription.Subscribed;\
+ type=simple,\
+ protocol=unsubscribe|urn:lep:subscription;\
+ class=com.firstlinecode.basalt.leps.im.subscription.Unsubscribe;\
+ type=simple,\
+ class=com.firstlinecode.basalt.leps.im.subscription.Unsubscribed;\
+ type=naming-convention,\
+ class=com.firstlinecode.basalt.leps.im.message.traceable.Trace;\
+ type=naming-convention
