@@ -1,0 +1,17 @@
+#-----------------------------------------------------------------
+# Use this file to add customized Bnd instructions for the bundle
+#-----------------------------------------------------------------
+
+Basalt-Parsers: protocol-chain=iq|null->query|jabber:iq:register;\
+ class=com.firstlinecode.basalt.xeps.ibr.IqRegister;\
+ type=custom;\
+ parser-factory=com.firstlinecode.basalt.xeps.ibr.oxm.IqRegisterParserFactory,\
+ protocol-chain=iq|null->query|jabber:iq:register->x|jabber:x:data;\
+ class=com.firstlinecode.basalt.xeps.xdata.XData;\
+ type=naming-convention,\
+ protocol-chain=iq|null->query|jabber:iq:register->x|jabber:x:oob;\
+ class=com.firstlinecode.basalt.xeps.oob.XOob;\
+ type=naming-convention
+Basalt-Translators: class=com.firstlinecode.basalt.xeps.ibr.IqRegister;\
+ type=custom;\
+ translator-factory=com.firstlinecode.basalt.xeps.ibr.oxm.IqRegisterTranslatorFactory

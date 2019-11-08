@@ -1,0 +1,15 @@
+#-----------------------------------------------------------------
+# Use this file to add customized Bnd instructions for the bundle
+#-----------------------------------------------------------------
+
+Basalt-Parsers: protocol-chain=iq|null->query|jabber:iq:oob;\
+ class=com.firstlinecode.basalt.xeps.oob.IqOob;\
+ type=naming-convention,
+ protocol-chain=iq|null->x|jabber:x:oob;\
+ class=com.firstlinecode.basalt.xeps.oob.XOob;\
+ type=naming-convention
+
+Basalt-Translators: class=com.firstlinecode.basalt.xeps.oob.IqOob;\
+ type=naming-convention,\
+ class=com.firstlinecode.basalt.xeps.oob.XOob;\
+ type=naming-convention

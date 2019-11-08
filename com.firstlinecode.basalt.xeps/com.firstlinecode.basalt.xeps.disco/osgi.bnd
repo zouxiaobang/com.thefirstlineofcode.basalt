@@ -1,0 +1,20 @@
+#-----------------------------------------------------------------
+# Use this file to add customized Bnd instructions for the bundle
+#-----------------------------------------------------------------
+
+Basalt-Parsers: protocol-chain=iq|null->query|http://jabber.org/protocol/disco#info;\
+ class=com.firstlinecode.basalt.xeps.disco.DiscoInfo;\
+ type=naming-convention,\
+ protocol-chain=iq|null->query|http://jabber.org/protocol/disco#items;\
+ class=com.firstlinecode.basalt.xeps.disco.DiscoItems;\
+ type=naming-convention,\
+ protocol-chain=iq|null->query|http://jabber.org/protocol/disco#items->set|http://jabber.org/protocol/rsm;\
+ class=com.firstlinecode.basalt.xeps.rsm.Set;\
+ type=naming-convention,
+ protocol-chain=iq|null->query|http://jabber.org/protocol/disco#info->x|x|jabber:x:data;\
+ class=com.firstlinecode.basalt.xeps.xdata.XData;\
+ type=naming-convention
+Basalt-Translators: class=com.firstlinecode.basalt.xeps.disco.DiscoInfo;\
+ type=naming-convention,\
+ class=com.firstlinecode.basalt.xeps.disco.DiscoItems;\
+ type=naming-convention

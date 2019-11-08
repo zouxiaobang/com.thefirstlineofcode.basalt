@@ -1,0 +1,6 @@
+#-----------------------------------------------------------------
+# Use this file to add customized Bnd instructions for the bundle
+#-----------------------------------------------------------------
+
+Basalt-Translators: class=com.firstlinecode.basalt.xeps.rsm.Set;\
+ type=naming-convention

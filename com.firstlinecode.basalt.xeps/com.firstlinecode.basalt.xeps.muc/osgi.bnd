@@ -1,0 +1,35 @@
+#-----------------------------------------------------------------
+# Use this file to add customized Bnd instructions for the bundle
+#-----------------------------------------------------------------
+
+Basalt-Parsers: protocol-chain=presence|null->x|http://jabber.org/protocol/muc;\
+ class=com.firstlinecode.basalt.xeps.muc.Muc;\
+ type=naming-convention,\
+ protocol-chain=presence|null->x|http://jabber.org/protocol/muc#user;\
+ class=com.firstlinecode.basalt.xeps.muc.user.MucUser;\
+ type=naming-convention,\
+ protocol-chain=message|null->x|http://jabber.org/protocol/muc#user;\
+ class=com.firstlinecode.basalt.xeps.muc.user.MucUser;\
+ type=naming-convention,\
+ protocol-chain=iq|null->query|http://jabber.org/protocol/muc#admin;\
+ class=com.firstlinecode.basalt.xeps.muc.admin.MucAdmin;\
+ type=naming-convention,\
+ protocol-chain=iq|null->query|http://jabber.org/protocol/muc#owner;\
+ class=com.firstlinecode.basalt.xeps.muc.owner.MucOwner;\
+ type=naming-convention,\
+ protocol-chain=iq|null->query|http://jabber.org/protocol/muc#owner->x|jabber:x:data;\
+ class=com.firstlinecode.basalt.xeps.xdata.XData;\
+ type=naming-convention,\
+ protocol-chain=message|null->x|jabber:x:conference;\
+ class=com.firstlinecode.basalt.xeps.muc.xconference.XConference;\
+ type=naming-convention
+Basalt-Translators: class=com.firstlinecode.basalt.xeps.muc.Muc;\
+ type=naming-convention,\
+ class=com.firstlinecode.basalt.xeps.muc.user.MucUser;\
+ type=naming-convention,\
+ class=com.firstlinecode.basalt.xeps.muc.admin.MucAdmin;\
+ type=naming-convention,\
+ class=com.firstlinecode.basalt.xeps.muc.owner.MucOwner;\
+ type=naming-convention,\
+ class=com.firstlinecode.basalt.xeps.muc.xconference.XConference;\
+ type=naming-convention

@@ -1,0 +1,9 @@
+#-----------------------------------------------------------------
+# Use this file to add customized Bnd instructions for the bundle
+#-----------------------------------------------------------------
+
+Basalt-Parsers: protocol-chain=iq|null->query|jabber:iq:roster;\
+ annotated-parser=com.firstlinecode.basalt.protocol.im.roster.RosterParser;\
+ type=annotated
+Basalt-Translators: translator-factory=com.firstlinecode.basalt.protocol.im.roster.RosterTranslatorFactory;\
+ type=custom
