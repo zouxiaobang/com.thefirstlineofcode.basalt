@@ -1,5 +1,0 @@
-openStreamMessage=\
-<stream:stream xmlns="jabber:client" xmlns:stream="http://etherx.jabber.org/streams" to="chat.firstlinecode.com" xml:lang="en" version="1.0">
-
-closeStreamMessage=\
-</stream:stream>
