@@ -151,8 +151,8 @@ public abstract class AbstractParsingFactory implements IParsingFactory {
 		return null;
 	}
 	
-	protected boolean isNullParsingContext(IParsingContext<?> parentContext) {
-		return parentContext == null;
+	protected boolean isNullParsingContext(IParsingContext<?> context) {
+		return context == null;
 	}
 
 	@SuppressWarnings("unchecked")
