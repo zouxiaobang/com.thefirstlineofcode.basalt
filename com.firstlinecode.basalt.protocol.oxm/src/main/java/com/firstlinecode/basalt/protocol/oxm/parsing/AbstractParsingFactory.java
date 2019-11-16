@@ -44,10 +44,9 @@ public abstract class AbstractParsingFactory implements IParsingFactory {
 				error.setKind(StanzaError.Kind.PRESENCE);
 			} else if (stanza instanceof Message) {
 				error.setKind(StanzaError.Kind.MESSAGE);
-			} else if (stanza instanceof Iq) {
-				error.setKind(StanzaError.Kind.IQ);
 			} else {
-				error.setKind(guessStanzaKind(message));
+				// stanza instanceof Iq
+				error.setKind(StanzaError.Kind.IQ);
 			}
 		}
 		
@@ -58,8 +57,12 @@ public abstract class AbstractParsingFactory implements IParsingFactory {
 		if (stream) {
 			return new ProtocolException(new BadFormat(), e);
 		} else {
+			StanzaError.Kind kind = guessStanzaKind(message);
+			if (kind == null)
+				throw new ProtocolException(new BadFormat());
+			
 			ProtocolException pe = new ProtocolException(new BadRequest(), e);
-			((StanzaError)pe.getError()).setKind(guessStanzaKind(message));
+			((StanzaError)pe.getError()).setKind(kind);
 			
 			return pe;
 		}

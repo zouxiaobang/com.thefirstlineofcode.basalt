@@ -28,3 +28,10 @@ unsupportedStanzaTypeMessage=\
 		${dataText}\
 	</data>\
 </IQ>
+
+invalidXmlMessage=\
+<iq from and to="romeo@montague.net/orchard, juliet@capulet.com/balcony" id="dsw71gj3">\
+	<data xmlns="http://jabber.org/protocol/ibb" seq="0" sid="i781hf64">\
+		${dataText}\
+	</data>\
+</iq>
