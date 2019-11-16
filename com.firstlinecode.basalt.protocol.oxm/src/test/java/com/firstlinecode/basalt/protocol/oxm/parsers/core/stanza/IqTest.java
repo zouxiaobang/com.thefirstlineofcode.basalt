@@ -8,7 +8,6 @@ import com.firstlinecode.basalt.protocol.core.ProtocolException;
 import com.firstlinecode.basalt.protocol.core.stanza.Iq;
 import com.firstlinecode.basalt.protocol.core.stanza.error.BadRequest;
 import com.firstlinecode.basalt.protocol.core.stanza.error.StanzaError;
-import com.firstlinecode.basalt.protocol.core.stream.error.StreamError;
 import com.firstlinecode.basalt.protocol.core.stream.error.UnsupportedStanzaType;
 import com.firstlinecode.basalt.protocol.oxm.IOxmFactory;
 import com.firstlinecode.basalt.protocol.oxm.OxmService;
@@ -86,7 +85,6 @@ public class IqTest {
 		} catch (ProtocolException e) {
 			// should run to here
 			Assert.assertTrue(e.getError() instanceof BadRequest);
-			Assert.assertTrue(e.getError() instanceof StanzaError);
 			Assert.assertTrue("Invalid stanza attribute: from-to.".equals(e.getError().getText().getText()));
 		}
 	}
@@ -100,8 +98,19 @@ public class IqTest {
 		} catch (ProtocolException e) {
 			// should run to here
 			Assert.assertTrue(e.getError() instanceof UnsupportedStanzaType);
-			Assert.assertTrue(e.getError() instanceof StreamError);
 			Assert.assertTrue("Unsupported stanza type: IQ.".equals(e.getError().getText().getText()));
+		}
+	}
+	
+	@Test
+	public void parseInvalidXmlMessage() {
+		String invalidXmlMessage = TestData.getData(this.getClass(), "invalidXmlMessage");
+		try {
+			oxmFactory.parse(invalidXmlMessage);
+			Assert.fail();
+		} catch (ProtocolException e) {
+			// should run to here
+			Assert.assertTrue(e.getError() instanceof BadRequest);
 		}
 	}
 }

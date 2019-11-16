@@ -389,6 +389,11 @@ public class XmlParsingFactory extends AbstractParsingFactory {
 
 	@Override
 	protected Kind guessStanzaKind(String message) {
+		if (message.startsWith("<stream:stream xmlns:stream=\"http://etherx.jabber.org/streams\">"))
+			message = message.substring(63);
+		if (message.endsWith("</stream:stream>"))
+			message = message.substring(0, message.length() - 16);
+		
 		int i = 0;
 		
 		if (message.charAt(i) != '<')
@@ -410,7 +415,7 @@ public class XmlParsingFactory extends AbstractParsingFactory {
 			return null;
 		}
 		
-		if (message.charAt(i) == ' ')
+		if (message.charAt(i) != ' ')
 			return null;
 		
 		return kind;
