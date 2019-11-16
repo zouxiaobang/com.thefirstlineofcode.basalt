@@ -18,6 +18,7 @@ import com.firstlinecode.basalt.protocol.core.stanza.error.StanzaError.Kind;
 import com.firstlinecode.basalt.protocol.core.stream.Features;
 import com.firstlinecode.basalt.protocol.core.stream.Stream;
 import com.firstlinecode.basalt.protocol.core.stream.error.BadFormat;
+import com.firstlinecode.basalt.protocol.core.stream.error.UnsupportedStanzaType;
 import com.firstlinecode.basalt.protocol.oxm.Attribute;
 import com.firstlinecode.basalt.protocol.oxm.Value;
 import com.firstlinecode.basalt.protocol.oxm.parsers.core.stanza.StanzaParser;
@@ -343,12 +344,12 @@ public class XmlParsingFactory extends AbstractParsingFactory {
 	private void processUnknownNamespace(XMLStreamReader reader, IParsingContext<?> parentContext,
 				Protocol protocol) throws XMLStreamException {
 		if (parentContext == null || (parentContext instanceof MessageCarrierParsingContext)) {
-			throw new ProtocolException(new ServiceUnavailable(String.format("Unsupported protocol %s.", protocol)));
+			throw new ProtocolException(new UnsupportedStanzaType(String.format("Unsupported stanza type: %s.", protocol.getLocalName())));
 		}
 		
 		Protocol topLevelProtocol = parentContext.getProtocolChain().get(0);
 		if (!isStanza(topLevelProtocol) && !isFeatures(topLevelProtocol)) {
-			throw new ProtocolException(new ServiceUnavailable(String.format("Unsupported protocol %s.", protocol)));
+			throw new ProtocolException(new ServiceUnavailable(String.format("Unsupported protocol: %s.", protocol)));
 		}
 		
 		int level = 1;

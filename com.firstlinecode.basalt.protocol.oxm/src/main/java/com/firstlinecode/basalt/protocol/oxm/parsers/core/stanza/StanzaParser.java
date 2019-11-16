@@ -55,7 +55,7 @@ public abstract class StanzaParser<T extends Stanza> implements IParser<T> {
 							stanza.setId(attribute.getValue().toString());
 						} else {
 							throw new ProtocolException(new BadRequest(String.format(
-									"Invalid stanza attribute '%s'.", attribute.getName())));
+									"Invalid stanza attribute: %s.", attribute.getName())));
 						}
 					}
 					

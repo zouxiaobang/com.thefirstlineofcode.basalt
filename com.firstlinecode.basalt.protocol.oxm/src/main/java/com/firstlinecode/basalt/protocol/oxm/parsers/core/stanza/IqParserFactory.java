@@ -22,7 +22,12 @@ public class IqParserFactory implements IParserFactory<Iq> {
 
 			@Override
 			public Iq createObject() {
-				return new Iq(Iq.Type.GET);
+				Iq iq = new Iq(Iq.Type.GET);
+				// Iq object sets a random id in it's constructor. The behaviour may cause some bugs in parsing stage.
+				// So we should remove the generated id.
+				iq.setId(null);
+				
+				return iq;
 			}
 
 			@Override

@@ -1,12 +1,15 @@
 package com.firstlinecode.basalt.protocol.oxm.parsers.core.stanza;
 
-import junit.framework.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
 import com.firstlinecode.basalt.protocol.core.ProtocolChain;
 import com.firstlinecode.basalt.protocol.core.ProtocolException;
 import com.firstlinecode.basalt.protocol.core.stanza.Iq;
 import com.firstlinecode.basalt.protocol.core.stanza.error.BadRequest;
 import com.firstlinecode.basalt.protocol.core.stanza.error.StanzaError;
+import com.firstlinecode.basalt.protocol.core.stream.error.StreamError;
+import com.firstlinecode.basalt.protocol.core.stream.error.UnsupportedStanzaType;
 import com.firstlinecode.basalt.protocol.oxm.IOxmFactory;
 import com.firstlinecode.basalt.protocol.oxm.OxmService;
 import com.firstlinecode.basalt.protocol.oxm.TestData;
@@ -14,8 +17,7 @@ import com.firstlinecode.basalt.protocol.oxm.convention.NamingConventionParserFa
 import com.firstlinecode.basalt.protocol.oxm.parsing.FlawedProtocolObject;
 import com.firstlinecode.basalt.protocol.oxm.xep.ibb.TMessageData;
 
-import org.junit.Before;
-import org.junit.Test;
+import junit.framework.Assert;
 
 public class IqTest {
 	private IOxmFactory oxmFactory;
@@ -48,18 +50,18 @@ public class IqTest {
 		}
 		
 		oxmFactory.unregister(ProtocolChain.first(Iq.PROTOCOL).next(TMessageData.PROTOCOL));
-		String messageMessage = TestData.getData(this.getClass(), "messageMessage");
+		String ibbIqMessage = TestData.getData(this.getClass(), "ibbIqMessage");
 		
-		Object obj = oxmFactory.parse(messageMessage);
+		Object obj = oxmFactory.parse(ibbIqMessage);
 		Assert.assertTrue(FlawedProtocolObject.isFlawed(obj));
 	}
 	
 	@Test
 	public void parseEmbedded() {
 		String dataText = TestData.getData(this.getClass(), "dataText");
-		String messageMessage = TestData.getData(this.getClass(), "messageMessage");
+		String ibbIqMessage = TestData.getData(this.getClass(), "ibbIqMessage");
 		
-		Object obj = oxmFactory.parse(messageMessage);
+		Object obj = oxmFactory.parse(ibbIqMessage);
 		Assert.assertTrue(obj instanceof Iq);
 		
 		Iq iq = (Iq)obj;
@@ -73,5 +75,33 @@ public class IqTest {
 		Assert.assertEquals("i781hf64", data.getSid());
 		Assert.assertEquals(0, data.getSeq());
 		Assert.assertEquals(dataText, data.getText());
+	}
+	
+	@Test
+	public void parseInvalid() {
+		String invalidIqMessage = TestData.getData(this.getClass(), "invalidIqMessage");
+		try {
+			oxmFactory.parse(invalidIqMessage);
+			Assert.fail();
+		} catch (ProtocolException e) {
+			// should run to here
+			Assert.assertTrue(e.getError() instanceof BadRequest);
+			Assert.assertTrue(e.getError() instanceof StanzaError);
+			Assert.assertTrue("Invalid stanza attribute: from-to.".equals(e.getError().getText().getText()));
+		}
+	}
+	
+	@Test
+	public void parseUnsupportedStanzaTypeMessage() {
+		String unsupportedStanzaTypeMessage = TestData.getData(this.getClass(), "unsupportedStanzaTypeMessage");
+		try {
+			oxmFactory.parse(unsupportedStanzaTypeMessage);
+			Assert.fail();
+		} catch (ProtocolException e) {
+			// should run to here
+			Assert.assertTrue(e.getError() instanceof UnsupportedStanzaType);
+			Assert.assertTrue(e.getError() instanceof StreamError);
+			Assert.assertTrue("Unsupported stanza type: IQ.".equals(e.getError().getText().getText()));
+		}
 	}
 }

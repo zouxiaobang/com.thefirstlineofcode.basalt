@@ -27,7 +27,7 @@ public abstract class AbstractParsingFactory implements IParsingFactory {
 		elementParsersCache = new ConcurrentHashMap<>();
 	}
 
-	protected ProtocolException convertParsingExceptionToProtocolException(ParsingException e,String message) {
+	protected ProtocolException convertParsingExceptionToProtocolException(ParsingException e, String message) {
 		ProtocolException pe = null;
 		
 		if (e.getCause() instanceof ProtocolException) {

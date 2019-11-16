@@ -8,9 +8,23 @@ IpQ0JgavABqibJolc3BKrVtVV1igKiX/N7Pi8RtY1K18toaMDhdEfhBRzO/XB0+P\
 AQhYlRjNacGcslkhXqNjK5Va4tuOAPy2n1Q8UUrHbUd0g+xJ9Bm0G0LZXyvCWyKH\
 kuNEHFQiLuCY6Iv0myq6iX6tjuHehZlFSh80b5BVV9tNLwNR5Eqz1klxMhoghJOA
 
-messageMessage=\
+ibbIqMessage=\
 <iq from="romeo@montague.net/orchard" id="dsw71gj3" to="juliet@capulet.com/balcony">\
 	<data xmlns="http://jabber.org/protocol/ibb" seq="0" sid="i781hf64">\
 		${dataText}\
 	</data>\
 </iq>
+
+invalidIqMessage=\
+<iq from-to="romeo@montague.net/orchard, juliet@capulet.com/balcony" id="dsw71gj3">\
+	<data xmlns="http://jabber.org/protocol/ibb" seq="0" sid="i781hf64">\
+		${dataText}\
+	</data>\
+</iq>
+
+unsupportedStanzaTypeMessage=\
+<IQ from-to="romeo@montague.net/orchard, juliet@capulet.com/balcony" id="dsw71gj3">\
+	<data xmlns="http://jabber.org/protocol/ibb" seq="0" sid="i781hf64">\
+		${dataText}\
+	</data>\
+</IQ>
