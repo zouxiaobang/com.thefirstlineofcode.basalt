@@ -27,6 +27,20 @@ public class OxmService {
 	}
 	
 	public static IParsingFactory createParsingFactory() {
+		if (isAndroid()) {
+			try {
+				Class<?> androidXmlParsingClass = Class.forName("com.firstlinecode.basalt.protocol.oxm.android.XmlParsingFactory");
+				
+				return (IParsingFactory)androidXmlParsingClass.newInstance();
+			} catch (Exception e) {
+				throw new RuntimeException("Can't initialize XML parsing factory for android. Please add com.firstlinecode.basalt.protocol.oxm.android library to your classpath.");
+			}
+		}
+		
 		return new XmlParsingFactory();
+	}
+
+	private static boolean isAndroid() {
+		return System.getProperty("java.runtime.name").startsWith("Android");
 	}
 }
