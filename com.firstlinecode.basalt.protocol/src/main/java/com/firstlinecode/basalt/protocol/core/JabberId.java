@@ -157,6 +157,9 @@ public final class JabberId {
 	}
 	
 	private void fromJidString(String jid) {
+		if (jid == null)
+			throw new IllegalArgumentException("Null jid.");
+		
 		if (jid.indexOf(CHAR_AT) == -1) {
 			if (jid.indexOf(CHAR_SLASH) != -1)
 				throw new MalformedJidException();
