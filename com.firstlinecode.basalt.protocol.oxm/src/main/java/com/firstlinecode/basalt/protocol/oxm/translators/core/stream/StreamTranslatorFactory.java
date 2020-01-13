@@ -32,7 +32,7 @@ public class StreamTranslatorFactory implements ITranslatorFactory<Stream> {
 
 		@Override
 		public String translate(Stream stream, IProtocolWriter writer, ITranslatingFactory translatingFactory) {
-			if (stream.getClose()) {
+			if (stream.isClose()) {
 				return XML_CLOSE_STREAM;
 			}
 

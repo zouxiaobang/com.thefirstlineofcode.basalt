@@ -69,6 +69,10 @@ public class Stream {
 	public boolean getClose() {
 		return close;
 	}
+	
+	public boolean isClose() {
+		return close;
+	}
 
 	public String getDefaultNamespace() {
 		return defaultNamespace;

@@ -30,7 +30,7 @@ public class StreamTest {
 		Assert.assertEquals("chat.firstlinecode.com", openStream.getTo().toString());
 		Assert.assertEquals("en", openStream.getLang());
 		Assert.assertEquals("1.0", openStream.getVersion());
-		Assert.assertEquals(false, openStream.getClose());
+		Assert.assertEquals(false, openStream.isClose());
 		
 		Assert.assertEquals("jabber:client", openStream.getDefaultNamespace());
 		
@@ -38,6 +38,6 @@ public class StreamTest {
 		
 		Stream closeStream = (Stream)oxmFactory.parse(closeStreamMessage);
 		
-		Assert.assertEquals(true, closeStream.getClose());
+		Assert.assertEquals(true, closeStream.isClose());
 	}
 }
