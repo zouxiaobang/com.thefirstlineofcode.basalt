@@ -6,7 +6,7 @@ N7Pi8RtY1K18toaMDhdEfhBRzO/XB0+PAQhYlRjNacGcslkhXqNjK5Va4tuOAPy2n1Q8UUrHbUd0g+xJ
 
 messageMessage=\
 <message from="romeo@montague.net/orchard" to="juliet@capulet.com/balcony" id="dsw71gj3">\
-	<data xmlns="http://jabber.org/protocol/ibb" seq="0" sid="i781hf64">\
+	<data xmlns="http://jabber.org/protocol/ibb" seq="00" sid="i781hf64">\
 		${dataText}\
 	</data>\
 </message>

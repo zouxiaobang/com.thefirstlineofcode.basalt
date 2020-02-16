@@ -220,12 +220,29 @@ public class NamingConventionParser<T> extends ParserAdaptor<T> {
 						converterAnnotation, validatorAnnotations));
 			} else {
 				parsingPath.enter(name);
-				scanType(parsingPath, new DefaultElementAccessor(field.getType(), propertyDescriptor));
+				scanType(parsingPath, new DefaultElementAccessor(getFieldType(field), propertyDescriptor));
 				parsingPath.exit();
 			}
 		}
 		
 		elementAccessors.put(parsingPath.toString(), elementAccessor);
+	}
+
+	private Class<?> getFieldType(Field field) {
+		if (field.getType() == long.class) {
+			return Long.class;
+		} else if (field.getType() == int.class) {
+			return Integer.class;
+		} else if (field.getType() == float.class) {
+			return Float.class;
+		} else if (field.getType() == double.class) {
+			return Double.class;
+		} else if (field.getType() == boolean.class) {
+			return Boolean.class;
+		} else {			
+			return field.getType();
+		}
+		
 	}
 
 	private ProtocolObject getEmbeddedObject(Field field) {
@@ -486,6 +503,8 @@ public class NamingConventionParser<T> extends ParserAdaptor<T> {
 				fieldType.equals(Boolean.class) ||
 				fieldType.equals(int.class) ||
 				fieldType.equals(Integer.class) ||
+				fieldType.equals(long.class) ||
+				fieldType.equals(Long.class) ||
 				fieldType.equals(float.class) ||
 				fieldType.equals(Float.class) ||
 				fieldType.equals(double.class) ||
@@ -588,16 +607,44 @@ public class NamingConventionParser<T> extends ParserAdaptor<T> {
 			
 			return stack.peek();
 		}
-
+		
 		protected Object create() {
 			if (type == null)
 				return null;
 			
 			try {
-				return type.newInstance();
+				if (isPrimitiveType(type)) {
+					return createPrimitiveTypeObject();
+				} else {
+					return type.newInstance();					
+				}
 			} catch (Exception e) {
 				throw new RuntimeException(String.format("Can't create element instance. class name %s.", type.getName()));
 			}
+		}
+
+		private Object createPrimitiveTypeObject() {
+			if (type == long.class) {
+				return new Long(0);
+			}
+			
+			if (type == int.class) {
+				return new Integer(0);
+			}
+			
+			if (type == float.class) {
+				return new Float(0);
+			}
+			
+			if (type == double.class) {
+				return new Double(0);
+			}
+			
+			if (type == boolean.class) {
+				return new Boolean(false);
+			}
+			
+			throw new IllegalArgumentException(String.format("Unknown primitive type %s", type.getName()));
 		}
 
 		@Override
@@ -951,6 +998,8 @@ public class NamingConventionParser<T> extends ParserAdaptor<T> {
 			return Boolean.valueOf(value);
 		} else if (type.equals(int.class) || type.equals(Integer.class)) {
 			return Integer.valueOf(value);
+		} else if (type.equals(long.class) || type.equals(Long.class)) {
+			return Long.valueOf(value);
 		} else if (type.equals(float.class) || type.equals(Float.class)) {
 			return Float.valueOf(value);
 		} else if (type.equals(double.class) || type.equals(Double.class)) {

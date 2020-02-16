@@ -245,6 +245,8 @@ public class NamingConventionTranslator<T> implements ITranslator<T> {
 				type.equals(Boolean.class) ||
 				type.equals(int.class) ||
 				type.equals(Integer.class) ||
+				type.equals(long.class) ||
+				type.equals(Long.class) ||
 				type.equals(float.class) ||
 				type.equals(Float.class) ||
 				type.equals(double.class) ||
