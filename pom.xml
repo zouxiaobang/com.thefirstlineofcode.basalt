@@ -151,17 +151,18 @@
                </dependencies>
         </dependencyManagement>
 
-	<distributionManagement>
-		<repository>
-			<id>com.firstlinecode.release</id>
-			<name>FirstLineCode Repository - Releases</name>
-			<url>http://repo.firstlinecode.com/content/repositories/releases</url>
-		</repository>
-		<snapshotRepository>
-			<id>com.firstlinecode.snapshot</id>
-			<name>FirstLineCode Repository - Snapshots</name>
-			<url>http://repo.firstlinecode.com/content/repositories/snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>
 
+	<distributionManagement>
+                <repository>
+                        <id>com.firstlinecode.releases</id>
+                        <name>FirstLineCode Repository - Releases</name>
+                        <url>http://47.115.36.99/repository/maven-releases/</url>
+                </repository>
+
+                <snapshotRepository>
+                        <id>com.firstlinecode.snapshots</id>
+                        <name>FirstLineCode Repository - Snapshots</name>
+                        <url>http://47.115.36.99/repository/maven-snapshots/</url>
+                </snapshotRepository>
+        </distributionManagement>
 </project>
