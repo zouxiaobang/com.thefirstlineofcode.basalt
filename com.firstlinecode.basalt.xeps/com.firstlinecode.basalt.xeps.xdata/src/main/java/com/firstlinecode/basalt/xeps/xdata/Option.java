@@ -1,6 +1,6 @@
 package com.firstlinecode.basalt.xeps.xdata;
 
-import com.firstlinecode.basalt.protocol.oxm.convention.annotations.TextOnly;
+import com.firstlinecode.basalt.oxm.convention.annotations.TextOnly;
 
 public class Option {
 	private String label;

@@ -1,6 +1,6 @@
 package com.firstlinecode.basalt.xeps.muc.user;
 
-import com.firstlinecode.basalt.protocol.oxm.convention.validation.annotations.IntRange;
+import com.firstlinecode.basalt.oxm.convention.validation.annotations.IntRange;
 
 public class Status {
 	@IntRange(min=100, max=999)

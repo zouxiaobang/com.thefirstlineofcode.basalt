@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.firstlinecode.basalt.protocol.core.Protocol;
-import com.firstlinecode.basalt.protocol.oxm.convention.annotations.Array;
-import com.firstlinecode.basalt.protocol.oxm.convention.annotations.ProtocolObject;
-import com.firstlinecode.basalt.protocol.oxm.convention.annotations.TextOnly;
+import com.firstlinecode.basalt.oxm.convention.annotations.Array;
+import com.firstlinecode.basalt.oxm.convention.annotations.ProtocolObject;
+import com.firstlinecode.basalt.oxm.convention.annotations.TextOnly;
 
 @ProtocolObject(namespace="http://jabber.org/protocol/muc#user", localName="x")
 public class MucUser {

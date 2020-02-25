@@ -1,7 +1,7 @@
 package com.firstlinecode.basalt.xeps.muc.user;
 
 import com.firstlinecode.basalt.protocol.core.JabberId;
-import com.firstlinecode.basalt.protocol.oxm.convention.conversion.annotations.String2JabberId;
+import com.firstlinecode.basalt.oxm.convention.conversion.annotations.String2JabberId;
 
 public class Actor {
 	@String2JabberId

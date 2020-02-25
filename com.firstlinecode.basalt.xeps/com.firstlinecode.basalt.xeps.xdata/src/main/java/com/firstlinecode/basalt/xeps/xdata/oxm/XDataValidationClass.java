@@ -1,7 +1,7 @@
 package com.firstlinecode.basalt.xeps.xdata.oxm;
 
-import com.firstlinecode.basalt.protocol.oxm.convention.validation.annotations.Validate;
-import com.firstlinecode.basalt.protocol.oxm.validation.ValidationException;
+import com.firstlinecode.basalt.oxm.convention.validation.annotations.Validate;
+import com.firstlinecode.basalt.oxm.validation.ValidationException;
 import com.firstlinecode.basalt.xeps.xdata.Field;
 
 public class XDataValidationClass {

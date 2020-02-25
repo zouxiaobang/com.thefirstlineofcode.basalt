@@ -15,9 +15,9 @@
 
 	<modules>
 		<module>com.firstlinecode.basalt.protocol</module>
-		<module>com.firstlinecode.basalt.protocol.oxm</module>
-		<module>com.firstlinecode.basalt.protocol.rbupdater</module>
+		<module>com.firstlinecode.basalt.oxm</module>
 		<module>com.firstlinecode.basalt.protocol.im</module>
+		<module>com.firstlinecode.basalt.rbupdater</module>
 		<module>com.firstlinecode.basalt.xeps</module>
 		<module>com.firstlinecode.basalt.leps</module>
 	</modules>
@@ -110,7 +110,7 @@
 			</dependency>
 			<dependency>
 				<groupId>com.firstlinecode.basalt</groupId>
-				<artifactId>com.firstlinecode.basalt.protocol.oxm</artifactId>
+				<artifactId>com.firstlinecode.basalt.oxm</artifactId>
 				<version>${basalt.version}</version>
 			</dependency>
 			<dependency>

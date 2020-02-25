@@ -1,6 +1,6 @@
 package com.firstlinecode.basalt.xeps.disco;
 
-import com.firstlinecode.basalt.protocol.oxm.convention.validation.annotations.NotNull;
+import com.firstlinecode.basalt.oxm.convention.validation.annotations.NotNull;
 
 public class Identity {
 	@NotNull

@@ -1,6 +1,6 @@
 package com.firstlinecode.basalt.xeps.rsm;
 
-import com.firstlinecode.basalt.protocol.oxm.convention.annotations.Text;
+import com.firstlinecode.basalt.oxm.convention.annotations.Text;
 
 public class First {
 	private int index;

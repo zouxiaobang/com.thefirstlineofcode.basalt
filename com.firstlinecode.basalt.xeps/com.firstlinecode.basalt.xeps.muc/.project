@@ -3,7 +3,7 @@
   <name>com.firstlinecode.basalt.xeps.muc</name>
   <comment>NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
   <projects>
-    <project>com.firstlinecode.basalt.protocol.oxm</project>
+    <project>com.firstlinecode.basalt.oxm</project>
     <project>com.firstlinecode.basalt.protocol</project>
     <project>com.firstlinecode.basalt.xeps.xdata</project>
     <project>com.firstlinecode.basalt.xeps.disco</project>

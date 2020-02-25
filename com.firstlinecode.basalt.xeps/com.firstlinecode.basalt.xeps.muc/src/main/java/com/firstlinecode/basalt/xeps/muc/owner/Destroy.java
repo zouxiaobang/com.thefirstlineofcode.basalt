@@ -1,8 +1,8 @@
 package com.firstlinecode.basalt.xeps.muc.owner;
 
 import com.firstlinecode.basalt.protocol.core.JabberId;
-import com.firstlinecode.basalt.protocol.oxm.convention.annotations.TextOnly;
-import com.firstlinecode.basalt.protocol.oxm.convention.conversion.annotations.String2JabberId;
+import com.firstlinecode.basalt.oxm.convention.annotations.TextOnly;
+import com.firstlinecode.basalt.oxm.convention.conversion.annotations.String2JabberId;
 
 public class Destroy {
 	@TextOnly

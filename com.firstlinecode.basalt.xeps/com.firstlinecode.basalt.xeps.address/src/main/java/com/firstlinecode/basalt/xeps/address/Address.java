@@ -3,10 +3,10 @@ package com.firstlinecode.basalt.xeps.address;
 import com.firstlinecode.basalt.protocol.core.JabberId;
 import com.firstlinecode.basalt.protocol.core.ProtocolException;
 import com.firstlinecode.basalt.protocol.core.stanza.error.BadRequest;
-import com.firstlinecode.basalt.protocol.oxm.convention.conversion.annotations.String2Enum;
-import com.firstlinecode.basalt.protocol.oxm.convention.conversion.annotations.String2JabberId;
-import com.firstlinecode.basalt.protocol.oxm.convention.validation.annotations.Validate;
-import com.firstlinecode.basalt.protocol.oxm.convention.validation.annotations.ValidationClass;
+import com.firstlinecode.basalt.oxm.convention.conversion.annotations.String2Enum;
+import com.firstlinecode.basalt.oxm.convention.conversion.annotations.String2JabberId;
+import com.firstlinecode.basalt.oxm.convention.validation.annotations.Validate;
+import com.firstlinecode.basalt.oxm.convention.validation.annotations.ValidationClass;
 
 @ValidationClass
 public class Address {

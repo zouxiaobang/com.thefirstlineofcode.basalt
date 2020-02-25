@@ -2,8 +2,8 @@ package com.firstlinecode.basalt.xeps.xdata.oxm;
 
 import com.firstlinecode.basalt.protocol.core.ProtocolException;
 import com.firstlinecode.basalt.protocol.core.stanza.error.BadRequest;
-import com.firstlinecode.basalt.protocol.oxm.conversion.ConversionException;
-import com.firstlinecode.basalt.protocol.oxm.conversion.IConverter;
+import com.firstlinecode.basalt.oxm.conversion.ConversionException;
+import com.firstlinecode.basalt.oxm.conversion.IConverter;
 import com.firstlinecode.basalt.xeps.xdata.XData;
 import com.firstlinecode.basalt.xeps.xdata.XData.Type;
 

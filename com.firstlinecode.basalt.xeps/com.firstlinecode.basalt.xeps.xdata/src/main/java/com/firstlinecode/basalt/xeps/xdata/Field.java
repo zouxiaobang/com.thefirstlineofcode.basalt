@@ -3,10 +3,10 @@ package com.firstlinecode.basalt.xeps.xdata;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.firstlinecode.basalt.protocol.oxm.convention.annotations.Array;
-import com.firstlinecode.basalt.protocol.oxm.convention.annotations.BooleanOnly;
-import com.firstlinecode.basalt.protocol.oxm.convention.annotations.TextOnly;
-import com.firstlinecode.basalt.protocol.oxm.convention.conversion.annotations.String2Enum;
+import com.firstlinecode.basalt.oxm.convention.annotations.Array;
+import com.firstlinecode.basalt.oxm.convention.annotations.BooleanOnly;
+import com.firstlinecode.basalt.oxm.convention.annotations.TextOnly;
+import com.firstlinecode.basalt.oxm.convention.conversion.annotations.String2Enum;
 
 public class Field {
 	public enum Type {

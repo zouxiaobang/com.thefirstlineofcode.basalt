@@ -1,8 +1,8 @@
 package com.firstlinecode.basalt.leps.im.subscription;
 
 import com.firstlinecode.basalt.protocol.core.Protocol;
-import com.firstlinecode.basalt.protocol.oxm.convention.annotations.ProtocolObject;
-import com.firstlinecode.basalt.protocol.oxm.convention.annotations.TextOnly;
+import com.firstlinecode.basalt.oxm.convention.annotations.ProtocolObject;
+import com.firstlinecode.basalt.oxm.convention.annotations.TextOnly;
 
 @ProtocolObject(namespace="urn:leps:subscription", localName="unsubscribed")
 public class Unsubscribed {

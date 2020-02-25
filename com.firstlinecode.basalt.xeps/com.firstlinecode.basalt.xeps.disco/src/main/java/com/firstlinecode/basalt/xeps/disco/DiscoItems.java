@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.firstlinecode.basalt.protocol.core.Protocol;
-import com.firstlinecode.basalt.protocol.oxm.convention.annotations.Array;
-import com.firstlinecode.basalt.protocol.oxm.convention.annotations.ProtocolObject;
+import com.firstlinecode.basalt.oxm.convention.annotations.Array;
+import com.firstlinecode.basalt.oxm.convention.annotations.ProtocolObject;
 import com.firstlinecode.basalt.xeps.rsm.Set;
 
 @ProtocolObject(namespace="http://jabber.org/protocol/disco#items", localName="query")

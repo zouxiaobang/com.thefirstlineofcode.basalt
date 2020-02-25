@@ -3,13 +3,13 @@ package com.firstlinecode.basalt.protocol.im.roster;
 import com.firstlinecode.basalt.protocol.core.Protocol;
 import com.firstlinecode.basalt.protocol.im.roster.Item.Ask;
 import com.firstlinecode.basalt.protocol.im.roster.Item.Subscription;
-import com.firstlinecode.basalt.protocol.oxm.Attribute;
-import com.firstlinecode.basalt.protocol.oxm.Attributes;
-import com.firstlinecode.basalt.protocol.oxm.Value;
-import com.firstlinecode.basalt.protocol.oxm.translating.IProtocolWriter;
-import com.firstlinecode.basalt.protocol.oxm.translating.ITranslatingFactory;
-import com.firstlinecode.basalt.protocol.oxm.translating.ITranslator;
-import com.firstlinecode.basalt.protocol.oxm.translating.ITranslatorFactory;
+import com.firstlinecode.basalt.oxm.Attribute;
+import com.firstlinecode.basalt.oxm.Attributes;
+import com.firstlinecode.basalt.oxm.Value;
+import com.firstlinecode.basalt.oxm.translating.IProtocolWriter;
+import com.firstlinecode.basalt.oxm.translating.ITranslatingFactory;
+import com.firstlinecode.basalt.oxm.translating.ITranslator;
+import com.firstlinecode.basalt.oxm.translating.ITranslatorFactory;
 
 public class RosterTranslatorFactory implements ITranslatorFactory<Roster> {
 	private static final ITranslator<Roster> translator = new RosterTranslator();

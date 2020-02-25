@@ -1,10 +1,10 @@
 package com.firstlinecode.basalt.xeps.muc.user;
 
 import com.firstlinecode.basalt.protocol.core.JabberId;
-import com.firstlinecode.basalt.protocol.oxm.convention.annotations.BindTo;
-import com.firstlinecode.basalt.protocol.oxm.convention.annotations.TextOnly;
-import com.firstlinecode.basalt.protocol.oxm.convention.conversion.annotations.String2Enum;
-import com.firstlinecode.basalt.protocol.oxm.convention.conversion.annotations.String2JabberId;
+import com.firstlinecode.basalt.oxm.convention.annotations.BindTo;
+import com.firstlinecode.basalt.oxm.convention.annotations.TextOnly;
+import com.firstlinecode.basalt.oxm.convention.conversion.annotations.String2Enum;
+import com.firstlinecode.basalt.oxm.convention.conversion.annotations.String2JabberId;
 import com.firstlinecode.basalt.xeps.muc.Affiliation;
 import com.firstlinecode.basalt.xeps.muc.Role;
 

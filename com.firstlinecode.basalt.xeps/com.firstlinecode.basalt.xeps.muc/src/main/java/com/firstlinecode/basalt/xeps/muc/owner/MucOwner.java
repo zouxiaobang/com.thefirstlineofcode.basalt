@@ -3,9 +3,9 @@ package com.firstlinecode.basalt.xeps.muc.owner;
 import com.firstlinecode.basalt.protocol.core.Protocol;
 import com.firstlinecode.basalt.protocol.core.ProtocolException;
 import com.firstlinecode.basalt.protocol.core.stanza.error.BadRequest;
-import com.firstlinecode.basalt.protocol.oxm.convention.annotations.ProtocolObject;
-import com.firstlinecode.basalt.protocol.oxm.convention.validation.annotations.Validate;
-import com.firstlinecode.basalt.protocol.oxm.convention.validation.annotations.ValidationClass;
+import com.firstlinecode.basalt.oxm.convention.annotations.ProtocolObject;
+import com.firstlinecode.basalt.oxm.convention.validation.annotations.Validate;
+import com.firstlinecode.basalt.oxm.convention.validation.annotations.ValidationClass;
 import com.firstlinecode.basalt.xeps.muc.user.Destroy;
 import com.firstlinecode.basalt.xeps.xdata.XData;
 

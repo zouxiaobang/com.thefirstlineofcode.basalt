@@ -19,7 +19,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.firstlinecode.basalt</groupId>
-			<artifactId>com.firstlinecode.basalt.protocol.oxm</artifactId>
+			<artifactId>com.firstlinecode.basalt.oxm</artifactId>
 		</dependency>
 	</dependencies>
 

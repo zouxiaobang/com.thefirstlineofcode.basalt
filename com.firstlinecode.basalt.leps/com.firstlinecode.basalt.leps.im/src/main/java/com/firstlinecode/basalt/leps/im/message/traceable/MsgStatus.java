@@ -2,9 +2,9 @@ package com.firstlinecode.basalt.leps.im.message.traceable;
 
 import com.firstlinecode.basalt.protocol.core.JabberId;
 import com.firstlinecode.basalt.protocol.datetime.DateTime;
-import com.firstlinecode.basalt.protocol.oxm.convention.conversion.annotations.String2DateTime;
-import com.firstlinecode.basalt.protocol.oxm.convention.conversion.annotations.String2Enum;
-import com.firstlinecode.basalt.protocol.oxm.convention.conversion.annotations.String2JabberId;
+import com.firstlinecode.basalt.oxm.convention.conversion.annotations.String2DateTime;
+import com.firstlinecode.basalt.oxm.convention.conversion.annotations.String2Enum;
+import com.firstlinecode.basalt.oxm.convention.conversion.annotations.String2JabberId;
 
 public class MsgStatus {
 	public enum Status {

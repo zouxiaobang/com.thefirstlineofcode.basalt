@@ -1,8 +1,8 @@
 package com.firstlinecode.basalt.xeps.oob;
 
 import com.firstlinecode.basalt.protocol.core.Protocol;
-import com.firstlinecode.basalt.protocol.oxm.convention.annotations.ProtocolObject;
-import com.firstlinecode.basalt.protocol.oxm.convention.annotations.TextOnly;
+import com.firstlinecode.basalt.oxm.convention.annotations.ProtocolObject;
+import com.firstlinecode.basalt.oxm.convention.annotations.TextOnly;
 
 @ProtocolObject(namespace="jabber:iq:oob", localName="query")
 public class IqOob {

@@ -3,7 +3,7 @@ package com.firstlinecode.basalt.xeps.xdata;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.firstlinecode.basalt.protocol.oxm.convention.annotations.Array;
+import com.firstlinecode.basalt.oxm.convention.annotations.Array;
 
 public class Reported {
 	@Array(type=Field.class, elementName="field")

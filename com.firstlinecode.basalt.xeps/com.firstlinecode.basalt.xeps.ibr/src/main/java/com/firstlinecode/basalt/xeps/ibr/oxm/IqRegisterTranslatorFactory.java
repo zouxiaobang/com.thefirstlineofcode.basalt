@@ -1,10 +1,10 @@
 package com.firstlinecode.basalt.xeps.ibr.oxm;
 
 import com.firstlinecode.basalt.protocol.core.Protocol;
-import com.firstlinecode.basalt.protocol.oxm.translating.IProtocolWriter;
-import com.firstlinecode.basalt.protocol.oxm.translating.ITranslatingFactory;
-import com.firstlinecode.basalt.protocol.oxm.translating.ITranslator;
-import com.firstlinecode.basalt.protocol.oxm.translating.ITranslatorFactory;
+import com.firstlinecode.basalt.oxm.translating.IProtocolWriter;
+import com.firstlinecode.basalt.oxm.translating.ITranslatingFactory;
+import com.firstlinecode.basalt.oxm.translating.ITranslator;
+import com.firstlinecode.basalt.oxm.translating.ITranslatorFactory;
 import com.firstlinecode.basalt.xeps.ibr.IqRegister;
 import com.firstlinecode.basalt.xeps.ibr.RegistrationField;
 import com.firstlinecode.basalt.xeps.ibr.RegistrationForm;

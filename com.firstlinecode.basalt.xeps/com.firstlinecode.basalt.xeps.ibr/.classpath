@@ -4,7 +4,7 @@
   <classpathentry kind="src" path="src/main/resources" excluding="**/*.java"/>
   <classpathentry kind="output" path="target/classes"/>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-  <classpathentry kind="src" path="/com.firstlinecode.basalt.protocol.oxm"/>
+  <classpathentry kind="src" path="/com.firstlinecode.basalt.oxm"/>
   <classpathentry kind="src" path="/com.firstlinecode.basalt.protocol"/>
   <classpathentry kind="src" path="/com.firstlinecode.basalt.xeps.xdata"/>
   <classpathentry kind="src" path="/com.firstlinecode.basalt.xeps.oob"/>

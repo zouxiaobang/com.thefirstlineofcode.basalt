@@ -7,12 +7,12 @@ import com.firstlinecode.basalt.protocol.core.ProtocolException;
 import com.firstlinecode.basalt.protocol.core.stanza.error.BadRequest;
 import com.firstlinecode.basalt.protocol.im.roster.Item.Ask;
 import com.firstlinecode.basalt.protocol.im.roster.Item.Subscription;
-import com.firstlinecode.basalt.protocol.oxm.Attribute;
-import com.firstlinecode.basalt.protocol.oxm.Value;
-import com.firstlinecode.basalt.protocol.oxm.annotations.Parser;
-import com.firstlinecode.basalt.protocol.oxm.annotations.ProcessAttributes;
-import com.firstlinecode.basalt.protocol.oxm.annotations.ProcessText;
-import com.firstlinecode.basalt.protocol.oxm.parsing.IParsingContext;
+import com.firstlinecode.basalt.oxm.Attribute;
+import com.firstlinecode.basalt.oxm.Value;
+import com.firstlinecode.basalt.oxm.annotations.Parser;
+import com.firstlinecode.basalt.oxm.annotations.ProcessAttributes;
+import com.firstlinecode.basalt.oxm.annotations.ProcessText;
+import com.firstlinecode.basalt.oxm.parsing.IParsingContext;
 
 @Parser(namespace="query", localName="jabber:iq:roster", objectType=Roster.class)
 public class RosterParser {
