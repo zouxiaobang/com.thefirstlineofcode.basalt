@@ -7,9 +7,9 @@ import com.firstlinecode.basalt.protocol.oxm.convention.annotations.ProtocolObje
 import com.firstlinecode.basalt.protocol.oxm.convention.conversion.annotations.String2DateTime;
 import com.firstlinecode.basalt.protocol.oxm.convention.conversion.annotations.String2JabberId;
 
-@ProtocolObject(namespace="urn:lep:traceable", localName="read")
+@ProtocolObject(namespace="urn:leps:traceable", localName="read")
 public class MessageRead {
-	public static final Protocol PROTOCOL = new Protocol("urn:lep:traceable", "read");
+	public static final Protocol PROTOCOL = new Protocol("urn:leps:traceable", "read");
 	
 	@String2JabberId
 	private JabberId from;

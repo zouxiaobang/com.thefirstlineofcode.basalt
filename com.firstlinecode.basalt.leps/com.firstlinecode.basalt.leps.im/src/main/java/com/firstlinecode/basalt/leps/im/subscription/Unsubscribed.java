@@ -4,9 +4,9 @@ import com.firstlinecode.basalt.protocol.core.Protocol;
 import com.firstlinecode.basalt.protocol.oxm.convention.annotations.ProtocolObject;
 import com.firstlinecode.basalt.protocol.oxm.convention.annotations.TextOnly;
 
-@ProtocolObject(namespace="urn:lep:subscription", localName="unsubscribed")
+@ProtocolObject(namespace="urn:leps:subscription", localName="unsubscribed")
 public class Unsubscribed {
-	public static final Protocol PROTOCOL = new Protocol("urn:lep:subscription", "unsubscribed");
+	public static final Protocol PROTOCOL = new Protocol("urn:leps:subscription", "unsubscribed");
 	
 	@TextOnly
 	private String reason;
