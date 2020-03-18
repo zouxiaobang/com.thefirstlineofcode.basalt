@@ -42,7 +42,7 @@ public class OxmService {
 
 	private static boolean isAndroid() {
 		return (System.getProperty("basalt.runtime.name") != null
-				&& System.getProperty("basalt.runtime.name").toLowerCase().startsWith("android"))
+				&& System.getProperty("basalt.runtime.name").toLowerCase().equals("android"))
 				|| System.getProperty("java.runtime.name").startsWith("Android");
 	}
 }
