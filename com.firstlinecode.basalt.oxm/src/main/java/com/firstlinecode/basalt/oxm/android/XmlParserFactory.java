@@ -28,11 +28,12 @@ public class XmlParserFactory implements IXmlParserFactory {
     public XmlPullParser createParserWrapper(String message) throws XmlPullParserException {
         xmlPullParserFactory.setNamespaceAware(true);
         XmlPullParser parser = xmlPullParserFactory.newPullParser();
+        XmlPullParserWrapper xmlPullParser = new XmlPullParserWrapper(parser);
         // 转换成输入流形式进行解析
         InputStream msgInputStream = parseInputStream(message);
-        parser.setInput(msgInputStream, String.valueOf(StandardCharsets.UTF_8));
+        xmlPullParser.setInput(msgInputStream, String.valueOf(StandardCharsets.UTF_8));
 
-        return parser;
+        return xmlPullParser;
     }
 
     private InputStream parseInputStream(String message) {
