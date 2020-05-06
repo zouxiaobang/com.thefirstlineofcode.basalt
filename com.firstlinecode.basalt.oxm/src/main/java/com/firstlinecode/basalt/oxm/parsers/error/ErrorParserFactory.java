@@ -83,7 +83,7 @@ public class ErrorParserFactory<T extends IError> implements IParserFactory<T> {
 					StanzaError.NAMESPACE_STANZA_ERROR_CONTEXT.equals(protocol.getNamespace())) {
 				if (PROTOCOL_TEXT_LOCAL_NAME.equals(protocol.getLocalName())) {
 					if (context.getObject().getText() != null) {
-						throw new ProtocolException(new BadRequest("Reduplicated element 'text'."));
+						throw new ProtocolException(new BadRequest("Reduplicate element 'text'."));
 					}
 					
 					if (embedded instanceof LangText) {
@@ -91,14 +91,14 @@ public class ErrorParserFactory<T extends IError> implements IParserFactory<T> {
 					}
 				} else {
 					if (context.getObject().getDefinedCondition() != null) {
-						throw new ProtocolException(new BadRequest("Reduplicated element 'defined-condition'."));
+						throw new ProtocolException(new BadRequest("Reduplicate element 'defined-condition'."));
 					}
 					
 					context.getObject().setDefinedCondition((String)embedded);
 				}
 			} else {
 				if (context.getObject().getApplicationSpecificCondition() != null) {
-					throw new ProtocolException(new BadRequest("Reduplicated element 'application-specific-condition'."));
+					throw new ProtocolException(new BadRequest("Reduplicate element 'application-specific-condition'."));
 				}
 				
 				context.getObject().setApplicationSpecificCondition(embedded);

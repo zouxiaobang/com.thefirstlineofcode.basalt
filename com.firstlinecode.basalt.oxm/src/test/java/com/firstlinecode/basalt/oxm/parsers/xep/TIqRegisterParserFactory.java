@@ -135,7 +135,7 @@ public class TIqRegisterParserFactory implements IParserFactory<TIqRegister> {
 				for (TRegistrationField field : form.getFields()) {
 					if (field.getName().equals(fieldName)) {
 						throw new ProtocolException(new BadRequest(String.format(
-							"Reduplicated registration field %s", fieldName)));
+							"Reduplicate registration field %s", fieldName)));
 					}
 				}
 				

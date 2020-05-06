@@ -95,7 +95,7 @@ public class PresenceParserFactory implements IParserFactory<Presence> {
 					@Override
 					public void processText(IParsingContext<Presence> context, Value<?> text) {
 						if (context.getObject().getPriority() != null) {
-							throw new ProtocolException(new BadRequest("Reduplicated 'priority'."));
+							throw new ProtocolException(new BadRequest("Reduplicate 'priority'."));
 						}
 						
 						try {
