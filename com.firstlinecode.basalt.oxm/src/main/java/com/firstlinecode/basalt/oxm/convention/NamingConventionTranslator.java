@@ -75,13 +75,13 @@ public class NamingConventionTranslator<T> implements ITranslator<T> {
 	
 	private void addEmbeddedProtocolDescriptor(ProtocolDescriptor descriptor,
 			PropertyDescriptor propertyDescriptor, Class<?> type) {
-		ProtocolObject mb = type.getAnnotation(ProtocolObject.class);
-		if (mb == null) {
+		ProtocolObject embeddedObject = type.getAnnotation(ProtocolObject.class);
+		if (embeddedObject == null) {
 			throw new RuntimeException("Can't determine embedded protocol.");
 		}
 		
 		ProtocolDescriptor embeddedProtocolDescriptor = getProtocolDescriptor(type,
-				new Protocol("".equals(mb.namespace()) ? null : mb.namespace(), mb.localName()));
+				new Protocol("".equals(embeddedObject.namespace()) ? null : embeddedObject.namespace(), embeddedObject.localName()));
 		embeddedProtocolDescriptor.propertyDescriptor = propertyDescriptor;
 		descriptor.protocols.add(embeddedProtocolDescriptor);
 	}
