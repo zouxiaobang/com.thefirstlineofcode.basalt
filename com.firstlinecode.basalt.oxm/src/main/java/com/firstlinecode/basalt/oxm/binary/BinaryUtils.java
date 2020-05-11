@@ -14,4 +14,29 @@ public class BinaryUtils {
 		
 		return sb.toString();
 	}
+	
+	public static byte[] getBytesFromString(String sBytes) {
+		if (!sBytes.startsWith("0x")) {
+			throw new IllegalArgumentException("Invalid bytes string: " + sBytes);
+		}
+		String[] bytesString = sBytes.split("0x");
+		
+		byte[] bytes = new byte[bytesString.length - 1];
+		for (int i = 1; i < bytesString.length; i++) {
+			int num;
+			try {
+				num = Integer.decode("0x" + bytesString[i]);
+			} catch (NumberFormatException e) {
+				throw new IllegalArgumentException("Invalid bytes string: " + sBytes);
+			}
+			
+			if (num < 0 || num > 255) {
+				throw new IllegalArgumentException("Invalid bytes string: " + sBytes);
+			}
+			
+			bytes[i - 1] = (byte)num;
+		}
+		
+		return bytes;
+	}
 }
