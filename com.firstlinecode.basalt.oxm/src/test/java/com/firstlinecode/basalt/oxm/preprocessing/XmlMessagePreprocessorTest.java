@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.firstlinecode.basalt.oxm.TestData;
-import com.firstlinecode.basalt.oxm.preprocessing.ITextMessagePreprocessor;
 import com.firstlinecode.basalt.oxm.xml.preprocessing.XmlMessagePreprocessor;
 
 import junit.framework.Assert;

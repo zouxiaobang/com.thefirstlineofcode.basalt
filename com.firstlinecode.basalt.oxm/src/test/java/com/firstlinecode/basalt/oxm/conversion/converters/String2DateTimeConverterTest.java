@@ -7,7 +7,6 @@ import com.firstlinecode.basalt.protocol.datetime.Date;
 import com.firstlinecode.basalt.protocol.datetime.DateTime;
 import com.firstlinecode.basalt.protocol.datetime.Time;
 import com.firstlinecode.basalt.protocol.datetime.TimeZoneOffset;
-import com.firstlinecode.basalt.oxm.conversion.converters.String2DateTimeConverter;
 
 public class String2DateTimeConverterTest {
 	@Test

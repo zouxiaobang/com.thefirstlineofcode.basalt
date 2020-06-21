@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.firstlinecode.basalt.protocol.datetime.Time;
-import com.firstlinecode.basalt.oxm.conversion.converters.String2TimeConverter;
 
 public class String2TimeConverterTest {
 	@Test

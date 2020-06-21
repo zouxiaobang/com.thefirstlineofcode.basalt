@@ -4,15 +4,14 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.firstlinecode.basalt.protocol.core.Protocol;
-import com.firstlinecode.basalt.protocol.core.stanza.Iq;
-import com.firstlinecode.basalt.protocol.im.stanza.Message;
 import com.firstlinecode.basalt.oxm.Attribute;
 import com.firstlinecode.basalt.oxm.Attributes;
 import com.firstlinecode.basalt.oxm.OxmService;
 import com.firstlinecode.basalt.oxm.TestData;
-import com.firstlinecode.basalt.oxm.translating.IProtocolWriter;
 import com.firstlinecode.basalt.oxm.xep.ibb.TMessageData;
+import com.firstlinecode.basalt.protocol.core.Protocol;
+import com.firstlinecode.basalt.protocol.core.stanza.Iq;
+import com.firstlinecode.basalt.protocol.im.stanza.Message;
 
 import junit.framework.Assert;
 

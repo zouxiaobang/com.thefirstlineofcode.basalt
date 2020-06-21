@@ -2,13 +2,12 @@ package com.firstlinecode.basalt.oxm.parsers.core.stream;
 
 import org.junit.Test;
 
-import com.firstlinecode.basalt.protocol.core.ProtocolChain;
-import com.firstlinecode.basalt.protocol.core.stream.Stream;
 import com.firstlinecode.basalt.oxm.IOxmFactory;
 import com.firstlinecode.basalt.oxm.OxmService;
 import com.firstlinecode.basalt.oxm.TestData;
 import com.firstlinecode.basalt.oxm.annotation.AnnotatedParserFactory;
-import com.firstlinecode.basalt.oxm.parsers.core.stream.StreamParser;
+import com.firstlinecode.basalt.protocol.core.ProtocolChain;
+import com.firstlinecode.basalt.protocol.core.stream.Stream;
 
 import junit.framework.Assert;
 
