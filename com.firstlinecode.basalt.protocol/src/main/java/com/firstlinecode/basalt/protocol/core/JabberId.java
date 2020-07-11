@@ -56,9 +56,13 @@ public final class JabberId {
 	public int hashCode() {
 		int hash = 7;
 		
-		hash += 31 * hash + (name == null ? 0 : name.hashCode());
+		if (name != null)
+			hash += 31 * hash + name.hashCode();
+		
 		hash += 31 * hash + (domain == null ? 0 : domain.hashCode());
-		hash += 31 * hash + (resource == null ? 0 : resource.hashCode());
+		
+		if (resource != null)
+			hash += 31 * hash + resource.hashCode();
 		
 		return hash;
 	}
