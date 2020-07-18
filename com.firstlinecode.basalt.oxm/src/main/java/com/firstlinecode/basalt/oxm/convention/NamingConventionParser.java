@@ -380,7 +380,7 @@ public class NamingConventionParser<T> extends ParserAdaptor<T> {
 			throw new IllegalArgumentException("Element type is primitive type. Element name shouldn't be null.");
 		}
 		
-		return elementType.getSimpleName().toLowerCase();
+		return getNameByNamingConvention(elementType.getSimpleName());
 	}
 
 	private boolean isArray(Array array, Class<?> fieldType) {

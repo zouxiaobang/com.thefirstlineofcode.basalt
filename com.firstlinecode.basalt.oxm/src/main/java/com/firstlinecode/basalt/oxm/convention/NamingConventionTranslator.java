@@ -210,7 +210,7 @@ public class NamingConventionTranslator<T> implements ITranslator<T> {
 			throw new IllegalArgumentException("Element type is primitive type. Element name should be set explicitly.");
 		}
 		
-		return elementType.getSimpleName().toLowerCase();
+		return getNameByNamingConvention(elementType.getSimpleName());
 	}
 
 	private String getTranslatingName(Field field, BindTo bindTo) {
