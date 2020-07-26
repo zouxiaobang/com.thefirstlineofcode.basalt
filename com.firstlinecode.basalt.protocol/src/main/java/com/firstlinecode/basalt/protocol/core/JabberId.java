@@ -3,7 +3,7 @@ package com.firstlinecode.basalt.protocol.core;
 import java.util.StringTokenizer;
 
 public final class JabberId {
-	private String name;
+	private String node;
 	private String domain;
 	private String resource;
 	
@@ -18,22 +18,22 @@ public final class JabberId {
 		this(null, domain);
 	}
 	
-	public JabberId(String name, String domain) {
-		this(name, domain, null);
+	public JabberId(String node, String domain) {
+		this(node, domain, null);
 	}
 	
-	public JabberId(String name, String domain, String resource) {
-		this.name = name;
+	public JabberId(String node, String domain, String resource) {
+		this.node = node;
 		this.domain = domain;
 		this.resource = resource;
 	}
 	
-	public String getName() {
-		return name;
+	public String getNode() {
+		return node;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
+	public void setNode(String node) {
+		this.node = node;
 	}
 	
 	public String getDomain() {
@@ -56,8 +56,8 @@ public final class JabberId {
 	public int hashCode() {
 		int hash = 7;
 		
-		if (name != null)
-			hash += 31 * hash + name.hashCode();
+		if (node != null)
+			hash += 31 * hash + node.hashCode();
 		
 		hash += 31 * hash + (domain == null ? 0 : domain.hashCode());
 		
@@ -79,7 +79,7 @@ public final class JabberId {
 		if (obj instanceof JabberId) {
 			JabberId other = (JabberId)obj;
 			
-			if (!equalsEvenNull(this.name, other.name))
+			if (!equalsEvenNull(this.node, other.node))
 				return false;
 			
 			if (this.domain == null || other.domain == null) {
@@ -113,8 +113,8 @@ public final class JabberId {
 		
 		StringBuilder sb = new StringBuilder();
 		
-		if (name != null)
-			sb.append(name).append(CHAR_AT);
+		if (node != null)
+			sb.append(node).append(CHAR_AT);
 		sb.append(domain);
 		if (resource != null)
 			sb.append(CHAR_SLASH).append(resource);
@@ -127,17 +127,17 @@ public final class JabberId {
 	}
 	
 	public JabberId getBareId() {
-		return new JabberId(name, domain);
+		return new JabberId(node, domain);
 	}
 	
 	public String getBareIdString() {
 		if (domain == null)
 			throw new IllegalStateException("Null domain");
 
-		if (name == null)
+		if (node == null)
 			return domain;
 		else
-			return String.format("%s%s%s", name, CHAR_AT, domain);
+			return String.format("%s%s%s", node, CHAR_AT, domain);
 	}
 	
 	public static JabberId parse(String jidString) {
@@ -148,7 +148,7 @@ public final class JabberId {
 	}
 	
 	private void validateJid() {
-		if (name != null && name.length() > 1023)
+		if (node != null && node.length() > 1023)
 			throw new IllegalArgumentException("Name identifier of JID mustn't be more than 1023 bytes in length");
 		
 		if (domain != null && domain.length() > 1023)
@@ -174,7 +174,7 @@ public final class JabberId {
 			if (atTokenizer.countTokens() != 2)
 				throw new MalformedJidException();
 			
-			name = atTokenizer.nextToken();
+			node = atTokenizer.nextToken();
 			String domainAndResource = atTokenizer.nextToken();
 			
 			if (domainAndResource.indexOf(CHAR_SLASH) == -1) {
