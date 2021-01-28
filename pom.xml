@@ -14,12 +14,12 @@
 	</properties>
 
 	<modules>
-		<module>com.firstlinecode.basalt.protocol</module>
-		<module>com.firstlinecode.basalt.oxm</module>
-		<module>com.firstlinecode.basalt.protocol.im</module>
-		<module>com.firstlinecode.basalt.rbupdater</module>
-		<module>com.firstlinecode.basalt.xeps</module>
-		<module>com.firstlinecode.basalt.leps</module>
+		<module>xmpp-core</module>
+		<module>oxm</module>
+		<module>xmpp-im</module>
+		<module>rbupdater</module>
+		<module>xeps</module>
+		<module>leps</module>
 	</modules>
 
 	<build>
@@ -100,52 +100,52 @@
 			</dependency>
 			<dependency>
 				<groupId>com.firstlinecode.basalt</groupId>
-				<artifactId>com.firstlinecode.basalt.protocol</artifactId>
+				<artifactId>basalt-xmpp-core</artifactId>
 				<version>${basalt.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.firstlinecode.basalt</groupId>
-				<artifactId>com.firstlinecode.basalt.protocol.im</artifactId>
+				<artifactId>basalt-xmpp-im</artifactId>
 				<version>${basalt.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.firstlinecode.basalt</groupId>
-				<artifactId>com.firstlinecode.basalt.oxm</artifactId>
+				<artifactId>basalt-oxm</artifactId>
 				<version>${basalt.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.firstlinecode.basalt.xeps</groupId>
-				<artifactId>com.firstlinecode.basalt.xeps.rsm</artifactId>
+				<artifactId>basalt-xeps-rsm</artifactId>
 				<version>${basalt.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.firstlinecode.basalt.xeps</groupId>
-				<artifactId>com.firstlinecode.basalt.xeps.xdata</artifactId>
+				<artifactId>basalt-xeps-xdata</artifactId>
 				<version>${basalt.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.firstlinecode.basalt.xeps</groupId>
-				<artifactId>com.firstlinecode.basalt.xeps.disco</artifactId>
+				<artifactId>basalt-xeps-disco</artifactId>
 				<version>${basalt.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.firstlinecode.basalt.xeps</groupId>
-				<artifactId>com.firstlinecode.basalt.xeps.delay</artifactId>
+				<artifactId>basalt-xeps-delay</artifactId>
 				<version>${basalt.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.firstlinecode.basalt.xeps</groupId>
-				<artifactId>com.firstlinecode.basalt.xeps.address</artifactId>
+				<artifactId>basalt-xeps-address</artifactId>
 				<version>${basalt.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.firstlinecode.basalt.xeps</groupId>
-				<artifactId>com.firstlinecode.basalt.xeps.oob</artifactId>
+				<artifactId>basalt-xeps-oob</artifactId>
 				<version>${basalt.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.firstlinecode.basalt.xeps</groupId>
-				<artifactId>com.firstlinecode.basalt.xeps.ibr</artifactId>
+				<artifactId>basalt-xeps-ibr</artifactId>
 				<version>${basalt.version}</version>
 			</dependency>
                </dependencies>
