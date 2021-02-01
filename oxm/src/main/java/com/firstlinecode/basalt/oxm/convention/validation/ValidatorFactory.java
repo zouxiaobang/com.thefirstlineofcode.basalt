@@ -5,6 +5,7 @@ import com.firstlinecode.basalt.oxm.validation.IValidator;
 
 public class ValidatorFactory implements IValidatorFactory<CustomValidator> {
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public IValidator<?> create(CustomValidator annotation) {
 		Class<?> type = annotation.value();

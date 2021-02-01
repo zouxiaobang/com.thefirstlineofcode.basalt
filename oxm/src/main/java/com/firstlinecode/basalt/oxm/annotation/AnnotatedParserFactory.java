@@ -30,7 +30,7 @@ public class AnnotatedParserFactory<T> implements IParserFactory<T> {
 	private boolean stateless;
 	private AnnotatedParser parser;
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "deprecation" })
 	public AnnotatedParserFactory(Class<?> annotatedParserType) {
 		Parser parserAnnotation = annotatedParserType.getAnnotation(Parser.class);
 		if (parserAnnotation == null) {
@@ -245,6 +245,7 @@ public class AnnotatedParserFactory<T> implements IParserFactory<T> {
 	
 	private class AnnotatedParser implements IParser<T> {
 		
+		@SuppressWarnings("deprecation")
 		@Override
 		public T createObject() {
 			try {

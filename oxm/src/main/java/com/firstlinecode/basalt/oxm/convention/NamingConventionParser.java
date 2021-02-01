@@ -99,6 +99,7 @@ public class NamingConventionParser<T> extends ParserAdaptor<T> {
 		return doGetElementParser(parsingPath.toString());
 	}
 	
+	@SuppressWarnings("deprecation")
 	private void scanValidationClass() throws InstantiationException, IllegalAccessException {
 		ValidationClass vcAnnotation = objectType.getAnnotation(ValidationClass.class);
 		if (vcAnnotation == null)
@@ -608,6 +609,7 @@ public class NamingConventionParser<T> extends ParserAdaptor<T> {
 			return stack.peek();
 		}
 		
+		@SuppressWarnings("deprecation")
 		protected Object create() {
 			if (type == null)
 				return null;
@@ -625,23 +627,23 @@ public class NamingConventionParser<T> extends ParserAdaptor<T> {
 
 		private Object createPrimitiveTypeObject() {
 			if (type == long.class) {
-				return new Long(0);
+				return Long.valueOf(0);
 			}
 			
 			if (type == int.class) {
-				return new Integer(0);
+				return Integer.valueOf(0);
 			}
 			
 			if (type == float.class) {
-				return new Float(0);
+				return Float.valueOf(0);
 			}
 			
 			if (type == double.class) {
-				return new Double(0);
+				return Double.valueOf(0);
 			}
 			
 			if (type == boolean.class) {
-				return new Boolean(false);
+				return Boolean.valueOf(false);
 			}
 			
 			throw new IllegalArgumentException(String.format("Unknown primitive type %s", type.getName()));

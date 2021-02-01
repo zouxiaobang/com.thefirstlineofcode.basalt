@@ -53,7 +53,7 @@ public class SimpleObjectParserFactory<T> implements IParserFactory<T> {
 			}
 		}
 
-		@SuppressWarnings("unchecked")
+		@SuppressWarnings({ "unchecked", "deprecation" })
 		@Override
 		public K createObject() {
 			try {

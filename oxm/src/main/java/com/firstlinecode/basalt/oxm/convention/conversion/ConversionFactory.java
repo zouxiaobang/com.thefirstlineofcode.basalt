@@ -13,6 +13,7 @@ public class ConversionFactory implements IConversionFactory {
 		this.converterFactories = new ConcurrentHashMap<>();
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public IConverter<?, ?> getConverter(Annotation annotation) {
 		IConverterFactory factory = (IConverterFactory)converterFactories.get(annotation.annotationType());
@@ -53,6 +54,7 @@ public class ConversionFactory implements IConversionFactory {
 			this.converterType = converterType;
 		}
 
+		@SuppressWarnings("deprecation")
 		@Override
 		public IConverter<?, ?> create(Annotation annotation) {
 			try {
