@@ -11,7 +11,6 @@ import com.firstlinecode.basalt.oxm.validation.IValidator;
 
 public class CustomValidatorFactory implements IValidatorFactory<CustomValidator> {
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public IValidator<?> create(CustomValidator annotation) {
 		Class<? extends IValidator<?>> validatorClass =  annotation.value();

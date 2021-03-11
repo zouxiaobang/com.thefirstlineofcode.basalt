@@ -99,7 +99,6 @@ public class NamingConventionParser<T> extends ParserAdaptor<T> {
 		return doGetElementParser(parsingPath.toString());
 	}
 	
-	@SuppressWarnings("deprecation")
 	private void scanValidationClass() throws InstantiationException, IllegalAccessException {
 		ValidationClass vcAnnotation = objectType.getAnnotation(ValidationClass.class);
 		if (vcAnnotation == null)
@@ -609,7 +608,6 @@ public class NamingConventionParser<T> extends ParserAdaptor<T> {
 			return stack.peek();
 		}
 		
-		@SuppressWarnings("deprecation")
 		protected Object create() {
 			if (type == null)
 				return null;

@@ -26,7 +26,6 @@ public class OxmService {
 		return new XmlProtocolWriterFactory();
 	}
 	
-	@SuppressWarnings("deprecation")
 	public static IParsingFactory createParsingFactory() {
 		if (isAndroid()) {
 			try {

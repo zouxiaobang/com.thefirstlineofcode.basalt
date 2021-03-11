@@ -9,7 +9,6 @@ public class ParserAdaptor<T> implements IParser<T> {
 		this.objectType = objectType;
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Override
 	public T createObject() {
 		try {

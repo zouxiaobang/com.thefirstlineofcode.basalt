@@ -120,7 +120,6 @@ public class StanzaError extends Stanza implements IError {
 		return create(stanza, type, text, null);
 	}
 	
-	@SuppressWarnings("deprecation")
 	public static <T extends StanzaError> T create(Stanza stanza, Class<T> type, String text, String lang) {
 		T error = null;
 		try {

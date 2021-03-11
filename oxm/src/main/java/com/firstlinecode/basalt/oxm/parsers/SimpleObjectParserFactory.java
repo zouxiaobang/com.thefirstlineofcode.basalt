@@ -2,7 +2,6 @@ package com.firstlinecode.basalt.oxm.parsers;
 
 import java.lang.reflect.Method;
 
-import com.firstlinecode.basalt.protocol.core.Protocol;
 import com.firstlinecode.basalt.oxm.TextObject;
 import com.firstlinecode.basalt.oxm.Value;
 import com.firstlinecode.basalt.oxm.parsing.ElementParserAdaptor;
@@ -12,6 +11,7 @@ import com.firstlinecode.basalt.oxm.parsing.IParserFactory;
 import com.firstlinecode.basalt.oxm.parsing.IParsingContext;
 import com.firstlinecode.basalt.oxm.parsing.IParsingPath;
 import com.firstlinecode.basalt.oxm.parsing.ParserAdaptor;
+import com.firstlinecode.basalt.protocol.core.Protocol;
 
 public class SimpleObjectParserFactory<T> implements IParserFactory<T> {
 	private Protocol protocol;
@@ -53,7 +53,7 @@ public class SimpleObjectParserFactory<T> implements IParserFactory<T> {
 			}
 		}
 
-		@SuppressWarnings({ "unchecked", "deprecation" })
+		@SuppressWarnings("unchecked")
 		@Override
 		public K createObject() {
 			try {

@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.firstlinecode.basalt.protocol.core.Protocol;
 import com.firstlinecode.basalt.oxm.Attribute;
 import com.firstlinecode.basalt.oxm.Value;
 import com.firstlinecode.basalt.oxm.annotations.Parser;
@@ -19,6 +18,7 @@ import com.firstlinecode.basalt.oxm.parsing.IParser;
 import com.firstlinecode.basalt.oxm.parsing.IParserFactory;
 import com.firstlinecode.basalt.oxm.parsing.IParsingContext;
 import com.firstlinecode.basalt.oxm.parsing.IParsingPath;
+import com.firstlinecode.basalt.protocol.core.Protocol;
 
 public class AnnotatedParserFactory<T> implements IParserFactory<T> {
 	private Object annotatedParser;
@@ -30,7 +30,7 @@ public class AnnotatedParserFactory<T> implements IParserFactory<T> {
 	private boolean stateless;
 	private AnnotatedParser parser;
 	
-	@SuppressWarnings({ "unchecked", "deprecation" })
+	@SuppressWarnings("unchecked")
 	public AnnotatedParserFactory(Class<?> annotatedParserType) {
 		Parser parserAnnotation = annotatedParserType.getAnnotation(Parser.class);
 		if (parserAnnotation == null) {
@@ -245,7 +245,6 @@ public class AnnotatedParserFactory<T> implements IParserFactory<T> {
 	
 	private class AnnotatedParser implements IParser<T> {
 		
-		@SuppressWarnings("deprecation")
 		@Override
 		public T createObject() {
 			try {
