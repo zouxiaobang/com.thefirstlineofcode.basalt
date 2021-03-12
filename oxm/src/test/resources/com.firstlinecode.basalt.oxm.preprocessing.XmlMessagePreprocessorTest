@@ -1,3 +1,5 @@
+shortHeartbeatChars=\u0020\u0020
+longHeartbeatChars=\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020
 complexMessage=\
 <iq from = "joogle@botster.shakespeare.lit" to="juliet@capulet.com/chamber" type="result" xml:lang="en" id="search2">\
 	<command xmlns="http://jabber.org/protocol/commands" node="search" status="completed">\
