@@ -25,7 +25,7 @@ public class XmlMessagePreprocessor extends AbstractTextMessagePreprocessor {
 	}
 	
 	private boolean parseElement() {
-		if (!findNextNonWhitespaceChar(false)) {
+		if (!findNextNonWhitespaceChar(false).found) {
 			return false;
 		}
 		
@@ -56,7 +56,7 @@ public class XmlMessagePreprocessor extends AbstractTextMessagePreprocessor {
 			
 			return true;
 		} else { // buffer[index] == '>'
-			if (!findNextNonWhitespaceChar()) {
+			if (!findNextNonWhitespaceChar().found) {
 				return false;
 			}
 			
@@ -71,7 +71,7 @@ public class XmlMessagePreprocessor extends AbstractTextMessagePreprocessor {
 						if (!parseCData())
 							return false;
 						
-						if (!findNextNonWhitespaceChar()) {
+						if (!findNextNonWhitespaceChar().found) {
 							return false;
 						}
 						
@@ -82,7 +82,7 @@ public class XmlMessagePreprocessor extends AbstractTextMessagePreprocessor {
 						if (!parseElement())
 							return false;
 						
-						if (!findNextNonWhitespaceChar()) {
+						if (!findNextNonWhitespaceChar().found) {
 							return false;
 						}
 						
@@ -261,7 +261,7 @@ public class XmlMessagePreprocessor extends AbstractTextMessagePreprocessor {
 		if (!checkChars(elementName.toCharArray(), 0))
 			return false;
 		
-		if (!findNextNonWhitespaceChar())
+		if (!findNextNonWhitespaceChar().found)
 			return false;
 		
 		if (buffer[index] != '>')
@@ -271,7 +271,7 @@ public class XmlMessagePreprocessor extends AbstractTextMessagePreprocessor {
 	}
 
 	private boolean parseAttributes() {
-		if (!findNextNonWhitespaceChar(false))
+		if (!findNextNonWhitespaceChar(false).found)
 			return false;
 		
 		for (; ;) {
@@ -284,7 +284,7 @@ public class XmlMessagePreprocessor extends AbstractTextMessagePreprocessor {
 			}
 			
 			if (buffer[index] == ' ') {
-				if (!findNextNonWhitespaceChar(true))
+				if (!findNextNonWhitespaceChar(true).found)
 					return false;
 				
 				if (buffer[index] != '=') {
@@ -292,7 +292,7 @@ public class XmlMessagePreprocessor extends AbstractTextMessagePreprocessor {
 				}
 			}
 			
-			if (!findNextNonWhitespaceChar())
+			if (!findNextNonWhitespaceChar().found)
 				return false;
 			
 			if (buffer[index] != '"' && buffer[index] != '\'')
@@ -301,7 +301,7 @@ public class XmlMessagePreprocessor extends AbstractTextMessagePreprocessor {
 			if (!parseAttributeValue())
 				return false;
 			
-			if (!findNextNonWhitespaceChar()) {
+			if (!findNextNonWhitespaceChar().found) {
 				return false;
 			}
 		}
@@ -380,7 +380,7 @@ public class XmlMessagePreprocessor extends AbstractTextMessagePreprocessor {
 				return true;
 			}
 			
-			if (!findNextNonWhitespaceChar(false))
+			if (!findNextNonWhitespaceChar(false).found)
 				return false;
 			
 			if (isOpenStream()) {

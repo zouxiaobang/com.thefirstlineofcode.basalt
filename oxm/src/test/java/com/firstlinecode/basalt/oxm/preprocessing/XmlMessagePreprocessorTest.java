@@ -56,7 +56,7 @@ public class XmlMessagePreprocessorTest {
 		Assert.assertEquals(8, result.length);
 		Assert.assertEquals(complexMessage.trim(), result[0]);
 		Assert.assertEquals(openStreamMessage.trim().substring(22, openStreamMessage.length()), result[2]);
-		Assert.assertEquals(simpleMessage.trim(), result[2]);
+		Assert.assertEquals(simpleMessage.trim(), result[4]);
 		Assert.assertEquals(closeStreamMessage.trim(), result[6]);
 		Assert.assertEquals(uncompletedMessagePart1, new String(preprocessor.getBuffer()));
 		

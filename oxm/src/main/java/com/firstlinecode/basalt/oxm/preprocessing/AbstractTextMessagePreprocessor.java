@@ -33,20 +33,39 @@ public abstract class AbstractTextMessagePreprocessor implements ITextMessagePre
 		
 		buffer = appendCharsToBuffer(chars, length);
 		
-		if (!findNextNonWhitespaceChar(false))
+		NonWhitespaceFindingResult result = findNextNonWhitespaceChar(false);
+		if (result.prefixWhitespaceLength > 0) {
+			messages.add(createKeepAliveMessage(result.prefixWhitespaceLength));
+		}
+		
+		if (!result.found)
 			return new String[0];
 		
 		if (!parseMessage()) {
 			return new String[0];
 		}
 		
-		while (findNextNonWhitespaceChar()) {
-			if (!parseMessage()) {
-				break;
+		do {
+			result = findNextNonWhitespaceChar();
+			if (result.prefixWhitespaceLength > 0) {
+				messages.add(createKeepAliveMessage(result.prefixWhitespaceLength));
+				lastFoundMessageEnd += result.prefixWhitespaceLength;
 			}
-		}
+			
+			if (!result.found)
+				break;
+		} while (parseMessage());
 		
 		return getMessages();
+	}
+
+	private String createKeepAliveMessage(int prefixWhitespaceLength) {
+		char[] chars = new char[prefixWhitespaceLength];
+		for (int i = 0; i < chars.length; i++) {
+			chars[i] = ' ';
+		}
+		
+		return new String(chars);
 	}
 
 	protected char[] appendCharsToBuffer(char[] chars, int length) {
@@ -58,21 +77,38 @@ public abstract class AbstractTextMessagePreprocessor implements ITextMessagePre
 		return newBuffer;
 	}
 	
-	protected boolean findNextNonWhitespaceChar(boolean ignoreCurrent) {
+	protected NonWhitespaceFindingResult findNextNonWhitespaceChar(boolean ignoreCurrent) {
 		if (!inRange())
-			return false;
+			return new NonWhitespaceFindingResult();
 		
 		if (ignoreCurrent)
 			index++;
 		
+		int prefixWhitespaceLength = 0;
 		while (inRange() && Character.isWhitespace(buffer[index])) {
+			prefixWhitespaceLength++;
 			index++;
 		}
 		
-		return buffer[index] != ' ';
+		boolean found = buffer[index] != ' ';
+		return new NonWhitespaceFindingResult(found, found ? prefixWhitespaceLength : prefixWhitespaceLength++);
 	}
 	
-	protected boolean findNextNonWhitespaceChar() {
+	protected class NonWhitespaceFindingResult {
+		public boolean found;
+		public int prefixWhitespaceLength;
+		
+		public NonWhitespaceFindingResult() {
+			this(false, 0);
+		}
+		
+		public NonWhitespaceFindingResult(boolean found, int prefixWhitespaceLength) {
+			this.found = found;
+			this.prefixWhitespaceLength = prefixWhitespaceLength;
+		}
+	}
+	
+	protected NonWhitespaceFindingResult findNextNonWhitespaceChar() {
 		return findNextNonWhitespaceChar(true);
 	}
 	
