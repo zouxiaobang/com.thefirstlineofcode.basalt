@@ -13,7 +13,7 @@
     
 	<groupId>com.firstlinecode.basalt.xeps</groupId>
 	<artifactId>basalt-xeps-address</artifactId>
-	<name>XEPs address protocol</name>
+	<name>XEPs Address Protocol</name>
 	<packaging>bundle</packaging>
 	
 	<dependencies>

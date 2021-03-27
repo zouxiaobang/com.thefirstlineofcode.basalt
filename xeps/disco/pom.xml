@@ -13,7 +13,7 @@
     
 	<groupId>com.firstlinecode.basalt.xeps</groupId>
 	<artifactId>basalt-xeps-disco</artifactId>
-	<name>XEPs Disco protocol</name>
+	<name>XEPs Disco Protocol</name>
 	<packaging>bundle</packaging>
 
 	<dependencies>

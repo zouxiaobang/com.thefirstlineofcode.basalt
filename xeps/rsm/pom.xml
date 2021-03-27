@@ -13,7 +13,7 @@
     
 	<groupId>com.firstlinecode.basalt.xeps</groupId>
 	<artifactId>basalt-xeps-rsm</artifactId>
-	<name>XEPs rsm protocol</name>
+	<name>XEPs RSM Protocol</name>
 	<packaging>bundle</packaging>
 	
 	<dependencies>

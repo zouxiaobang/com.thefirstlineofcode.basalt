@@ -13,7 +13,7 @@
 	
 	<groupId>com.firstlinecode.basalt</groupId>
 	<artifactId>basalt-oxm</artifactId>
-	<name>Object-XMPP-Mapping library</name>
+	<name>Object-XMPP-Mapping Library</name>
 	<packaging>bundle</packaging>
 
 	<dependencies>

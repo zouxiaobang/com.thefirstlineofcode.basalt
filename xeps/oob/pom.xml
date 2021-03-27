@@ -13,7 +13,7 @@
     
 	<groupId>com.firstlinecode.basalt.xeps</groupId>
 	<artifactId>basalt-xeps-oob</artifactId>
-	<name>XEPs oob protocol</name>
+	<name>XEPs OOB Protocol</name>
 	<packaging>bundle</packaging>
 
 	<dependencies>

@@ -13,7 +13,7 @@
 	
 	<groupId>com.firstlinecode.basalt</groupId>
 	<artifactId>basalt-xmpp-core</artifactId>
-	<name>XMPP core protocol</name>
+	<name>XMPP Core Protocol</name>
 	<packaging>bundle</packaging>
 
 	<dependencies>

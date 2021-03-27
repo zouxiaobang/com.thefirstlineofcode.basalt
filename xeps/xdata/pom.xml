@@ -13,7 +13,7 @@
     
 	<groupId>com.firstlinecode.basalt.xeps</groupId>
 	<artifactId>basalt-xeps-xdata</artifactId>
-	<name>XEPs xdata protocol</name>
+	<name>XEPs XData Protocol</name>
 	<packaging>bundle</packaging>
 	
 	<dependencies>

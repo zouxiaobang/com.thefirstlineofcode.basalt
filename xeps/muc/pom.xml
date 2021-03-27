@@ -13,7 +13,7 @@
     
 	<groupId>com.firstlinecode.basalt.xeps</groupId>
 	<artifactId>basalt-xeps-muc</artifactId>
-	<name>XEPs MUC protocol</name>
+	<name>XEPs MUC Protocol</name>
 	<packaging>bundle</packaging>
 
 	<dependencies>

@@ -13,7 +13,7 @@
     	
 	<groupId>com.firstlinecode.basalt.xeps</groupId>
 	<artifactId>basalt-xeps-ping</artifactId>
-	<name>XEPs ping protocol</name>
+	<name>XEPs Ping Protocol</name>
 	<packaging>bundle</packaging>
 
 	<dependencies>

@@ -13,7 +13,7 @@
 	
 	<groupId>com.firstlinecode.basalt</groupId>
 	<artifactId>basalt-rbupdater</artifactId>
-	<name>Replacement updater</name>
+	<name>Replacement Bytes Updater</name>
 
 	<build>
 		<plugins>

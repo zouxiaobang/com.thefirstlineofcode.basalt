@@ -13,7 +13,7 @@
     
 	<groupId>com.firstlinecode.basalt.xeps</groupId>
 	<artifactId>basalt-xeps-delay</artifactId>
-	<name>XEPs delay protocol</name>
+	<name>XEPs Delay Protocol</name>
 	<packaging>bundle</packaging>
 	
 	<dependencies>

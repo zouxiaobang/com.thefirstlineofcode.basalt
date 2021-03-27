@@ -13,7 +13,7 @@
     
 	<groupId>com.firstlinecode.basalt.xeps</groupId>
 	<artifactId>basalt-xeps-ibr</artifactId>
-	<name>XEPs IBR protocol</name>
+	<name>XEPs IBR Protocol</name>
 	<packaging>bundle</packaging>
 
 	<dependencies>
