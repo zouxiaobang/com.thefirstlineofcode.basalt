@@ -36,28 +36,32 @@ public class XmlMessagePreprocessorTest {
 	
 	@Test
 	public void parse() throws Exception {
-		String message = complexMessage + shortHeartbeatChars + simpleMessage;
+		String message = longHeartbeatChars + complexMessage + shortHeartbeatChars + simpleMessage + longHeartbeatChars;
 		
 		char[] chars = message.toCharArray();
 		String[] result = preprocessor.process(chars, chars.length);
 		
-		Assert.assertEquals(3, result.length);
-		Assert.assertEquals(complexMessage.trim(), result[0]);
-		Assert.assertEquals(shortHeartbeatChars, result[1]);
-		Assert.assertEquals(simpleMessage.trim(), result[2]);
-		Assert.assertEquals(0, preprocessor.getBuffer().length);
+		Assert.assertEquals(5, result.length);
+		Assert.assertEquals(longHeartbeatChars, result[0]);
+		Assert.assertEquals(complexMessage.trim(), result[1]);
+		Assert.assertEquals(shortHeartbeatChars, result[2]);
+		Assert.assertEquals(simpleMessage.trim(), result[3]);
+		Assert.assertEquals(longHeartbeatChars, result[4]);
 		
-		message = complexMessage + shortHeartbeatChars + openStreamMessage + longHeartbeatChars + simpleMessage +
-				shortHeartbeatChars + closeStreamMessage + longHeartbeatChars + uncompletedMessagePart1;
+		message = longHeartbeatChars + complexMessage + shortHeartbeatChars + openStreamMessage +
+				longHeartbeatChars + simpleMessage + shortHeartbeatChars + closeStreamMessage +
+				longHeartbeatChars + uncompletedMessagePart1;
 		
 		chars = message.toCharArray();
 		result = preprocessor.process(chars, chars.length);
 
-		Assert.assertEquals(8, result.length);
-		Assert.assertEquals(complexMessage.trim(), result[0]);
-		Assert.assertEquals(openStreamMessage.trim().substring(22, openStreamMessage.length()), result[2]);
-		Assert.assertEquals(simpleMessage.trim(), result[4]);
-		Assert.assertEquals(closeStreamMessage.trim(), result[6]);
+		Assert.assertEquals(9, result.length);
+		Assert.assertEquals(longHeartbeatChars, result[0]);
+		Assert.assertEquals(complexMessage.trim(), result[1]);
+		Assert.assertEquals(openStreamMessage.trim().substring(22, openStreamMessage.length()), result[3]);
+		Assert.assertEquals(simpleMessage.trim(), result[5]);
+		Assert.assertEquals(closeStreamMessage.trim(), result[7]);
+		Assert.assertEquals(longHeartbeatChars, result[8]);
 		Assert.assertEquals(uncompletedMessagePart1, new String(preprocessor.getBuffer()));
 		
 		message = uncompletedMessagePart2 + anotherSimpleMessage;

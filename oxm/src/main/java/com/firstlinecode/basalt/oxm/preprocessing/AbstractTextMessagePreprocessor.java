@@ -36,6 +36,7 @@ public abstract class AbstractTextMessagePreprocessor implements ITextMessagePre
 		NonWhitespaceFindingResult result = findNextNonWhitespaceChar(false);
 		if (result.prefixWhitespaceLength > 0) {
 			messages.add(createKeepAliveMessage(result.prefixWhitespaceLength));
+			lastFoundMessageEnd += (result.prefixWhitespaceLength - 1);
 		}
 		
 		if (!result.found)
@@ -91,6 +92,11 @@ public abstract class AbstractTextMessagePreprocessor implements ITextMessagePre
 		}
 		
 		boolean found = buffer[index] != ' ';
+		if (!found) {
+			prefixWhitespaceLength++;
+			index++;
+		}
+		
 		return new NonWhitespaceFindingResult(found, found ? prefixWhitespaceLength : prefixWhitespaceLength++);
 	}
 	
