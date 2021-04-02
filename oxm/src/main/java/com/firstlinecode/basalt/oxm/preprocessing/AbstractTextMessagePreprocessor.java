@@ -100,20 +100,6 @@ public abstract class AbstractTextMessagePreprocessor implements ITextMessagePre
 		return new NonWhitespaceFindingResult(found, found ? prefixWhitespaceLength : prefixWhitespaceLength++);
 	}
 	
-	protected class NonWhitespaceFindingResult {
-		public boolean found;
-		public int prefixWhitespaceLength;
-		
-		public NonWhitespaceFindingResult() {
-			this(false, 0);
-		}
-		
-		public NonWhitespaceFindingResult(boolean found, int prefixWhitespaceLength) {
-			this.found = found;
-			this.prefixWhitespaceLength = prefixWhitespaceLength;
-		}
-	}
-	
 	protected NonWhitespaceFindingResult findNextNonWhitespaceChar() {
 		return findNextNonWhitespaceChar(true);
 	}
