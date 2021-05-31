@@ -8,13 +8,12 @@
 	<parent>
         <groupId>com.firstlinecode.basalt</groupId>
         <artifactId>com.firstlinecode.basalt</artifactId>
-        <version>1.1.0.RELEASE</version>
+        <version>1.1.0-RELEASE</version>
     </parent>
 	
 	<groupId>com.firstlinecode.basalt</groupId>
 	<artifactId>basalt-oxm</artifactId>
 	<name>Object-XMPP-Mapping Library</name>
-	<packaging>bundle</packaging>
 
 	<dependencies>
 		<dependency>

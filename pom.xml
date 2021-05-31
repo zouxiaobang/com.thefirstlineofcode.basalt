@@ -7,10 +7,10 @@
 	<groupId>com.firstlinecode.basalt</groupId>
 	<artifactId>com.firstlinecode.basalt</artifactId>
 	<packaging>pom</packaging>
-	<version>1.1.0.RELEASE</version>
+	<version>1.1.0-RELEASE</version>
 	<name>XMPP Protocols and Message Processing Libraries</name>
 	<properties>
-		<basalt.version>1.1.0.RELEASE</basalt.version>
+		<basalt.version>1.1.0-RELEASE</basalt.version>
 	</properties>
 
 	<modules>

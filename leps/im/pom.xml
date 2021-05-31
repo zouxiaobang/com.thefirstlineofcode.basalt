@@ -8,13 +8,12 @@
 	<parent>
         <groupId>com.firstlinecode.basalt</groupId>
         <artifactId>leps</artifactId>
-        <version>1.1.0.RELEASE</version>
+        <version>1.1.0-RELEASE</version>
     </parent>
     	
 	<groupId>com.firstlinecode.basalt.leps</groupId>
 	<artifactId>basalt-leps-im</artifactId>
 	<name>LEPs IM Protocol</name>
-	<packaging>bundle</packaging>
 
 	<dependencies>
 		<dependency>

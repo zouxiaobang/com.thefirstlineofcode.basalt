@@ -8,13 +8,12 @@
 	<parent>
         <groupId>com.firstlinecode.basalt</groupId>
         <artifactId>xeps</artifactId>
-        <version>1.1.0.RELEASE</version>
+        <version>1.1.0-RELEASE</version>
     </parent>
     
 	<groupId>com.firstlinecode.basalt.xeps</groupId>
 	<artifactId>basalt-xeps-ibr</artifactId>
 	<name>XEPs IBR Protocol</name>
-	<packaging>bundle</packaging>
 
 	<dependencies>
 		<dependency>
