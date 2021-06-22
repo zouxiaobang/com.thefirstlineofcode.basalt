@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+import com.firstlinecode.basalt.protocol.Constants;
+
 
 public class TestData {
 	private static final Map<String, Properties> propertiesCache = new HashMap<>();
@@ -20,7 +22,7 @@ public class TestData {
 			Reader reader = null;
 			properties = new Properties();
 			try {
-				reader = new BufferedReader(new InputStreamReader(clazz.getResource(dataFileName).openStream(), "UTF-8"));
+				reader = new BufferedReader(new InputStreamReader(clazz.getResource(dataFileName).openStream(), Constants.DEFAULT_CHARSET));
 				properties.load(reader);
 				
 				propertiesCache.put(dataFileName, properties);

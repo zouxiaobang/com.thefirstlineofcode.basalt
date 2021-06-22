@@ -40,10 +40,10 @@ public abstract class AbstractTextMessagePreprocessor implements ITextMessagePre
 		}
 		
 		if (!result.found)
-			return new String[0];
+			return getMessages();
 		
 		if (!parseMessage()) {
-			return new String[0];
+			return getMessages();
 		}
 		
 		do {
@@ -79,8 +79,13 @@ public abstract class AbstractTextMessagePreprocessor implements ITextMessagePre
 	}
 	
 	protected NonWhitespaceFindingResult findNextNonWhitespaceChar(boolean ignoreCurrent) {
-		if (!inRange())
-			return new NonWhitespaceFindingResult();
+		if (!inRange()) {
+			if (!ignoreCurrent && Character.isWhitespace(buffer[index])) {				
+				return new NonWhitespaceFindingResult(false, 1);
+			} else {
+				return new NonWhitespaceFindingResult();				
+			}
+		}
 		
 		if (ignoreCurrent)
 			index++;
