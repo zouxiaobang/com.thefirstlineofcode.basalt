@@ -56,7 +56,7 @@ public class Main {
 		}
 		
 		if (bytes.length == 2 && ((bytes[0] & 0xff) < 0xf0) || ((bytes[0] & 0xff) > 0xf9)) {
-			System.out.println(args[1] + " isn't a replacement bytes.");
+			System.out.println(args[1] + " isn't a valid replacement bytes.");
 			printUsage();
 			return;
 		}
