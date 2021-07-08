@@ -14,7 +14,6 @@
 	<groupId>com.firstlinecode.basalt</groupId>
 	<artifactId>basalt-xmpp-core</artifactId>
 	<name>XMPP Core Protocol</name>
-	<packaging>bundle</packaging>
 
 	<dependencies>
 		<dependency>

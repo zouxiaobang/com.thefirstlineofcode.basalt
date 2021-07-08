@@ -14,7 +14,6 @@
 	<groupId>com.firstlinecode.basalt</groupId>
 	<artifactId>basalt-xmpp-im</artifactId>
 	<name>XMPP IM protocol</name>
-	<packaging>bundle</packaging>
 
 	<dependencies>
 		<dependency>
