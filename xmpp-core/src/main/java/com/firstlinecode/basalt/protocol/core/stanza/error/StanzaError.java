@@ -30,7 +30,7 @@ public class StanzaError extends Stanza implements IError {
 	protected StanzaError.Type type;
 	protected String definedCondition;
 	protected LangText text;
-	protected Object ApplicationSpecificCondition;
+	protected Object applicationSpecificCondition;
 	protected String senderMessage;
 	protected Kind kind;
 	
@@ -70,12 +70,12 @@ public class StanzaError extends Stanza implements IError {
 	
 	@Override
 	public Object getApplicationSpecificCondition() {
-		return ApplicationSpecificCondition;
+		return applicationSpecificCondition;
 	}
 	
 	@Override
 	public void setApplicationSpecificCondition(Object applicationSpecificCondition) {
-		this.ApplicationSpecificCondition = applicationSpecificCondition;
+		this.applicationSpecificCondition = applicationSpecificCondition;
 	}
 	
 	public StanzaError.Type getType() {
@@ -148,5 +148,46 @@ public class StanzaError extends Stanza implements IError {
 		}
 		
 		return error;
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Stanza Error[");
+		if (id != null) {
+			sb.append("id='").append(id).append("',");
+		}
+		
+		if (type != null) {
+			sb.append("type='").append(type.name().toLowerCase()).append("',");
+		}
+		
+		if (from != null) {
+			sb.append("from='").append(from.toString()).append("',");
+		}
+		
+		if (to != null) {
+			sb.append("to='").append(to.toString()).append("',");
+		}
+		
+		if (definedCondition != null) {
+			sb.append("defined-condition='").append(definedCondition).append("',");
+		}
+		
+		if (text != null) {
+			sb.append("text='").append(text).append("',");
+		}
+		
+		if (applicationSpecificCondition != null) {
+			sb.append("application-specific-condition=").append(applicationSpecificCondition.toString()).append(",");
+		}
+		
+		if (sb.charAt(sb.length() - 1) == ',') {
+			sb.deleteCharAt(sb.length() - 1);
+		}
+		
+		sb.append(']');
+		
+		return sb.toString();
 	}
 }
