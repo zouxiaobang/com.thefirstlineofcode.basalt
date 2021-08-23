@@ -10,7 +10,7 @@ import com.firstlinecode.basalt.oxm.translating.ITranslatorFactory;
 
 public class TranslatingFactory implements ITranslatingFactory {
 	private IProtocolWriterFactory writerFactory;
-	private Map<String, ITranslatorFactory<?>> factories;
+	private Map<Class<?>, ITranslatorFactory<?>> factories;
 	
 	public TranslatingFactory(IProtocolWriterFactory writerFactory) {
 		this.writerFactory = writerFactory;
@@ -39,14 +39,14 @@ public class TranslatingFactory implements ITranslatingFactory {
 		if (clazz == Object.class)
 			return null;
 		
-		ITranslatorFactory<?> factory = factories.get(clazz.getName());
+		ITranslatorFactory<?> factory = factories.get(clazz);
 		if (factory != null) {
 			return factory;
 		}
 		
 		Class<?> superClass = clazz.getSuperclass();
 		while (superClass != null && superClass != Object.class) {
-			factory = factories.get(superClass.getName());
+			factory = factories.get(superClass);
 			
 			if (factory != null)
 				return factory;
@@ -68,12 +68,12 @@ public class TranslatingFactory implements ITranslatingFactory {
 
 	@Override
 	public void register(Class<?> type, ITranslatorFactory<?> translatorFactory) {
-		factories.put(type.getName(), translatorFactory);
+		factories.put(type, translatorFactory);
 	}
 
 	@Override
 	public void unregister(Class<?> type) {
-		factories.remove(type.getName());
+		factories.remove(type);
 	}
 
 	@Override
