@@ -3,9 +3,6 @@ package com.firstlinecode.basalt.oxm.translators.convention;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.firstlinecode.basalt.protocol.core.JabberId;
-import com.firstlinecode.basalt.protocol.core.ProtocolChain;
-import com.firstlinecode.basalt.protocol.core.stanza.Iq;
 import com.firstlinecode.basalt.oxm.IOxmFactory;
 import com.firstlinecode.basalt.oxm.OxmService;
 import com.firstlinecode.basalt.oxm.convention.NamingConventionParserFactory;
@@ -15,6 +12,9 @@ import com.firstlinecode.basalt.oxm.xep.xdata.TField;
 import com.firstlinecode.basalt.oxm.xep.xdata.TItem;
 import com.firstlinecode.basalt.oxm.xep.xdata.TReported;
 import com.firstlinecode.basalt.oxm.xep.xdata.TXData;
+import com.firstlinecode.basalt.protocol.core.IqProtocolChain;
+import com.firstlinecode.basalt.protocol.core.JabberId;
+import com.firstlinecode.basalt.protocol.core.stanza.Iq;
 
 import junit.framework.Assert;
 
@@ -26,16 +26,13 @@ public class NamingConventionTest {
 		oxmFactory = OxmService.createStandardOxmFactory();
 		
 		oxmFactory.register(
-				ProtocolChain.
-					first(Iq.PROTOCOL).
-					next(TCommand.PROTOCOL),
+				new IqProtocolChain(TCommand.PROTOCOL),
 				new NamingConventionParserFactory<>(
 						TCommand.class)
 			);
 		
 		oxmFactory.register(
-				ProtocolChain.
-					first(Iq.PROTOCOL).
+				new IqProtocolChain().
 					next(TCommand.PROTOCOL).
 					next(TXData.PROTOCOL),
 				new NamingConventionParserFactory<>(

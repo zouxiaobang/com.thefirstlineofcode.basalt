@@ -3,28 +3,25 @@ package com.firstlinecode.basalt.protocol.core;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class ProtocolChain {
-	private List<Protocol> protocols;
+public class ProtocolChain {
+	protected List<Protocol> protocols;
 	
-	private ProtocolChain() {
+	protected ProtocolChain() {
 		protocols = new ArrayList<>();
 	}
 	
 	public static ProtocolChain first(Protocol first) {
-		ProtocolChain chain = new ProtocolChain();
-		chain.append(first);
-		
-		return chain;
+		return new ProtocolChain().append(first);
 	}
 	
-	private void append(Protocol protocol) {
+	protected ProtocolChain append(Protocol protocol) {
 		protocols.add(protocol);
+		
+		return this;
 	}
 	
 	public ProtocolChain next(Protocol next) {
-		protocols.add(next);
-		
-		return this;
+		return append(next);
 	}
 	
 	public ProtocolChain clone() {

@@ -21,6 +21,7 @@ import com.firstlinecode.basalt.oxm.convention.conversion.annotations.String2Jab
 import com.firstlinecode.basalt.oxm.parsing.FlawedProtocolObject;
 import com.firstlinecode.basalt.oxm.parsing.IParsingContext;
 import com.firstlinecode.basalt.protocol.core.JabberId;
+import com.firstlinecode.basalt.protocol.core.MessageProtocolChain;
 import com.firstlinecode.basalt.protocol.core.Protocol;
 import com.firstlinecode.basalt.protocol.core.ProtocolChain;
 import com.firstlinecode.basalt.protocol.core.ProtocolException;
@@ -91,12 +92,11 @@ public class MessageTest {
 		
 		FlawedProtocolObject flawed = message.getObject(FlawedProtocolObject.class);
 		Assert.assertEquals(1, flawed.getFlaws().size());
-		ProtocolChain flaw = ProtocolChain.first(Message.PROTOCOL).next(new Protocol(
+		ProtocolChain flaw = new MessageProtocolChain(new Protocol(
 				"http://jabber.org/protocol/pubsub#event", "event"));
 		Assert.assertEquals(flaw, flawed.getFlaws().get(0));
 		
-		oxmFactory.register(ProtocolChain.first(Message.PROTOCOL).
-				next(Event.PROTOCOL),
+		oxmFactory.register(new MessageProtocolChain(Event.PROTOCOL),
 					new NamingConventionParserFactory<>(Event.class));
 		messageMessage = TestData.getData(this.getClass(), "messageMessage4");
 		
@@ -113,12 +113,12 @@ public class MessageTest {
 		
 		flawed = message.getObject(FlawedProtocolObject.class);
 		Assert.assertEquals(2, flawed.getFlaws().size());
-		ProtocolChain firstFlaw = ProtocolChain.first(Message.PROTOCOL).
+		ProtocolChain firstFlaw = new MessageProtocolChain().
 				next(new Protocol("http://jabber.org/protocol/pubsub#event", "event")).
 				next(new Protocol("urn:xmpp:avatar:metadata", "metadata"));
 		Assert.assertEquals(firstFlaw, flawed.getFlaws().get(0));
 		
-		ProtocolChain secondFlaw = ProtocolChain.first(Message.PROTOCOL).next(new Protocol(
+		ProtocolChain secondFlaw = new MessageProtocolChain().next(new Protocol(
 				"http://jabber.org/protocol/address", "addresses"));
 		Assert.assertEquals(secondFlaw, flawed.getFlaws().get(1));
 	}
@@ -136,16 +136,15 @@ public class MessageTest {
 	@Test
 	public void multiEmbeddedObjects() {
 		oxmFactory.register(
-				ProtocolChain.first(Message.PROTOCOL).
-				next(Event.PROTOCOL),
+				new MessageProtocolChain(Event.PROTOCOL),
 				new AnnotatedParserFactory<>(EventParser.class));
 		oxmFactory.register(
-				ProtocolChain.first(Message.PROTOCOL).
+				new MessageProtocolChain().
 				next(Event.PROTOCOL).
 				next(Metadata.PROTOCOL),
 				new NamingConventionParserFactory<>(Metadata.class));
 		oxmFactory.register(
-				ProtocolChain.first(Message.PROTOCOL).
+				new MessageProtocolChain().
 				next(Addresses.PROTOCOL),
 				new NamingConventionParserFactory<>(Addresses.class));
 		

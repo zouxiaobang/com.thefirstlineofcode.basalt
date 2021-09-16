@@ -3,18 +3,18 @@ package com.firstlinecode.basalt.oxm.parsers.core.stanza;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.firstlinecode.basalt.protocol.core.ProtocolChain;
-import com.firstlinecode.basalt.protocol.core.ProtocolException;
-import com.firstlinecode.basalt.protocol.core.stanza.Iq;
-import com.firstlinecode.basalt.protocol.core.stanza.error.BadRequest;
-import com.firstlinecode.basalt.protocol.core.stanza.error.StanzaError;
-import com.firstlinecode.basalt.protocol.core.stream.error.UnsupportedStanzaType;
 import com.firstlinecode.basalt.oxm.IOxmFactory;
 import com.firstlinecode.basalt.oxm.OxmService;
 import com.firstlinecode.basalt.oxm.TestData;
 import com.firstlinecode.basalt.oxm.convention.NamingConventionParserFactory;
 import com.firstlinecode.basalt.oxm.parsing.FlawedProtocolObject;
 import com.firstlinecode.basalt.oxm.xep.ibb.TMessageData;
+import com.firstlinecode.basalt.protocol.core.IqProtocolChain;
+import com.firstlinecode.basalt.protocol.core.ProtocolException;
+import com.firstlinecode.basalt.protocol.core.stanza.Iq;
+import com.firstlinecode.basalt.protocol.core.stanza.error.BadRequest;
+import com.firstlinecode.basalt.protocol.core.stanza.error.StanzaError;
+import com.firstlinecode.basalt.protocol.core.stream.error.UnsupportedStanzaType;
 
 import junit.framework.Assert;
 
@@ -26,9 +26,7 @@ public class IqTest {
 		oxmFactory = OxmService.createStandardOxmFactory();
 		
 		oxmFactory.register(
-				ProtocolChain.
-					first(Iq.PROTOCOL).
-					next(TMessageData.PROTOCOL),
+				new IqProtocolChain(TMessageData.PROTOCOL),
 				new NamingConventionParserFactory<>(
 						TMessageData.class)
 			);
@@ -48,7 +46,7 @@ public class IqTest {
 			Assert.assertTrue("No embedded object found.".equals(e.getError().getText().getText()));
 		}
 		
-		oxmFactory.unregister(ProtocolChain.first(Iq.PROTOCOL).next(TMessageData.PROTOCOL));
+		oxmFactory.unregister(new IqProtocolChain(TMessageData.PROTOCOL));
 		String ibbIqMessage = TestData.getData(this.getClass(), "ibbIqMessage");
 		
 		Object obj = oxmFactory.parse(ibbIqMessage);
