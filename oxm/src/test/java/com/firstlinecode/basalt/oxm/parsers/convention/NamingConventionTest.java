@@ -29,7 +29,7 @@ public class NamingConventionTest {
 						TCommand.class)
 			);
 		
-		ProtocolChain protocolChain = new IqProtocolChain((TCommand.PROTOCOL);
+		ProtocolChain protocolChain = new IqProtocolChain(TCommand.PROTOCOL);
 		protocolChain.next(null);
 		new IqProtocolChain(TCommand.PROTOCOL).next(null);
 		
