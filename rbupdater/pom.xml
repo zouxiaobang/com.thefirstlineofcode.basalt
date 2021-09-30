@@ -6,12 +6,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<parent>
-        <groupId>com.firstlinecode.basalt</groupId>
-        <artifactId>com.firstlinecode.basalt</artifactId>
+        <groupId>com.thefirstlineofcode.basalt</groupId>
+        <artifactId>com.thefirstlineofcode.basalt</artifactId>
         <version>1.1.0-RELEASE</version>
     </parent>
 	
-	<groupId>com.firstlinecode.basalt</groupId>
+	<groupId>com.thefirstlineofcode.basalt</groupId>
 	<artifactId>basalt-rbupdater</artifactId>
 	<name>Replacement Bytes Updater</name>
 
@@ -24,7 +24,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.firstlinecode.basalt.rbupdater.Main</mainClass>
+							<mainClass>com.thefirstlineofcode.basalt.rbupdater.Main</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

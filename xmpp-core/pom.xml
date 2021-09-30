@@ -6,12 +6,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<parent>
-        <groupId>com.firstlinecode.basalt</groupId>
-        <artifactId>com.firstlinecode.basalt</artifactId>
+        <groupId>com.thefirstlineofcode.basalt</groupId>
+        <artifactId>com.thefirstlineofcode.basalt</artifactId>
         <version>1.1.0-RELEASE</version>
     </parent>
 	
-	<groupId>com.firstlinecode.basalt</groupId>
+	<groupId>com.thefirstlineofcode.basalt</groupId>
 	<artifactId>basalt-xmpp-core</artifactId>
 	<name>XMPP Core Protocol</name>
 
