@@ -204,21 +204,27 @@ public abstract class AbstractBinaryXmppProtocolConverter<T> implements IBinaryX
 	}
 	
 	private BxmppExtension findExtension(String namespace) {
+		if (namespace == null)
+			return defaultBxmppExtension;
+		
 		for (BxmppExtension extension : bxmppExtensions) {
 			if (extension.getNamespace().getKeyword().equals(namespace))
 				return extension;
 		}
 		
-		return defaultBxmppExtension;
+		return null;
 	}
 	
 	private BxmppExtension findExtension(ReplacementBytes namespace) {
+		if (namespace == null)
+			return defaultBxmppExtension;
+		
 		for (BxmppExtension extension : bxmppExtensions) {
 			if (extension.getNamespace().getReplacementBytes().equals(namespace))
 				return extension;
 		}
 		
-		return defaultBxmppExtension;
+		return null;
 	}
 	
 	private byte[] escape(byte[] bytes) {
@@ -280,53 +286,30 @@ public abstract class AbstractBinaryXmppProtocolConverter<T> implements IBinaryX
 	
 	@Override
 	public Protocol readProtocol(byte[] data) {
-		// TODO
-		return null;
-/*		if (data.length < 9)
+		if (data.length < 9)
 			throw new IllegalArgumentException("Bad binary data. Bytes size is too small.");
 		
 		ReplacementBytes localName = readLocalName(data);
 		ReplacementBytes namespace = readNamespace(data, localName);
 		
-		String namespaceKeyword = replacementBytesToKeyword(namespace);
-		String localNameKeyword = replacementBytesToKeyword(localName);
+		BxmppExtension bxmppExtension = findExtension(namespace);
+		
+		String namespaceKeyword = replacementBytesToKeyword(namespace, bxmppExtension);
+		String localNameKeyword = replacementBytesToKeyword(localName, bxmppExtension);
 		
 		if (namespaceKeyword == null || localNameKeyword == null)
-			throw new RuntimeException("Can't get namespace or local name keywords for protocol.");
+			throw new RuntimeException("Can't get namespace or local name keywords for BXMPP extension protocol: " + namespace.toString());
 		
-		return new Protocol(namespaceKeyword, localNameKeyword);*/
+		return new Protocol(namespaceKeyword, localNameKeyword);
 	}
 	
-	/*private ReplacementBytes readNamespace(byte[] data, ReplacementBytes localName) {
-		int namespaceStartIndex = DEFAULT_INDEX_NAMESPACE_START;
-		if (localName.getFirst() != (byte) 0xff) {
-			namespaceStartIndex++;
-		}
-		
-		byte firstByteOfNamespace = data[namespaceStartIndex];
-		byte secondByteOfNamespace;
-		if (firstByteOfNamespace > 0xf0 && firstByteOfNamespace < 0xfa) {
-			secondByteOfNamespace = data[namespaceStartIndex + 1];
-		} else {
-			secondByteOfNamespace = firstByteOfNamespace;
-			firstByteOfNamespace = (byte) 0xff;
-		}
-		
-		return new ReplacementBytes(firstByteOfNamespace, secondByteOfNamespace);
+	private ReplacementBytes readNamespace(byte[] data, ReplacementBytes localName) {
+		return new ReplacementBytes(data[DEFAULT_INDEX_NAMESPACE_START], data[DEFAULT_INDEX_NAMESPACE_START + 1]);
 	}
 	
 	private ReplacementBytes readLocalName(byte[] data) {
-		byte firstByteOfLocalName = data[INDEX_LOCAL_NAME_START];
-		byte secondByteOfLocalName;
-		if (firstByteOfLocalName > 0xf0 && firstByteOfLocalName < 0xfa) {
-			secondByteOfLocalName = data[INDEX_LOCAL_NAME_START + 1];
-		} else {
-			secondByteOfLocalName = firstByteOfLocalName;
-			firstByteOfLocalName = (byte) 0xff;
-		}
-		
-		return new ReplacementBytes(firstByteOfLocalName, secondByteOfLocalName);
-	} */
+		return new ReplacementBytes(data[INDEX_LOCAL_NAME_START]);
+	}
 	
 	private void writeOpenStreamElement(Element element, IProtocolWriter writer) {
 		writer.writeProtocolBegin(new Protocol(element.namespace, element.localName));
@@ -461,7 +444,7 @@ public abstract class AbstractBinaryXmppProtocolConverter<T> implements IBinaryX
 		String localName = replacementBytesToKeyword(localNameReplacementBytes, currentExtension);
 		if (localName == null) {
 			throw new BadMessageException(
-					"Can't get local name replacement bytes " + localNameReplacementBytes + ".");
+					"Can't get local name by replacement bytes: " + localNameReplacementBytes + ".");
 		}
 		element.localName = localName;
 		

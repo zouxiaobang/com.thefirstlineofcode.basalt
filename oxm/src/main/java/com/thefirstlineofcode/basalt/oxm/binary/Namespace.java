@@ -33,6 +33,11 @@ public class Namespace {
 	}
 	
 	@Override
+	public String toString() {
+		return String.format("Namespace[%s, %s]", replacementBytes.toString(), keyword);
+	}
+	
+	@Override
 	public boolean equals(Object obj) {
 		if (!(obj instanceof Namespace))
 			return false;

@@ -60,8 +60,4 @@ public class BinaryXmppProtocolConverterFactory {
 		
 		return protocolConverter;
 	}
-	
-	public static void main(String[] args) {
-		System.out.println(BinaryUtils.getHexStringFromBytes("password".getBytes()));
-	}
 }

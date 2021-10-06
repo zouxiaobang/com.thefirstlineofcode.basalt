@@ -13,8 +13,8 @@ public class ReplacementBytes {
 		this.first = first;
 		this.second = second;
 		
-		int hexFirst = first & 0xff;
-		if (hexFirst != 0xff && (hexFirst < 0xf0 || hexFirst > 0xf9)) {
+		if (!isFirstByteOfSingleByteReplacementBytes(first) &&
+				!isNamespaceFirstByteOfReplacementBytes(first)) {
 			throw new IllegalArgumentException("Invalid replacement bytes.");
 		}
 	}
@@ -62,9 +62,12 @@ public class ReplacementBytes {
 	@Override
 	public String toString() {
 		if (first == (byte)0xff) {
-			return String.format("%s[0x%02x]", ReplacementBytes.class.getSimpleName(), second & 0xff);
+			return String.format("%s[0xff, %s]", ReplacementBytes.class.getSimpleName(),
+					BinaryUtils.getHexStringFromBytes(new byte[] {second}));
 		} else {
-			return String.format("%s[0x%02x, 0x%02x]", ReplacementBytes.class.getSimpleName(), first & 0xff, second & 0xff);
+			return String.format("%s[%s, %s]", ReplacementBytes.class.getSimpleName(),
+					BinaryUtils.getHexStringFromBytes(new byte[] {first}),
+					BinaryUtils.getHexStringFromBytes(new byte[] {second}));
 		}
 	}
 	
@@ -79,11 +82,16 @@ public class ReplacementBytes {
 			throw new ReplacementBytesFormatException("Invalid replacment bytes string: " + rbString);
 		}
 		
-		if (bytes[0] != (byte)0xff && (bytes[0] < 0xf0 || bytes[0] > 0xfa)) {
+		if (!isFirstByteOfSingleByteReplacementBytes(bytes[0]) &&
+				!isNamespaceFirstByteOfReplacementBytes(bytes[0])) {
 			throw new ReplacementBytesFormatException("Invalid replacment bytes string: " + rbString);
 		}
 			
 		return new ReplacementBytes(bytes[0], bytes[1]);
+	}
+
+	private static boolean isFirstByteOfSingleByteReplacementBytes(byte first) {
+		return (first & 0xff) == 0xff;
 	}
 	
 	public byte[] toBytes() {
@@ -98,6 +106,6 @@ public class ReplacementBytes {
 	}
 	
 	public static boolean isNamespaceFirstByteOfReplacementBytes(byte first) {
-		return (first & 0xff) > 0xf0 && (first & 0xff) < 0xfa;
+		return (first & 0xff) != 0xff && (first & 0xff) > 0xf0 && (first & 0xff) < 0xfa;
 	}
 }
