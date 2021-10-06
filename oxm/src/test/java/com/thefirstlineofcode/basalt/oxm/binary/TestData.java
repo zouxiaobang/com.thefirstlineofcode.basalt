@@ -1,4 +1,4 @@
-package com.thefirstlineofcode.basalt.oxm;
+package com.thefirstlineofcode.basalt.oxm.binary;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import com.thefirstlineofcode.basalt.oxm.binary.BinaryUtils;
 import com.thefirstlineofcode.basalt.protocol.Constants;
 
 

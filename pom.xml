@@ -17,7 +17,6 @@
 		<module>xmpp-core</module>
 		<module>oxm</module>
 		<module>xmpp-im</module>
-		<module>rbupdater</module>
 		<module>xeps</module>
 		<module>leps</module>
 	</modules>

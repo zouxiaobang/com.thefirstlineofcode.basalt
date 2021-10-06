@@ -8,10 +8,10 @@ errorMessage1=\
 </stream:error>
 
 senderMessage=\
-	<test-error1 xmlns="chat.cloudegg-tech.com/test">\
+	<test-error1 xmlns="chat.thefirstlineofcode.com/test">\
 		<text>some text</text>\
 	</test-error1>\
-	<test-error2 xmlns="chat.cloudegg-tech.com/test">\
+	<test-error2 xmlns="chat.thefirstlineofcode.com/test">\
 		<text>some other text</text>\
 	</test-error2>
 	

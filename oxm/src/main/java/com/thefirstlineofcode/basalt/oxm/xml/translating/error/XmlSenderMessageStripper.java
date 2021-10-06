@@ -55,7 +55,7 @@ public class XmlSenderMessageStripper implements ISenderMessageStripper {
 				}
 			}
 			
-			return originalMessage.substring(senderXmlStart - 1, senderXmlEnd - 1);	
+			return originalMessage.substring(senderXmlStart, senderXmlEnd);	
 		} finally {
 			if (reader != null) {
 				try {
