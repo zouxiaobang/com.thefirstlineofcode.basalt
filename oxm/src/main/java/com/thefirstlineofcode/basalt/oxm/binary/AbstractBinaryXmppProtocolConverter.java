@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.thefirstlineofcode.basalt.oxm.Attribute;
 import com.thefirstlineofcode.basalt.oxm.OxmService;
@@ -27,7 +29,8 @@ public abstract class AbstractBinaryXmppProtocolConverter<T> implements IBinaryX
 	private static final int INDEX_LOCAL_NAME_START = 1;
 	private static final int DEFAULT_INDEX_NAMESPACE_START = 7;
 	
-	private List<BxmppExtension> bxmppExtensions = new ArrayList<>();
+	private Map<ReplacementBytes, BxmppExtension> replacementBytesToBxmppExtensions = new HashMap<>();
+	private Map<String, BxmppExtension> keywordToBxmppExtensions = new HashMap<>();
 	private BxmppExtension defaultBxmppExtension;
 	
 	protected abstract Element readDocument(T reader);
@@ -36,31 +39,23 @@ public abstract class AbstractBinaryXmppProtocolConverter<T> implements IBinaryX
 	
 	public AbstractBinaryXmppProtocolConverter() {}
 	
-	public void registerBxmppExtension(BxmppExtension bxmppExtension) {
-		if (bxmppExtension instanceof DefaultBxmppExtension ||
-				bxmppExtension.getNamespace().equals(new Namespace(null, null))) {
+	public void register(BxmppExtension bxmppExtension) {
+		if (bxmppExtension instanceof DefaultBxmppExtension) {
 			defaultBxmppExtension = bxmppExtension;
 		} else {
-			for (BxmppExtension aBxmppExtension : bxmppExtensions) {
+			for (BxmppExtension aBxmppExtension : replacementBytesToBxmppExtensions.values()) {
 				if (aBxmppExtension.getNamespace().equals(bxmppExtension.getNamespace()))
-					throw new RuntimeException("Same namespace BXMPP extension has alread existed.");
+					throw new RuntimeException(String.format("Try to register same BXMPP extension multiple times. The extension is %s .", bxmppExtension));
 			}
 			
-			bxmppExtensions.add(bxmppExtension);
+			replacementBytesToBxmppExtensions.put(bxmppExtension.getNamespace().getReplacementBytes(), bxmppExtension);
+			keywordToBxmppExtensions.put(bxmppExtension.getNamespace().getKeyword(), bxmppExtension);
 		}
 	}
 	
-	public void unregisterBxmppExtension(Namespace namespace) {
-		BxmppExtension extension = null;
-		for (BxmppExtension anExtension : bxmppExtensions) {
-			if (anExtension.getNamespace().equals(namespace)) {
-				extension = anExtension;
-				break;
-			}
-		}
-		
-		if (extension != null)
-			bxmppExtensions.remove(extension);
+	public void unregister(Namespace namespace) {
+		replacementBytesToBxmppExtensions.remove(namespace.getReplacementBytes());
+		keywordToBxmppExtensions.remove(namespace.getKeyword());
 	}
 	
 	@Override
@@ -115,7 +110,7 @@ public abstract class AbstractBinaryXmppProtocolConverter<T> implements IBinaryX
 	
 	private void writeElement(ByteArrayOutputStream output, Element element, BxmppExtension currentExtension) throws IOException {
 		if (isCurrentExtensionChanged(currentExtension, element.namespace)) {
-			currentExtension = findExtension(element.namespace);
+			currentExtension = findBxmppExtension(element.namespace);
 		}
 		
 		output.write(convertKeywordToBytes(element.localName, true, currentExtension));
@@ -131,9 +126,9 @@ public abstract class AbstractBinaryXmppProtocolConverter<T> implements IBinaryX
 			output.write(FLAG_UNIT_SPLLITER);
 			return;
 		} else {
-			output.write(attributeLength);
-			output.write(childrenLength);
-			output.write(hasText ? 0x01 : 0x00);
+			output.write((byte)attributeLength);
+			output.write((byte)childrenLength);
+			output.write(hasText ? (byte)0x01 : (byte)0x00);
 		}
 		
 		if (attributeLength != 0) {
@@ -203,28 +198,18 @@ public abstract class AbstractBinaryXmppProtocolConverter<T> implements IBinaryX
 		return null;
 	}
 	
-	private BxmppExtension findExtension(String namespace) {
+	private BxmppExtension findBxmppExtension(String namespace) {
 		if (namespace == null)
 			return defaultBxmppExtension;
 		
-		for (BxmppExtension extension : bxmppExtensions) {
-			if (extension.getNamespace().getKeyword().equals(namespace))
-				return extension;
-		}
-		
-		return null;
+		return keywordToBxmppExtensions.get(namespace);
 	}
 	
-	private BxmppExtension findExtension(ReplacementBytes namespace) {
+	private BxmppExtension findBxmppExtension(ReplacementBytes namespace) {
 		if (namespace == null)
 			return defaultBxmppExtension;
 		
-		for (BxmppExtension extension : bxmppExtensions) {
-			if (extension.getNamespace().getReplacementBytes().equals(namespace))
-				return extension;
-		}
-		
-		return null;
+		return replacementBytesToBxmppExtensions.get(namespace);
 	}
 	
 	private byte[] escape(byte[] bytes) {
@@ -292,7 +277,7 @@ public abstract class AbstractBinaryXmppProtocolConverter<T> implements IBinaryX
 		ReplacementBytes localName = readLocalName(data);
 		ReplacementBytes namespace = readNamespace(data, localName);
 		
-		BxmppExtension bxmppExtension = findExtension(namespace);
+		BxmppExtension bxmppExtension = findBxmppExtension(namespace);
 		
 		String namespaceKeyword = replacementBytesToKeyword(namespace, bxmppExtension);
 		String localNameKeyword = replacementBytesToKeyword(localName, bxmppExtension);
@@ -412,11 +397,11 @@ public abstract class AbstractBinaryXmppProtocolConverter<T> implements IBinaryX
 			
 			attributesLength = message[position] & 0xff;
 			childrenLength = message[position + 1] & 0xff;
-			int hasTextByte = message[position + 2];
+			int hasTextByte = message[position + 2] & 0xff;
 			if (hasTextByte != 0x00 && hasTextByte != 0x01) {
 				throw new BadMessageException("Has text byte must be 0x00 or 0x01.");
 			}
-			hasText = message[position + 2] == 0x00 ? false : true;
+			hasText = (hasTextByte == 0x00) ? false : true;
 			
 			position += 3;
 		}
@@ -438,7 +423,7 @@ public abstract class AbstractBinaryXmppProtocolConverter<T> implements IBinaryX
 		
 		ReplacementBytes elementNamespace = getElementNamespace(attributes);
 		if (isCurrentExtensionChanged(currentExtension, elementNamespace)) {
-			currentExtension = findExtension(elementNamespace);
+			currentExtension = findBxmppExtension(elementNamespace);
 		}
 		
 		String localName = replacementBytesToKeyword(localNameReplacementBytes, currentExtension);
@@ -521,7 +506,7 @@ public abstract class AbstractBinaryXmppProtocolConverter<T> implements IBinaryX
 		if (endPosition - position == 1) {
 			replacementBytes = new ReplacementBytes(message[endPosition - 1]);
 		} else if (endPosition - position == 2) {
-			if (ReplacementBytes.isNamespaceFirstByteOfReplacementBytes(message[endPosition - 2])) {				
+			if (ReplacementBytes.isFirstByteOfNamespaceReplacementBytes(message[endPosition - 2])) {				
 				replacementBytes = new ReplacementBytes(message[endPosition - 2], message[endPosition - 1]);
 			} else if (isOneCharText(message, position, endPosition)) {
 				text = getText(message, position, endPosition, text);

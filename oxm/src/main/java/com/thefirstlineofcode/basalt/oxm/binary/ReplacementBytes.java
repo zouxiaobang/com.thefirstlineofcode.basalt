@@ -14,8 +14,8 @@ public class ReplacementBytes {
 		this.second = second;
 		
 		if (!isFirstByteOfSingleByteReplacementBytes(first) &&
-				!isNamespaceFirstByteOfReplacementBytes(first)) {
-			throw new IllegalArgumentException("Invalid replacement bytes.");
+				!isFirstByteOfNamespaceReplacementBytes(first)) {
+			throw new IllegalArgumentException("Invalid first byte of namespace replacement bytes.");
 		}
 	}
 	
@@ -83,7 +83,7 @@ public class ReplacementBytes {
 		}
 		
 		if (!isFirstByteOfSingleByteReplacementBytes(bytes[0]) &&
-				!isNamespaceFirstByteOfReplacementBytes(bytes[0])) {
+				!isFirstByteOfNamespaceReplacementBytes(bytes[0])) {
 			throw new ReplacementBytesFormatException("Invalid replacment bytes string: " + rbString);
 		}
 			
@@ -102,10 +102,10 @@ public class ReplacementBytes {
 	}
 	
 	public static boolean isNamespaceReplacementBytes(ReplacementBytes replacementBytes) {
-		return isNamespaceFirstByteOfReplacementBytes(replacementBytes.getFirst());
+		return isFirstByteOfNamespaceReplacementBytes(replacementBytes.getFirst());
 	}
 	
-	public static boolean isNamespaceFirstByteOfReplacementBytes(byte first) {
+	public static boolean isFirstByteOfNamespaceReplacementBytes(byte first) {
 		return (first & 0xff) != 0xff && (first & 0xff) > 0xf0 && (first & 0xff) < 0xfa;
 	}
 }

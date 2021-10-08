@@ -54,9 +54,9 @@ public class BinaryXmppProtocolConverterFactory {
 		}
 		
 		BinaryXmppProtocolConverter protocolConverter = new BinaryXmppProtocolConverter();
-		protocolConverter.registerBxmppExtension(defaultExtension);
-		protocolConverter.registerBxmppExtension(commandExtension);
-		protocolConverter.registerBxmppExtension(xdataExtension);
+		protocolConverter.register(defaultExtension);
+		protocolConverter.register(commandExtension);
+		protocolConverter.register(xdataExtension);
 		
 		return protocolConverter;
 	}

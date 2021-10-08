@@ -8,7 +8,7 @@ public class Namespace {
 		this.replacementBytes = replacementBytes;
 		this.keyword = keyword;
 		
-		if (replacementBytes != null && ((replacementBytes.getFirst() & 0xff) < 0xf0 || (replacementBytes.getFirst() & 0xff) > 0xfa))
+		if (replacementBytes != null && !ReplacementBytes.isFirstByteOfNamespaceReplacementBytes(replacementBytes.getFirst()))
 			throw new IllegalArgumentException("Illegal BXMPP extension protocol namespace replacement bytes. First byte value of namespace replacement bytes must be in range of 0xf0~0xf9.");
 	}
 	

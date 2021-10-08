@@ -20,7 +20,7 @@ public class String2EnumConverter implements IConverter<String, Object> {
 		if (type == null) {
 			throw new RuntimeException("StringToEnumConverter needs a 'type' argument.");
 		}
-			
+		
 		String enumString = convertToEnumString(obj);
 		
 		Object[] objects = type.getEnumConstants();
@@ -47,27 +47,16 @@ public class String2EnumConverter implements IConverter<String, Object> {
 
 	@Override
 	public String to(Object obj) throws ConversionException {
-		if (!obj.getClass().isEnum()) {
-			throw new ConversionException(String.format("Need a enum, but is %s.", obj.getClass()));
+		String enumString = obj.toString();
+		if (upperCase) {
+			enumString = enumString.toLowerCase();
 		}
 		
-		for (Object enumConstant : obj.getClass().getEnumConstants()) {
-			String enumString = enumConstant.toString();
-			if (!enumString.equals(obj.toString()))
-				continue;
-			
-			if (upperCase) {
-				enumString = enumString.toLowerCase();
-			}
-			
-			if (dashToUnderline) {
-				enumString = enumString.replace('_', '-');
-			}
-			
-			return enumString;
+		if (dashToUnderline) {
+			enumString = enumString.replace('_', '-');
 		}
 		
-		throw new ConversionException("Can't convert enum to string!!!???");
+		return enumString;
 	}
 
 }
