@@ -4,10 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BxmppExtension {
-	public static final ReplacementBytes REPLACEMENT_BYTES_XMLNS = new ReplacementBytes((byte)0xef);
-	public static final byte[] BYTES_XMLNS = REPLACEMENT_BYTES_XMLNS.toBytes();
-	public static final String KEYWORD_XMLNS = "xmlns";
-	
 	protected Map<ReplacementBytes, String> replacementBytesToKeywords = new HashMap<ReplacementBytes, String>();
 	protected Map<String, ReplacementBytes> keywordsToReplacementBytes = new HashMap<String, ReplacementBytes>();
 	
@@ -28,7 +24,7 @@ public class BxmppExtension {
 				register(namespace.getReplacementBytes(), namespace.getKeyword());
 			this.namespace = namespace;
 			
-			register(REPLACEMENT_BYTES_XMLNS, KEYWORD_XMLNS);
+			register(Constants.REPLACEMENT_BYTES_XMLNS, Constants.KEYWORD_XMLNS);
 		} catch (ReduplicateBxmppReplacementException e) {
 			// Ignore. It's impossible to execute to here.
 		}

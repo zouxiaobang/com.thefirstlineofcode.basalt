@@ -193,8 +193,7 @@ public class XmlProtocolWriter implements IProtocolWriter {
 			buffer.append(attribute.getLocalName()).append('=').append('"');
 			if (attribute.getValue().getType() == Value.Type.INT &&
 					attribute.getValue().getInt() < 10) {
-				// Formating integer type value to avoid BXMPP replacement conflict.
-				buffer.append(escape(String.format("%02d", attribute.getValue().getInt()))).append('"').append(' ');				
+				buffer.append(escape(String.valueOf(attribute.getValue().getInt()))).append('"').append(' ');				
 			} else if (attribute.getValue().getType() == Value.Type.LONG &&
 					attribute.getValue().getLong() < 10) {
 				// Formating long type value to avoid BXMPP replacement conflict.

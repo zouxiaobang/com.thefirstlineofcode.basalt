@@ -11,8 +11,6 @@ import com.thefirstlineofcode.basalt.protocol.core.ProtocolException;
 import com.thefirstlineofcode.basalt.protocol.core.stream.error.XmlNotWellFormed;
 
 public class BinaryMessagePreprocessor implements IMessagePreprocessor {
-	private static final byte FLAG_DOC_BEGINNING_END = (byte)0xff;
-	private static final byte FLAG_ESCAPE = (byte)0xfd;
 	private static final char CHAR_HEART_BEAT = ' ';
 	private static final byte BYTE_HEART_BEAT = (byte)CHAR_HEART_BEAT;
 	
@@ -158,14 +156,15 @@ public class BinaryMessagePreprocessor implements IMessagePreprocessor {
 			throw new IllegalStateException("Unexpected end of document.");
 		}
 		
-		if (buffer[index] != FLAG_DOC_BEGINNING_END) {
+		if (buffer[index] != Constants.FLAG_DOC_BEGINNING_END) {
 			throw newXmlNotWellFormedException();
 		}
 		index++;
 		
 		while (index <= buffer.length - 1) {
-			if (buffer[index] == FLAG_DOC_BEGINNING_END) {
-				if ((buffer[index - 1] !=  FLAG_ESCAPE) || (index > 2 && buffer[index - 2] != FLAG_ESCAPE))
+			if (buffer[index] == Constants.FLAG_DOC_BEGINNING_END) {
+				if ((buffer[index - 1] !=  Constants.FLAG_ESCAPE) ||
+						(index > 2 && buffer[index - 2] != Constants.FLAG_ESCAPE))
 					return index;
 			}
 			
