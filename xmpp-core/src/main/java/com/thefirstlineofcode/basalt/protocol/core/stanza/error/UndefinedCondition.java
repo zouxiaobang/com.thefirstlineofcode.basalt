@@ -14,10 +14,9 @@ public class UndefinedCondition extends StanzaError {
 	}
 	
 	public UndefinedCondition(StanzaError.Type type, String text, String lang) {
-		super(StanzaError.Type.CANCEL, DEFINED_CONDITION, text == null ? null : new LangText(text, lang));
-		this.type = type;
-		if (this.type == null) {
-			type = StanzaError.Type.CANCEL;
+		super(type, DEFINED_CONDITION, text == null ? null : new LangText(text, lang));
+		if (type == null) {
+			this.type = StanzaError.Type.CANCEL;
 		}
 	}
 }
