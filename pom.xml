@@ -142,14 +142,8 @@
 	<distributionManagement>
                 <repository>
                         <id>com.thefirstlineofcode.releases</id>
-                        <name>thefirstlineofcode Repository - Releases</name>
+                        <name>TheFirstlineOfCode Repository - Releases</name>
                         <url>http://47.115.36.99/repository/maven-releases/</url>
                 </repository>
-
-                <snapshotRepository>
-                        <id>com.thefirstlineofcode.snapshots</id>
-                        <name>thefirstlineofcode Repository - Snapshots</name>
-                        <url>http://47.115.36.99/repository/maven-snapshots/</url>
-                </snapshotRepository>
         </distributionManagement>
 </project>
