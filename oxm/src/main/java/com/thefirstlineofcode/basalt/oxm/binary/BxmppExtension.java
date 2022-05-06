@@ -23,8 +23,6 @@ public class BxmppExtension {
 			if (namespace.getReplacementBytes() != null && namespace.getKeyword() != null)
 				register(namespace.getReplacementBytes(), namespace.getKeyword());
 			this.namespace = namespace;
-			
-			register(Constants.REPLACEMENT_BYTES_XMLNS, Constants.KEYWORD_XMLNS);
 		} catch (ReduplicateBxmppReplacementException e) {
 			// Ignore. It's impossible to execute to here.
 		}

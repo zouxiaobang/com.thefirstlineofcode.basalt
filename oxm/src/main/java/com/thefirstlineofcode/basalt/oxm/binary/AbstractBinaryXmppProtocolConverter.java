@@ -18,9 +18,6 @@ import com.thefirstlineofcode.basalt.oxm.translating.IProtocolWriter;
 import com.thefirstlineofcode.basalt.protocol.core.Protocol;
 
 public abstract class AbstractBinaryXmppProtocolConverter<T> implements IBinaryXmppProtocolConverter {
-	private static final int INDEX_LOCAL_NAME_START = 1;
-	private static final int DEFAULT_INDEX_NAMESPACE_START = 7;
-	
 	private Map<ReplacementBytes, BxmppExtension> replacementBytesToBxmppExtensions = new HashMap<>();
 	private Map<String, BxmppExtension> keywordToBxmppExtensions = new HashMap<>();
 	private BxmppExtension defaultBxmppExtension;
@@ -73,7 +70,7 @@ public abstract class AbstractBinaryXmppProtocolConverter<T> implements IBinaryX
 					// It's a open stream message.
 					doc.attributes.add(0,
 							new NameAndValue("xmlns:stream", DefaultBxmppExtension.STRING_STREAM_NAMESPACE));
-					doc.namespace = DefaultBxmppExtension.STRING_DEFAULT_NAMESPACE;
+					doc.namespace = null;
 				}
 			}
 			
@@ -95,9 +92,19 @@ public abstract class AbstractBinaryXmppProtocolConverter<T> implements IBinaryX
 		}
 		
 		byte[] bytes = output.toByteArray();
-		bytes[bytes.length - 1] = Constants.FLAG_DOC_BEGINNING_END;
-		
-		return bytes;
+		if (bytes[bytes.length - 1] == Constants.FLAG_UNIT_SPLLITER) {			
+			bytes[bytes.length - 1] = Constants.FLAG_DOC_BEGINNING_END;
+
+			return bytes;
+		} else {
+			byte[] docEndFlagAppended = new byte[bytes.length + 1];
+			for (int i = 0; i < bytes.length; i++)
+				docEndFlagAppended[i] = bytes[i];
+			
+			docEndFlagAppended[docEndFlagAppended.length - 1] = Constants.FLAG_DOC_BEGINNING_END;
+			
+			return docEndFlagAppended;
+		}		
 	}
 	
 	private void writeElement(ByteArrayOutputStream output, Element element, BxmppExtension currentExtension) throws IOException {
@@ -105,37 +112,39 @@ public abstract class AbstractBinaryXmppProtocolConverter<T> implements IBinaryX
 			currentExtension = findBxmppExtension(element.namespace);
 		}
 		
+		if (element.namespace != null)
+			output.write(convertKeywordToBytes(element.namespace, true, currentExtension));
+		
 		output.write(convertKeywordToBytes(element.localName, true, currentExtension));
 		
 		int attributeLength = element.attributes.size();
-		if (!isEmpty(element.namespace)) {
-			attributeLength++;
-		}
+		if (attributeLength > 255)
+			throw new RuntimeException("Too many attributes in an element.");
+		
 		int childrenLength = element.children.size();
+		if (attributeLength > 127)
+			throw new RuntimeException("Too many children in an element.");
+		
 		boolean hasText = element.text != null;
 		
 		if (attributeLength == 0 && childrenLength == 0 && !hasText) {
-			output.write(Constants.FLAG_UNIT_SPLLITER);
 			return;
 		} else {
 			output.write((byte)attributeLength);
-			output.write((byte)childrenLength);
-			output.write(hasText ? (byte)0x01 : (byte)0x00);
+			
+			int childrenLengthAndHasText;
+			if (hasText) {
+				childrenLengthAndHasText = childrenLength | 0x80;
+			} else {
+				childrenLengthAndHasText = childrenLength;
+			}
+			output.write((byte)childrenLengthAndHasText);
 		}
 		
 		if (attributeLength != 0) {
-			if (!isEmpty(element.namespace)) {
-				output.write(Constants.BYTES_XMLNS);
-				output.write(Constants.FLAG_UNIT_SPLLITER);
-				output.write(convertKeywordToBytes(element.namespace, true, currentExtension));
-				output.write(Constants.FLAG_UNIT_SPLLITER);
-			}
-			
 			for (int i = 0; i < element.attributes.size(); i++) {
 				NameAndValue attribute = element.attributes.get(i);
 				output.write(convertKeywordToBytes(attribute.name, true, currentExtension));				
-				output.write(Constants.FLAG_UNIT_SPLLITER);
-				
 				output.write(convertStringValueToBytes(attribute.value, currentExtension));				
 				output.write(Constants.FLAG_UNIT_SPLLITER);
 			}
@@ -206,9 +215,8 @@ public abstract class AbstractBinaryXmppProtocolConverter<T> implements IBinaryX
 	
 	@Override
 	public String toXml(byte[] message) {
-		if (message.length < 3 || message[0] != Constants.FLAG_DOC_BEGINNING_END
-				|| message[message.length - 1] != Constants.FLAG_DOC_BEGINNING_END) {
-			throw new BadMessageException("Binary message must start and end with byte &0xff.");
+		if (isLegalBxmppMessage(message)) {
+			throw new BadMessageException("Not a legal BXMPP message.");
 		}
 		
 		BxmppExtension currentExtension = null;
@@ -229,36 +237,41 @@ public abstract class AbstractBinaryXmppProtocolConverter<T> implements IBinaryX
 		
 		return document;
 	}
+	private boolean isLegalBxmppMessage(byte[] message) {
+		return message.length < 3 || message[0] != Constants.FLAG_DOC_BEGINNING_END
+				|| message[message.length - 1] != Constants.FLAG_DOC_BEGINNING_END;
+	}
 	
 	@Override
-	public Protocol readProtocol(byte[] data) {
-		if (data.length < 9)
-			throw new IllegalArgumentException("Bad binary data. Bytes size is too small.");
+	public Protocol readProtocol(byte[] message) {
+		if (isLegalBxmppMessage(message))
+			throw new IllegalArgumentException("Not a legal BXMPP message.");
 		
-		ReplacementBytes localName = readLocalName(data);
-		ReplacementBytes namespace = readNamespace(data, localName);
+		ReplacementBytes namespace = null;
+		ReplacementBytes localName = null;
+		if (ReplacementBytes.isFirstByteOfDoubleBytesNamespaceReplacementBytes(message[1])) {
+			namespace = new ReplacementBytes(message[1], message[2]);
+			localName = new ReplacementBytes(message[3]);
+		} else {
+			localName = new ReplacementBytes(message[1]);
+		}
 		
 		BxmppExtension bxmppExtension = findBxmppExtension(namespace);
 		
-		String namespaceKeyword = replacementBytesToKeyword(namespace, bxmppExtension);
+		String namespaceKeyword = null;
+		if (namespace != null) {
+			namespaceKeyword = replacementBytesToKeyword(namespace, bxmppExtension);
+		}
 		String localNameKeyword = replacementBytesToKeyword(localName, bxmppExtension);
 		
-		if (namespaceKeyword == null || localNameKeyword == null)
-			throw new RuntimeException("Can't get namespace or local name keywords for BXMPP extension protocol: " + namespace.toString());
+		if (localNameKeyword == null)
+			throw new RuntimeException("Can't get local name keywords for replacement bytes: " + localName.toString());
 		
 		return new Protocol(namespaceKeyword, localNameKeyword);
 	}
 	
-	private ReplacementBytes readNamespace(byte[] data, ReplacementBytes localName) {
-		return new ReplacementBytes(data[DEFAULT_INDEX_NAMESPACE_START], data[DEFAULT_INDEX_NAMESPACE_START + 1]);
-	}
-	
-	private ReplacementBytes readLocalName(byte[] data) {
-		return new ReplacementBytes(data[INDEX_LOCAL_NAME_START]);
-	}
-	
 	private void writeOpenStreamElement(Element element, IProtocolWriter writer) {
-		writer.writeProtocolBegin(new Protocol(element.namespace, element.localName));
+		writer.writeProtocolBegin(new Protocol(DefaultBxmppExtension.STRING_DEFAULT_NAMESPACE, element.localName));
 		
 		List<Attribute> attributes = new ArrayList<Attribute>();
 		for (int i = 0; i < element.attributes.size(); i++) {
@@ -272,8 +285,7 @@ public abstract class AbstractBinaryXmppProtocolConverter<T> implements IBinaryX
 	}
 	
 	private boolean isOpenStream(Element element) {
-		if (!DefaultBxmppExtension.STRING_DEFAULT_NAMESPACE.equals(element.namespace)
-				|| !DefaultBxmppExtension.STRING_STREAM_STREAM.equals(element.localName)) {
+		if (!DefaultBxmppExtension.STRING_STREAM_STREAM.equals(element.localName)) {
 			return false;
 		}
 		
@@ -336,12 +348,30 @@ public abstract class AbstractBinaryXmppProtocolConverter<T> implements IBinaryX
 			throw new BadMessageException("Unexpected end of document.");
 		}
 		
-		ReplacementBytes localNameReplacementBytes = null;
-		localNameReplacementBytes = new ReplacementBytes(message[position]);
+		if (ReplacementBytes.isFirstByteOfDoubleBytesNamespaceReplacementBytes(message[position])) {
+			ReplacementBytes namespaceReplacementBytes = new ReplacementBytes(message[position], message[position + 1]);
+			
+			if (isCurrentExtensionChanged(currentExtension, namespaceReplacementBytes)) {
+				currentExtension = findBxmppExtension(namespaceReplacementBytes);
+			}
+			
+			element.namespace = replacementBytesToKeyword(namespaceReplacementBytes, currentExtension);
+			if (element.namespace == null) {
+				throw new BadMessageException(
+						"Can't get namespace by replacement bytes: " + namespaceReplacementBytes + ".");
+			}
+			position += 2;
+		}
+		
+		ReplacementBytes localNameReplacementBytes = new ReplacementBytes(message[position]);
+		element.localName = replacementBytesToKeyword(localNameReplacementBytes, currentExtension);		
+		if (element.localName == null) {
+			throw new BadMessageException(
+					"Can't get local name by replacement bytes: " + localNameReplacementBytes + ".");
+		}
 		position++;
 		
 		if (isEndOfElement(message, position)) {
-			element.localName = replacementBytesToKeyword(localNameReplacementBytes, currentExtension);
 			element.endPosition = position;
 			
 			// It's an empty element.
@@ -351,29 +381,24 @@ public abstract class AbstractBinaryXmppProtocolConverter<T> implements IBinaryX
 		int attributesLength = 0;
 		int childrenLength = 0;
 		boolean hasText = false;
-		if (message[position + 1] != Constants.FLAG_UNIT_SPLLITER &&
-				message[position + 1] != Constants.FLAG_DOC_BEGINNING_END) {
-			if (position + 3 > message.length - 1) {
+		if (message[position + 1] != Constants.FLAG_DOC_BEGINNING_END) {
+			if (position + 2 > message.length - 1) {
 				throw new BadMessageException("Unexpected end of document.");
 			}
 			
 			attributesLength = message[position] & 0xff;
-			childrenLength = message[position + 1] & 0xff;
-			int hasTextByte = message[position + 2] & 0xff;
-			if (hasTextByte != 0x00 && hasTextByte != 0x01) {
-				throw new BadMessageException("Has text byte must be 0x00 or 0x01.");
-			}
-			hasText = (hasTextByte == 0x00) ? false : true;
+			childrenLength = message[position + 1] & 0x7f;
+			hasText = ((message[position + 1] & 0x80) == 0x80);
 			
-			position += 3;
+			position += 2;
 		}
 		
 		NextPart[][] attributes = new NextPart[attributesLength][2];
 		for (int i = 0; i < attributesLength; i++) {
 			NextPart[] attribute = new NextPart[2];
 			
-			NextPart nextPart = readNextPart(message, position, true);
-			position = nextPart.endPostion + 1;
+			NextPart nextPart = new NextPart(new ReplacementBytes(message[position]), null, position);
+			position++;
 			attribute[0] = nextPart;
 			
 			nextPart = readNextPart(message, position, false);
@@ -382,18 +407,6 @@ public abstract class AbstractBinaryXmppProtocolConverter<T> implements IBinaryX
 			
 			attributes[i] = attribute;
 		}
-		
-		ReplacementBytes elementNamespace = getElementNamespace(attributes);
-		if (isCurrentExtensionChanged(currentExtension, elementNamespace)) {
-			currentExtension = findBxmppExtension(elementNamespace);
-		}
-		
-		String localName = replacementBytesToKeyword(localNameReplacementBytes, currentExtension);
-		if (localName == null) {
-			throw new BadMessageException(
-					"Can't get local name by replacement bytes: " + localNameReplacementBytes + ".");
-		}
-		element.localName = localName;
 		
 		for (int i = 0; i < attributesLength; i++) {
 			String attributeName = replacementBytesToKeyword(attributes[i][0].replacementBytes, currentExtension);
@@ -413,11 +426,7 @@ public abstract class AbstractBinaryXmppProtocolConverter<T> implements IBinaryX
 						"Can't get attribute value by replacement bytes: " + attributes[i][1].replacementBytes + ".");
 			}
 			
-			if (Constants.KEYWORD_XMLNS.equals(attributeName)) {
-				element.namespace = attributeValue;
-			} else {
-				element.attributes.add(new NameAndValue(attributeName, attributeValue));				
-			}
+			element.attributes.add(new NameAndValue(attributeName, attributeValue));				
 		}
 		
 		for (int i = 0; i < childrenLength; i++) {
@@ -456,18 +465,6 @@ public abstract class AbstractBinaryXmppProtocolConverter<T> implements IBinaryX
 		}
 		
 		return !currentExtension.getNamespace().getKeyword().equals(elementNamespace);
-	}
-	
-	private ReplacementBytes getElementNamespace(NextPart[][] attributes) {
-		if (attributes == null || attributes.length == 0)
-			return null;
-		
-		for (NextPart[] attribute : attributes) {
-			if (Constants.REPLACEMENT_BYTES_XMLNS.equals(attribute[0].replacementBytes))
-				return attribute[1].replacementBytes;
-		}
-		
-		return null;
 	}
 	
 	private NextPart readNextPart(byte[] message, int position, boolean replaceIsRequired) {

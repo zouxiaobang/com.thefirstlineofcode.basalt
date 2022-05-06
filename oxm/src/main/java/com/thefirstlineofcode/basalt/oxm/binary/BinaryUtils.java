@@ -51,7 +51,7 @@ public class BinaryUtils {
 			throw new IllegalArgumentException(String.format("Not a Base64 decoded bytes. Bytes: %s.",
 					getHexStringFromBytes(data)));
 		
-		data = Arrays.copyOfRange(data, 2, data.length);
+		data = Arrays.copyOfRange(data, 1, data.length);
 		return String.format("%s%s%s",
 				Constants.PREFIX_STRING_BASE64_ENCODED,
 				Base64.encodeToString(data, false),
@@ -66,9 +66,8 @@ public class BinaryUtils {
 	}
 	
 	public static boolean isBase64Decoded(byte[] bytes) {
-		return bytes.length > 2 &&
-				bytes[0] == Constants.FLAG_NOREPLACE &&
-				bytes[1] == Constants.FLAG_NOREPLACE;
+		return bytes.length >= 2 &&
+				bytes[0] == Constants.FLAG_BASE64_DECODED;
 	}
 	
 	public static byte[] escape(byte[] bytes) {
@@ -86,6 +85,7 @@ public class BinaryUtils {
 				if (bytes[i] == Constants.FLAG_DOC_BEGINNING_END ||
 						bytes[i] == Constants.FLAG_UNIT_SPLLITER ||
 						bytes[i] == Constants.FLAG_NOREPLACE ||
+						bytes[i] == Constants.FLAG_BASE64_DECODED ||
 						bytes[i] == Constants.FLAG_ESCAPE) {
 					output.write(Constants.FLAG_ESCAPE);
 					output.write(bytes[i]);
@@ -135,6 +135,7 @@ public class BinaryUtils {
 		return b == Constants.FLAG_DOC_BEGINNING_END ||
 				b == Constants.FLAG_UNIT_SPLLITER ||
 				b== Constants.FLAG_NOREPLACE||
+				b== Constants.FLAG_BASE64_DECODED||
 				b == Constants.FLAG_ESCAPE;
 	}
 	
@@ -145,28 +146,25 @@ public class BinaryUtils {
 		String encodedPart = content.substring(3, content.length() - 1);
 		byte[] decodedPart = BinaryUtils.escape(Base64.decode(encodedPart));
 		
-		byte[] withDecodeFlag = new byte[decodedPart.length + 2];
-		withDecodeFlag[0] = Constants.FLAG_NOREPLACE;
-		withDecodeFlag[1] = Constants.FLAG_NOREPLACE;
+		byte[] withDecodedFlag = new byte[decodedPart.length + 1];
+		withDecodedFlag[0] = Constants.FLAG_BASE64_DECODED;
 		for (int i = 0; i < decodedPart.length; i++) {
-			withDecodeFlag[i + 2] = decodedPart[i];
+			withDecodedFlag[i + 1] = decodedPart[i];
 		}
 		
-		return withDecodeFlag;
+		return withDecodedFlag;
 	}
 	
 	public static byte[] getBytesWithBase64DecodedFlag(byte[] bytes) {
-		if (bytes.length > 2 &&
-				bytes[0] == Constants.FLAG_NOREPLACE &&
-				bytes[1] == Constants.FLAG_NOREPLACE)
+		if (bytes.length >= 2 &&
+				bytes[0] == Constants.FLAG_BASE64_DECODED)
 			return bytes;
 		
-		byte[] withBase64DecodedFlag = new byte[bytes.length + 2];
-		withBase64DecodedFlag[0] = Constants.FLAG_NOREPLACE;
-		withBase64DecodedFlag[1] = Constants.FLAG_NOREPLACE;
+		byte[] withBase64DecodedFlag = new byte[bytes.length + 1];
+		withBase64DecodedFlag[0] = Constants.FLAG_BASE64_DECODED;
 		
 		for (int i = 0; i < bytes.length; i++) {
-			withBase64DecodedFlag[i + 2] = bytes[i];
+			withBase64DecodedFlag[i + 1] = bytes[i];
 		}
 		
 		return withBase64DecodedFlag;
