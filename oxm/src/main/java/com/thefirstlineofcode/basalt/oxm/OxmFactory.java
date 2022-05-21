@@ -27,16 +27,18 @@ public class OxmFactory implements IOxmFactory {
 		return parse(message, false);
 	}
 	
-	private ProtocolException newInternalServerErrorException(Exception e, boolean stream) {
+	private ProtocolException newInternalServerErrorException(Exception e, String parsedMessage, boolean stream) {
 		String errorMessage = e.getMessage();
 		if (errorMessage == null) {
 			errorMessage = e.getClass().getName();
 		}
 		
+		String errorText = String.format("Error message: %s. Parsed message: %s.", errorMessage, parsedMessage);
+		
 		if (stream) {
-			return new ProtocolException(new com.thefirstlineofcode.basalt.protocol.core.stream.error.InternalServerError(), e);
+			return new ProtocolException(new com.thefirstlineofcode.basalt.protocol.core.stream.error.InternalServerError(errorText), e);
 		} else {
-			return new ProtocolException(new com.thefirstlineofcode.basalt.protocol.core.stanza.error.InternalServerError(), e);
+			return new ProtocolException(new com.thefirstlineofcode.basalt.protocol.core.stanza.error.InternalServerError(errorText), e);
 		}
 	}
 
@@ -47,7 +49,7 @@ public class OxmFactory implements IOxmFactory {
 		} catch (ProtocolException e) {
 			throw e;
 		} catch (RuntimeException e) {
-			throw newInternalServerErrorException(e, stream);
+			throw newInternalServerErrorException(e, message, stream);
 		}
 	}
 
