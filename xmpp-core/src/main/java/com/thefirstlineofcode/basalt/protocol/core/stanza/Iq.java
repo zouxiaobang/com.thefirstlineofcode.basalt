@@ -19,26 +19,25 @@ public final class Iq extends Stanza {
 	}
 	
 	public Iq(Iq.Type type) {
-		this(null, type, null);
+		this(type, null , null);
 	}
 	
 	public Iq(Iq.Type type, String id) {
-		this(null, type, id);
+		this(type, null, id);
 	}
 	
-	public Iq(Object object, Iq.Type type) {
-		this(object, type, null);
+	public Iq(Iq.Type type, Object object) {
+		this(type, object, null);
 	}
 	
-	public Iq(Object object, Iq.Type type, String id) {
-		if (object != null)
-			getObjects().add(object);
-		
-		this.type = type;
-		
+	public Iq(Iq.Type type, Object object, String id) {
+		this.type = type;	
 		if (this.type == null) {
 			this.type = Iq.Type.GET;
 		}
+		
+		if (object != null)
+			getObjects().add(object);
 		
 		if (id != null) {
 			setId(id);

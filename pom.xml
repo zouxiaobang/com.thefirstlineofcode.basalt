@@ -18,7 +18,6 @@
 		<module>oxm</module>
 		<module>xmpp-im</module>
 		<module>xeps</module>
-		<module>leps</module>
 	</modules>
 
 	<build>
