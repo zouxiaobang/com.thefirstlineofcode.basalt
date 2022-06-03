@@ -49,7 +49,7 @@ public class BxmppExtension {
 			throw new IllegalArgumentException("Null replacement bytes or null keyword.");
 		
 		if (namespace != null && ReplacementBytes.isNamespaceReplacementBytes(replacementBytes)) {
-			throw new IllegalArgumentException("Try to register multil namespaces in one BXMPP extension.");
+			throw new IllegalArgumentException("Try to register multi namespaces in one BXMPP extension.");
 		}
 		
 		ReplacementBytes existedReplacementBytes = keywordsToReplacementBytes.get(keyword);

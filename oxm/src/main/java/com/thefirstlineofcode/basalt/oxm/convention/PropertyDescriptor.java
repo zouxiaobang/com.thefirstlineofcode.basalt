@@ -98,7 +98,8 @@ public class PropertyDescriptor {
 		Method method = null;
 		try {
 			method = beanClass.getMethod(readMethodName, new Class<?>[0]);
-			if (method.getReturnType() != Boolean.TYPE) {
+			Class<?> booleanType = method.getReturnType();
+			if (booleanType != Boolean.TYPE && booleanType != Boolean.class) {
 				return null;
 			}
 		} catch (Exception e) {
