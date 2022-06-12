@@ -55,10 +55,18 @@ public final class Iq extends Stanza {
 	}
 	
 	public static Iq createResult(Iq iq) {
+		return createResult(iq, null);
+	}
+	
+	public static Iq createResult(Iq iq, Object object) {
 		Iq result = new Iq(Iq.Type.RESULT);
+		
 		result.setId(iq.getId());
 		result.setFrom(iq.getTo());
 		result.setTo(iq.getFrom());
+		
+		if (object != null)
+			result.setObject(object);
 		
 		return result;
 	}
