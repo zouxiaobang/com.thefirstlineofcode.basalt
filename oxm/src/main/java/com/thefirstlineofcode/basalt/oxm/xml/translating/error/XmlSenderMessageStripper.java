@@ -43,6 +43,18 @@ public class XmlSenderMessageStripper implements ISenderMessageStripper {
 				return null;
 			
 			int senderXmlStart = reader.getLocation().getCharacterOffset();
+			
+			if (reader.getAttributeCount() != 0) {
+				for (int i = 0; i < reader.getAttributeCount(); i++) {
+					String attributeName = reader.getAttributeLocalName(i);
+					String attributeValue =	reader.getAttributeValue(i);
+					
+					if ("type".equals(attributeName) && "error".equals(attributeValue)) {
+						return null;
+					}
+				}
+			}
+			
 			int senderXmlEnd = senderXmlStart;
 			while (true) {
 				senderXmlEnd = reader.getLocation().getCharacterOffset();
