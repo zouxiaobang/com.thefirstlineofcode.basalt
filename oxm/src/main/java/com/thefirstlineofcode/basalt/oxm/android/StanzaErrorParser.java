@@ -25,7 +25,7 @@ public class StanzaErrorParser {
                                 XmlPullParser xmlPullParser) throws IOException, XmlPullParserException {
         String senderXml = null, errorXml;
 
-        int senderXmlStart = xmlPullParser.getColumnNumber();
+        int senderXmlStart = getPostion(xmlPullParser, context.getMessage());
 
         int eventType = xmlPullParser.next();
 
@@ -41,7 +41,7 @@ public class StanzaErrorParser {
             // sender message found
             senderXml = parseSenderMessage(xmlPullParser, protocol, context.getMessage(), senderXmlStart);
 
-            errorXmlStart = xmlPullParser.getColumnNumber();
+            errorXmlStart = getPostion(xmlPullParser, context.getMessage());
 
             eventType = xmlPullParser.next();
             if (eventType != XmlPullParser.START_TAG) {
@@ -88,13 +88,29 @@ public class StanzaErrorParser {
         return error;
     }
 
+	private int getPostion(XmlPullParser xmlPullParser, String message) {
+		int lineNumber = xmlPullParser.getLineNumber();
+		
+		int position = 0;
+		int currentLine = 1;
+		while (currentLine < lineNumber) {
+			if (message.charAt(position) == '\n') {
+				currentLine++;
+			}
+			
+			position++;
+		}
+		
+		return position += xmlPullParser.getColumnNumber();
+	}
+
     private String getErrorXml(XmlPullParser xmlPullParser, String message, int errorXmlStart) throws IOException, XmlPullParserException {
         while (true) {
             int eventType = xmlPullParser.next();
 
             if (eventType == XmlPullParser.END_TAG) {
                 if (StanzaError.PROTOCOL.equals(new Protocol(xmlPullParser.getNamespace(), xmlPullParser.getName()))) {
-                    int errorXmlEnd = xmlPullParser.getColumnNumber();
+                    int errorXmlEnd = getPostion(xmlPullParser, message);
 
                     return message.substring(errorXmlStart, errorXmlEnd);
                 }
@@ -109,7 +125,7 @@ public class StanzaErrorParser {
 
             if (eventType == XmlPullParser.END_TAG) {
                 if (protocol.equals(new Protocol(xmlPullParser.getNamespace(), xmlPullParser.getName()))) {
-                    int senderXmlEnd = xmlPullParser.getColumnNumber();
+                    int senderXmlEnd = getPostion(xmlPullParser, message);
 
                     return message.substring(senderXmlStart, senderXmlEnd);
                 }
