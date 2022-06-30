@@ -3,8 +3,8 @@ package com.thefirstlineofcode.basalt.xeps.muc.xconference;
 import com.thefirstlineofcode.basalt.oxm.convention.annotations.BindTo;
 import com.thefirstlineofcode.basalt.oxm.convention.annotations.ProtocolObject;
 import com.thefirstlineofcode.basalt.oxm.convention.conversion.annotations.String2JabberId;
-import com.thefirstlineofcode.basalt.protocol.core.JabberId;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.core.JabberId;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
 
 @ProtocolObject(namespace="jabber:x:conference", localName="x")
 public class XConference {

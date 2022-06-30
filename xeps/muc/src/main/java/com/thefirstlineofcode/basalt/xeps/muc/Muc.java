@@ -2,7 +2,7 @@ package com.thefirstlineofcode.basalt.xeps.muc;
 
 import com.thefirstlineofcode.basalt.oxm.convention.annotations.ProtocolObject;
 import com.thefirstlineofcode.basalt.oxm.convention.annotations.TextOnly;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
 
 @ProtocolObject(namespace="http://jabber.org/protocol/muc", localName="x")
 public class Muc {

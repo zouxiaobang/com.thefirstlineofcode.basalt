@@ -4,7 +4,7 @@ import com.thefirstlineofcode.basalt.oxm.convention.annotations.ProtocolObject;
 import com.thefirstlineofcode.basalt.oxm.convention.annotations.TextOnly;
 import com.thefirstlineofcode.basalt.oxm.convention.validation.annotations.CustomValidator;
 import com.thefirstlineofcode.basalt.oxm.conversion.validators.TUrlValidator;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
 
 @ProtocolObject(namespace="jabber:x:oob", localName="x")
 public class TXOob {

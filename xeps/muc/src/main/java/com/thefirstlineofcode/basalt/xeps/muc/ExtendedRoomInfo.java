@@ -1,6 +1,6 @@
 package com.thefirstlineofcode.basalt.xeps.muc;
 
-import com.thefirstlineofcode.basalt.protocol.core.JabberId;
+import com.thefirstlineofcode.basalt.xmpp.core.JabberId;
 
 public class ExtendedRoomInfo extends RoomInfo {
 	private int maxHistoryFetch;

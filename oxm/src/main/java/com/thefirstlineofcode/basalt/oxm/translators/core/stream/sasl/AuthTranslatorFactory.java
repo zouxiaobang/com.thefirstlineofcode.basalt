@@ -5,8 +5,8 @@ import com.thefirstlineofcode.basalt.oxm.translating.IProtocolWriter;
 import com.thefirstlineofcode.basalt.oxm.translating.ITranslatingFactory;
 import com.thefirstlineofcode.basalt.oxm.translating.ITranslator;
 import com.thefirstlineofcode.basalt.oxm.translating.ITranslatorFactory;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
-import com.thefirstlineofcode.basalt.protocol.core.stream.sasl.Auth;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.core.stream.sasl.Auth;
 
 public class AuthTranslatorFactory implements ITranslatorFactory<Auth> {
 	private static final ITranslator<Auth> translator = new AuthTranslator();

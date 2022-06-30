@@ -22,7 +22,7 @@ import com.thefirstlineofcode.basalt.oxm.convention.conversion.ConverterFactory;
 import com.thefirstlineofcode.basalt.oxm.translating.IProtocolWriter;
 import com.thefirstlineofcode.basalt.oxm.translating.ITranslatingFactory;
 import com.thefirstlineofcode.basalt.oxm.translating.ITranslator;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
 
 public class NamingConventionTranslator<T> implements ITranslator<T> {
 	private Protocol protocol;

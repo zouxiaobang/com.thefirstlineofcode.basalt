@@ -1,6 +1,6 @@
 package com.thefirstlineofcode.basalt.oxm.parsing;
 
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
 
 public interface IParserFactory<T> {
 	Protocol getProtocol();

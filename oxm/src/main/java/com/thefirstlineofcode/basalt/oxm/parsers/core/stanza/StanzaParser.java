@@ -10,13 +10,13 @@ import com.thefirstlineofcode.basalt.oxm.parsing.IParser;
 import com.thefirstlineofcode.basalt.oxm.parsing.IParsingContext;
 import com.thefirstlineofcode.basalt.oxm.parsing.IParsingFactory;
 import com.thefirstlineofcode.basalt.oxm.parsing.IParsingPath;
-import com.thefirstlineofcode.basalt.protocol.core.JabberId;
-import com.thefirstlineofcode.basalt.protocol.core.LangText;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
-import com.thefirstlineofcode.basalt.protocol.core.ProtocolException;
-import com.thefirstlineofcode.basalt.protocol.core.stanza.Iq;
-import com.thefirstlineofcode.basalt.protocol.core.stanza.Stanza;
-import com.thefirstlineofcode.basalt.protocol.core.stanza.error.BadRequest;
+import com.thefirstlineofcode.basalt.xmpp.core.JabberId;
+import com.thefirstlineofcode.basalt.xmpp.core.LangText;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.core.ProtocolException;
+import com.thefirstlineofcode.basalt.xmpp.core.stanza.Iq;
+import com.thefirstlineofcode.basalt.xmpp.core.stanza.Stanza;
+import com.thefirstlineofcode.basalt.xmpp.core.stanza.error.BadRequest;
 
 public abstract class StanzaParser<T extends Stanza> implements IParser<T> {
 	private static final String VALUE_TYPE_ERROR = "error";

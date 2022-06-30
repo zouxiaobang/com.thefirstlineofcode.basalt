@@ -8,9 +8,9 @@ import com.thefirstlineofcode.basalt.oxm.annotations.Parser;
 import com.thefirstlineofcode.basalt.oxm.annotations.ProcessAttributes;
 import com.thefirstlineofcode.basalt.oxm.annotations.ProcessText;
 import com.thefirstlineofcode.basalt.oxm.parsing.IParsingContext;
-import com.thefirstlineofcode.basalt.protocol.core.ProtocolException;
-import com.thefirstlineofcode.basalt.protocol.core.stream.error.BadFormat;
-import com.thefirstlineofcode.basalt.protocol.core.stream.sasl.Auth;
+import com.thefirstlineofcode.basalt.xmpp.core.ProtocolException;
+import com.thefirstlineofcode.basalt.xmpp.core.stream.error.BadFormat;
+import com.thefirstlineofcode.basalt.xmpp.core.stream.sasl.Auth;
 
 @Parser(namespace="urn:ietf:params:xml:ns:xmpp-sasl", localName="auth", objectType=Auth.class)
 public class AuthParser {

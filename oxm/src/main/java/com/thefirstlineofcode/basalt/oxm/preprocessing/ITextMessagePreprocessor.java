@@ -1,6 +1,6 @@
 package com.thefirstlineofcode.basalt.oxm.preprocessing;
 
-import com.thefirstlineofcode.basalt.protocol.core.ProtocolException;
+import com.thefirstlineofcode.basalt.xmpp.core.ProtocolException;
 
 public interface ITextMessagePreprocessor {
 	String[] process(char[] chars, int readChars) throws OutOfMaxBufferSizeException, ProtocolException;

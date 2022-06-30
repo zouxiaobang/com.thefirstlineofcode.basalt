@@ -4,9 +4,9 @@ import com.thefirstlineofcode.basalt.oxm.convention.conversion.annotations.Strin
 import com.thefirstlineofcode.basalt.oxm.convention.conversion.annotations.String2JabberId;
 import com.thefirstlineofcode.basalt.oxm.convention.validation.annotations.Validate;
 import com.thefirstlineofcode.basalt.oxm.convention.validation.annotations.ValidationClass;
-import com.thefirstlineofcode.basalt.protocol.core.JabberId;
-import com.thefirstlineofcode.basalt.protocol.core.ProtocolException;
-import com.thefirstlineofcode.basalt.protocol.core.stanza.error.BadRequest;
+import com.thefirstlineofcode.basalt.xmpp.core.JabberId;
+import com.thefirstlineofcode.basalt.xmpp.core.ProtocolException;
+import com.thefirstlineofcode.basalt.xmpp.core.stanza.error.BadRequest;
 
 @ValidationClass
 public class Address {

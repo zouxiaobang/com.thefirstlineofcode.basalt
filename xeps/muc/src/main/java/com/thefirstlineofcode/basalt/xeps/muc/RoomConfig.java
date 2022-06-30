@@ -3,7 +3,7 @@ package com.thefirstlineofcode.basalt.xeps.muc;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.thefirstlineofcode.basalt.protocol.core.JabberId;
+import com.thefirstlineofcode.basalt.xmpp.core.JabberId;
 
 public class RoomConfig {
 	public enum AllowPm {

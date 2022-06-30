@@ -3,7 +3,7 @@ package com.thefirstlineofcode.basalt.oxm.convention;
 import com.thefirstlineofcode.basalt.oxm.convention.annotations.ProtocolObject;
 import com.thefirstlineofcode.basalt.oxm.parsing.IParser;
 import com.thefirstlineofcode.basalt.oxm.parsing.IParserFactory;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
 
 public class NamingConventionParserFactory<T> implements IParserFactory<T> {
 	private Protocol protocol;

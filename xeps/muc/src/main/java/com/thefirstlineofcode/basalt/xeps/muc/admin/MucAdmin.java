@@ -5,8 +5,8 @@ import java.util.List;
 
 import com.thefirstlineofcode.basalt.oxm.convention.annotations.Array;
 import com.thefirstlineofcode.basalt.oxm.convention.annotations.ProtocolObject;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
 import com.thefirstlineofcode.basalt.xeps.muc.user.Item;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
 
 @ProtocolObject(namespace="http://jabber.org/protocol/muc#admin", localName="query")
 public class MucAdmin {

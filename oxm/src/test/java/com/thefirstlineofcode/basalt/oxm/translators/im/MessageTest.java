@@ -5,9 +5,9 @@ import org.junit.Test;
 
 import com.thefirstlineofcode.basalt.oxm.IOxmFactory;
 import com.thefirstlineofcode.basalt.oxm.OxmService;
-import com.thefirstlineofcode.basalt.protocol.core.JabberId;
-import com.thefirstlineofcode.basalt.protocol.core.LangText;
-import com.thefirstlineofcode.basalt.protocol.im.stanza.Message;
+import com.thefirstlineofcode.basalt.xmpp.core.JabberId;
+import com.thefirstlineofcode.basalt.xmpp.core.LangText;
+import com.thefirstlineofcode.basalt.xmpp.im.stanza.Message;
 
 import junit.framework.Assert;
 

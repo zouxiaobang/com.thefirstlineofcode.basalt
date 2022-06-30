@@ -1,6 +1,6 @@
 package com.thefirstlineofcode.basalt.oxm.parsing;
 
-import com.thefirstlineofcode.basalt.protocol.core.ProtocolChain;
+import com.thefirstlineofcode.basalt.xmpp.core.ProtocolChain;
 
 public interface IParsingFactory {
 	public static final Object KEY_FLAWS = new Object();

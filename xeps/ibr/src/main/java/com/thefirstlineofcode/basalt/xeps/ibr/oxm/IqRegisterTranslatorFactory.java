@@ -4,11 +4,11 @@ import com.thefirstlineofcode.basalt.oxm.translating.IProtocolWriter;
 import com.thefirstlineofcode.basalt.oxm.translating.ITranslatingFactory;
 import com.thefirstlineofcode.basalt.oxm.translating.ITranslator;
 import com.thefirstlineofcode.basalt.oxm.translating.ITranslatorFactory;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
 import com.thefirstlineofcode.basalt.xeps.ibr.IqRegister;
 import com.thefirstlineofcode.basalt.xeps.ibr.RegistrationField;
 import com.thefirstlineofcode.basalt.xeps.ibr.RegistrationForm;
 import com.thefirstlineofcode.basalt.xeps.ibr.Remove;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
 
 public class IqRegisterTranslatorFactory implements ITranslatorFactory<IqRegister> {
 	private ITranslator<IqRegister> translator = new IqRegisterTranslator();

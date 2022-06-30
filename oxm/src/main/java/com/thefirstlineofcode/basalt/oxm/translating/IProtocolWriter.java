@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.thefirstlineofcode.basalt.oxm.Attribute;
 import com.thefirstlineofcode.basalt.oxm.Value;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
 
 public interface IProtocolWriter {
 	IProtocolWriter writeString(String string);

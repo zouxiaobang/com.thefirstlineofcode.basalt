@@ -5,8 +5,8 @@ import junit.framework.Assert;
 import com.thefirstlineofcode.basalt.oxm.IOxmFactory;
 import com.thefirstlineofcode.basalt.oxm.OxmService;
 import com.thefirstlineofcode.basalt.oxm.TestData;
-import com.thefirstlineofcode.basalt.protocol.core.LangText;
-import com.thefirstlineofcode.basalt.protocol.im.stanza.Presence;
+import com.thefirstlineofcode.basalt.xmpp.core.LangText;
+import com.thefirstlineofcode.basalt.xmpp.im.stanza.Presence;
 
 import org.junit.Before;
 import org.junit.Test;

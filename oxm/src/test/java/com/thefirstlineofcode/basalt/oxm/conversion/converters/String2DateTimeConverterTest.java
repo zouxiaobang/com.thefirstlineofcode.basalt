@@ -3,10 +3,10 @@ package com.thefirstlineofcode.basalt.oxm.conversion.converters;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.thefirstlineofcode.basalt.protocol.datetime.Date;
-import com.thefirstlineofcode.basalt.protocol.datetime.DateTime;
-import com.thefirstlineofcode.basalt.protocol.datetime.Time;
-import com.thefirstlineofcode.basalt.protocol.datetime.TimeZoneOffset;
+import com.thefirstlineofcode.basalt.xmpp.datetime.Date;
+import com.thefirstlineofcode.basalt.xmpp.datetime.DateTime;
+import com.thefirstlineofcode.basalt.xmpp.datetime.Time;
+import com.thefirstlineofcode.basalt.xmpp.datetime.TimeZoneOffset;
 
 public class String2DateTimeConverterTest {
 	@Test

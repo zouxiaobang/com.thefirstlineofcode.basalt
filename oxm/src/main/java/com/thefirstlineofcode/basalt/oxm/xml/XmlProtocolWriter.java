@@ -6,8 +6,8 @@ import java.util.Stack;
 import com.thefirstlineofcode.basalt.oxm.Attribute;
 import com.thefirstlineofcode.basalt.oxm.Value;
 import com.thefirstlineofcode.basalt.oxm.translating.IProtocolWriter;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
-import com.thefirstlineofcode.basalt.protocol.core.stream.Stream;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.core.stream.Stream;
 
 public class XmlProtocolWriter implements IProtocolWriter {
 	private StringBuilder buffer = new StringBuilder();

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.thefirstlineofcode.basalt.protocol.core.ProtocolException;
-import com.thefirstlineofcode.basalt.protocol.core.stream.error.XmlNotWellFormed;
+import com.thefirstlineofcode.basalt.xmpp.core.ProtocolException;
+import com.thefirstlineofcode.basalt.xmpp.core.stream.error.XmlNotWellFormed;
 
 public abstract class AbstractTextMessagePreprocessor implements ITextMessagePreprocessor {
 	private static final int DEFAULT_MAX_BUFFER_SIZE = 1024 * 1024;

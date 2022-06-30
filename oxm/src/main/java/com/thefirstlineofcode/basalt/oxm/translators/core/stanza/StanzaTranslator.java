@@ -8,8 +8,8 @@ import com.thefirstlineofcode.basalt.oxm.parsing.FlawedProtocolObject;
 import com.thefirstlineofcode.basalt.oxm.translating.IProtocolWriter;
 import com.thefirstlineofcode.basalt.oxm.translating.ITranslatingFactory;
 import com.thefirstlineofcode.basalt.oxm.translating.ITranslator;
-import com.thefirstlineofcode.basalt.protocol.core.LangText;
-import com.thefirstlineofcode.basalt.protocol.core.stanza.Stanza;
+import com.thefirstlineofcode.basalt.xmpp.core.LangText;
+import com.thefirstlineofcode.basalt.xmpp.core.stanza.Stanza;
 
 
 public abstract class StanzaTranslator<T extends Stanza> implements ITranslator<T> {

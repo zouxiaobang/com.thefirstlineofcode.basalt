@@ -2,7 +2,7 @@ package com.thefirstlineofcode.basalt.oxm.xep.ibb;
 
 import com.thefirstlineofcode.basalt.oxm.convention.annotations.ProtocolObject;
 import com.thefirstlineofcode.basalt.oxm.convention.annotations.Text;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
 
 @ProtocolObject(namespace="http://jabber.org/protocol/ibb", localName="data")
 public class TMessageData {

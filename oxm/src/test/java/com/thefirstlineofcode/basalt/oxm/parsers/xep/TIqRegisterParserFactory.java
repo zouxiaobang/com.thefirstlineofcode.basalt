@@ -14,9 +14,9 @@ import com.thefirstlineofcode.basalt.oxm.xep.ibr.TRegistrationForm;
 import com.thefirstlineofcode.basalt.oxm.xep.ibr.TRemove;
 import com.thefirstlineofcode.basalt.oxm.xep.oob.TXOob;
 import com.thefirstlineofcode.basalt.oxm.xep.xdata.TXData;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
-import com.thefirstlineofcode.basalt.protocol.core.ProtocolException;
-import com.thefirstlineofcode.basalt.protocol.core.stanza.error.BadRequest;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.core.ProtocolException;
+import com.thefirstlineofcode.basalt.xmpp.core.stanza.error.BadRequest;
 
 public class TIqRegisterParserFactory implements IParserFactory<TIqRegister> {
 	@Override

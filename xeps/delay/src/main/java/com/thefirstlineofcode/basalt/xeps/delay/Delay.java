@@ -3,9 +3,9 @@ package com.thefirstlineofcode.basalt.xeps.delay;
 import com.thefirstlineofcode.basalt.oxm.convention.annotations.ProtocolObject;
 import com.thefirstlineofcode.basalt.oxm.convention.conversion.annotations.String2DateTime;
 import com.thefirstlineofcode.basalt.oxm.convention.conversion.annotations.String2JabberId;
-import com.thefirstlineofcode.basalt.protocol.core.JabberId;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
-import com.thefirstlineofcode.basalt.protocol.datetime.DateTime;
+import com.thefirstlineofcode.basalt.xmpp.core.JabberId;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.datetime.DateTime;
 
 @ProtocolObject(namespace="urn:xmpp:delay", localName="delay")
 public class Delay {

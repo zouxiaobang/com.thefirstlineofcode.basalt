@@ -12,12 +12,12 @@ import com.thefirstlineofcode.basalt.oxm.parsing.IParserFactory;
 import com.thefirstlineofcode.basalt.oxm.parsing.IParsingContext;
 import com.thefirstlineofcode.basalt.oxm.parsing.IParsingPath;
 import com.thefirstlineofcode.basalt.oxm.parsing.ParsingUtils;
-import com.thefirstlineofcode.basalt.protocol.HandyUtils;
-import com.thefirstlineofcode.basalt.protocol.core.LangText;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
-import com.thefirstlineofcode.basalt.protocol.core.ProtocolException;
-import com.thefirstlineofcode.basalt.protocol.core.stanza.error.BadRequest;
-import com.thefirstlineofcode.basalt.protocol.im.stanza.Message;
+import com.thefirstlineofcode.basalt.xmpp.HandyUtils;
+import com.thefirstlineofcode.basalt.xmpp.core.LangText;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.core.ProtocolException;
+import com.thefirstlineofcode.basalt.xmpp.core.stanza.error.BadRequest;
+import com.thefirstlineofcode.basalt.xmpp.im.stanza.Message;
 
 public class MessageParserFactory implements IParserFactory<Message> {
 	private static final String PATH_MESSAGE_ROOT = "/";

@@ -8,10 +8,10 @@ import com.thefirstlineofcode.basalt.oxm.parsing.IParserFactory;
 import com.thefirstlineofcode.basalt.oxm.parsing.IParsingContext;
 import com.thefirstlineofcode.basalt.oxm.parsing.IParsingPath;
 import com.thefirstlineofcode.basalt.oxm.parsing.ParserAdaptor;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
-import com.thefirstlineofcode.basalt.protocol.core.ProtocolException;
-import com.thefirstlineofcode.basalt.protocol.core.stream.error.BadFormat;
-import com.thefirstlineofcode.basalt.protocol.core.stream.sasl.Failure;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.core.ProtocolException;
+import com.thefirstlineofcode.basalt.xmpp.core.stream.error.BadFormat;
+import com.thefirstlineofcode.basalt.xmpp.core.stream.sasl.Failure;
 
 public class FailureParserFactory implements IParserFactory<Failure> {
 	private static final IParser<Failure> parser = new FailureParser();

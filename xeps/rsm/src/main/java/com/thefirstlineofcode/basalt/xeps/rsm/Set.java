@@ -2,7 +2,7 @@ package com.thefirstlineofcode.basalt.xeps.rsm;
 
 import com.thefirstlineofcode.basalt.oxm.convention.annotations.ProtocolObject;
 import com.thefirstlineofcode.basalt.oxm.convention.annotations.TextOnly;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
 
 @ProtocolObject(localName="set", namespace="http://jabber.org/protocol/rsm")
 public class Set {

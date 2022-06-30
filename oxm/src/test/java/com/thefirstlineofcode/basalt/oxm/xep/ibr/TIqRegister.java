@@ -2,7 +2,7 @@ package com.thefirstlineofcode.basalt.oxm.xep.ibr;
 
 import com.thefirstlineofcode.basalt.oxm.xep.oob.TXOob;
 import com.thefirstlineofcode.basalt.oxm.xep.xdata.TXData;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
 
 public class TIqRegister {
 	public static final Protocol PROTOCOL = new Protocol("jabber:iq:register", "query");

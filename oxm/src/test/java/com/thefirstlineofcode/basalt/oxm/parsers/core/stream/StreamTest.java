@@ -6,8 +6,8 @@ import com.thefirstlineofcode.basalt.oxm.IOxmFactory;
 import com.thefirstlineofcode.basalt.oxm.OxmService;
 import com.thefirstlineofcode.basalt.oxm.TestData;
 import com.thefirstlineofcode.basalt.oxm.annotation.AnnotatedParserFactory;
-import com.thefirstlineofcode.basalt.protocol.core.ProtocolChain;
-import com.thefirstlineofcode.basalt.protocol.core.stream.Stream;
+import com.thefirstlineofcode.basalt.xmpp.core.ProtocolChain;
+import com.thefirstlineofcode.basalt.xmpp.core.stream.Stream;
 
 import junit.framework.Assert;
 

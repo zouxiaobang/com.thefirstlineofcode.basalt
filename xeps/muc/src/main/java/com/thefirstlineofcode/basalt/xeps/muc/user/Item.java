@@ -4,9 +4,9 @@ import com.thefirstlineofcode.basalt.oxm.convention.annotations.BindTo;
 import com.thefirstlineofcode.basalt.oxm.convention.annotations.TextOnly;
 import com.thefirstlineofcode.basalt.oxm.convention.conversion.annotations.String2Enum;
 import com.thefirstlineofcode.basalt.oxm.convention.conversion.annotations.String2JabberId;
-import com.thefirstlineofcode.basalt.protocol.core.JabberId;
 import com.thefirstlineofcode.basalt.xeps.muc.Affiliation;
 import com.thefirstlineofcode.basalt.xeps.muc.Role;
+import com.thefirstlineofcode.basalt.xmpp.core.JabberId;
 
 public class Item {
 	private Actor actor;

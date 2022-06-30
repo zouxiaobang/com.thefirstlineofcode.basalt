@@ -15,7 +15,7 @@ import com.thefirstlineofcode.basalt.oxm.binary.Element.NameAndValue;
 import com.thefirstlineofcode.basalt.oxm.binary.Element.NextPart;
 import com.thefirstlineofcode.basalt.oxm.parsing.BadMessageException;
 import com.thefirstlineofcode.basalt.oxm.translating.IProtocolWriter;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
 
 public abstract class AbstractBinaryXmppProtocolConverter<T> implements IBinaryXmppProtocolConverter {
 	private Map<ReplacementBytes, BxmppExtension> replacementBytesToBxmppExtensions = new HashMap<>();

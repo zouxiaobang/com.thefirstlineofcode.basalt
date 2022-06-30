@@ -4,7 +4,7 @@ import java.text.ParseException;
 
 import com.thefirstlineofcode.basalt.oxm.conversion.ConversionException;
 import com.thefirstlineofcode.basalt.oxm.conversion.IConverter;
-import com.thefirstlineofcode.basalt.protocol.datetime.Date;
+import com.thefirstlineofcode.basalt.xmpp.datetime.Date;
 
 public class String2DateConverter implements IConverter<String, Date> {
 

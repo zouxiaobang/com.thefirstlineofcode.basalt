@@ -3,7 +3,7 @@ package com.thefirstlineofcode.basalt.oxm.conversion.converters;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.thefirstlineofcode.basalt.protocol.datetime.Time;
+import com.thefirstlineofcode.basalt.xmpp.datetime.Time;
 
 public class String2TimeConverterTest {
 	@Test

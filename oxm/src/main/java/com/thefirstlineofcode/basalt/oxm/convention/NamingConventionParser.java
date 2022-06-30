@@ -36,7 +36,7 @@ import com.thefirstlineofcode.basalt.oxm.parsing.IParsingPath;
 import com.thefirstlineofcode.basalt.oxm.parsing.ParserAdaptor;
 import com.thefirstlineofcode.basalt.oxm.parsing.ParsingPath;
 import com.thefirstlineofcode.basalt.oxm.validation.ValidationException;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
 
 public class NamingConventionParser<T> extends ParserAdaptor<T> {
 	private static final String PROTOCOL_OBJECT_FLAG = "$$p$$";

@@ -8,10 +8,10 @@ import com.thefirstlineofcode.basalt.oxm.parsing.IParsingFactory;
 import com.thefirstlineofcode.basalt.oxm.translating.ITranslatingFactory;
 import com.thefirstlineofcode.basalt.oxm.translators.core.stream.StreamTranslatorFactory;
 import com.thefirstlineofcode.basalt.oxm.translators.error.StreamErrorTranslatorFactory;
-import com.thefirstlineofcode.basalt.protocol.core.IError;
-import com.thefirstlineofcode.basalt.protocol.core.ProtocolChain;
-import com.thefirstlineofcode.basalt.protocol.core.stream.Stream;
-import com.thefirstlineofcode.basalt.protocol.core.stream.error.StreamError;
+import com.thefirstlineofcode.basalt.xmpp.core.IError;
+import com.thefirstlineofcode.basalt.xmpp.core.ProtocolChain;
+import com.thefirstlineofcode.basalt.xmpp.core.stream.Stream;
+import com.thefirstlineofcode.basalt.xmpp.core.stream.error.StreamError;
 
 public class StreamOxmFactory extends OxmFactory {
 

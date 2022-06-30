@@ -9,9 +9,9 @@ import com.thefirstlineofcode.basalt.oxm.Attributes;
 import com.thefirstlineofcode.basalt.oxm.OxmService;
 import com.thefirstlineofcode.basalt.oxm.TestData;
 import com.thefirstlineofcode.basalt.oxm.xep.ibb.TMessageData;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
-import com.thefirstlineofcode.basalt.protocol.core.stanza.Iq;
-import com.thefirstlineofcode.basalt.protocol.im.stanza.Message;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.core.stanza.Iq;
+import com.thefirstlineofcode.basalt.xmpp.im.stanza.Message;
 
 import junit.framework.Assert;
 

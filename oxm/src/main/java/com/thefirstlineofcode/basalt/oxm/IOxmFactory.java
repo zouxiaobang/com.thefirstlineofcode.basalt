@@ -4,7 +4,7 @@ import com.thefirstlineofcode.basalt.oxm.parsing.IParserFactory;
 import com.thefirstlineofcode.basalt.oxm.parsing.IParsingFactory;
 import com.thefirstlineofcode.basalt.oxm.translating.ITranslatingFactory;
 import com.thefirstlineofcode.basalt.oxm.translating.ITranslatorFactory;
-import com.thefirstlineofcode.basalt.protocol.core.ProtocolChain;
+import com.thefirstlineofcode.basalt.xmpp.core.ProtocolChain;
 
 public interface IOxmFactory {
 	Object parse(String message);

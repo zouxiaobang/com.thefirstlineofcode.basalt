@@ -4,8 +4,8 @@ import com.thefirstlineofcode.basalt.oxm.parsing.IParserFactory;
 import com.thefirstlineofcode.basalt.oxm.parsing.IParsingFactory;
 import com.thefirstlineofcode.basalt.oxm.translating.ITranslatingFactory;
 import com.thefirstlineofcode.basalt.oxm.translating.ITranslatorFactory;
-import com.thefirstlineofcode.basalt.protocol.core.ProtocolChain;
-import com.thefirstlineofcode.basalt.protocol.core.ProtocolException;
+import com.thefirstlineofcode.basalt.xmpp.core.ProtocolChain;
+import com.thefirstlineofcode.basalt.xmpp.core.ProtocolException;
 
 public class OxmFactory implements IOxmFactory {
 	protected IParsingFactory parsingFactory;
@@ -36,9 +36,9 @@ public class OxmFactory implements IOxmFactory {
 		String errorText = String.format("Error message: %s. Parsed message: %s.", errorMessage, parsedMessage);
 		
 		if (stream) {
-			return new ProtocolException(new com.thefirstlineofcode.basalt.protocol.core.stream.error.InternalServerError(errorText), e);
+			return new ProtocolException(new com.thefirstlineofcode.basalt.xmpp.core.stream.error.InternalServerError(errorText), e);
 		} else {
-			return new ProtocolException(new com.thefirstlineofcode.basalt.protocol.core.stanza.error.InternalServerError(errorText), e);
+			return new ProtocolException(new com.thefirstlineofcode.basalt.xmpp.core.stanza.error.InternalServerError(errorText), e);
 		}
 	}
 

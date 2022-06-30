@@ -16,10 +16,10 @@ import com.thefirstlineofcode.basalt.oxm.xep.xdata.TField;
 import com.thefirstlineofcode.basalt.oxm.xep.xdata.TOption;
 import com.thefirstlineofcode.basalt.oxm.xep.xdata.TXData;
 import com.thefirstlineofcode.basalt.oxm.xep.xdata.TField.Type;
-import com.thefirstlineofcode.basalt.protocol.HandyUtils;
-import com.thefirstlineofcode.basalt.protocol.core.IqProtocolChain;
-import com.thefirstlineofcode.basalt.protocol.core.ProtocolException;
-import com.thefirstlineofcode.basalt.protocol.core.stanza.Iq;
+import com.thefirstlineofcode.basalt.xmpp.HandyUtils;
+import com.thefirstlineofcode.basalt.xmpp.core.IqProtocolChain;
+import com.thefirstlineofcode.basalt.xmpp.core.ProtocolException;
+import com.thefirstlineofcode.basalt.xmpp.core.stanza.Iq;
 
 import junit.framework.Assert;
 

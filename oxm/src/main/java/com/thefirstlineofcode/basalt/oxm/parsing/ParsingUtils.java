@@ -7,9 +7,9 @@ import javax.xml.stream.XMLStreamReader;
 
 import com.thefirstlineofcode.basalt.oxm.Attribute;
 import com.thefirstlineofcode.basalt.oxm.Value;
-import com.thefirstlineofcode.basalt.protocol.core.LangText;
-import com.thefirstlineofcode.basalt.protocol.core.ProtocolException;
-import com.thefirstlineofcode.basalt.protocol.core.stanza.error.BadRequest;
+import com.thefirstlineofcode.basalt.xmpp.core.LangText;
+import com.thefirstlineofcode.basalt.xmpp.core.ProtocolException;
+import com.thefirstlineofcode.basalt.xmpp.core.stanza.error.BadRequest;
 
 public final class ParsingUtils {
 	private static final char[] unescaped = {'"', '&', '<', '>', '\''};

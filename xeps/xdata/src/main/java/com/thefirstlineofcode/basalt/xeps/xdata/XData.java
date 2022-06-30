@@ -9,7 +9,7 @@ import com.thefirstlineofcode.basalt.oxm.convention.annotations.TextOnly;
 import com.thefirstlineofcode.basalt.oxm.convention.validation.annotations.Validate;
 import com.thefirstlineofcode.basalt.oxm.convention.validation.annotations.ValidationClass;
 import com.thefirstlineofcode.basalt.oxm.validation.ValidationException;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
 
 @ValidationClass
 @ProtocolObject(namespace="jabber:x:data", localName="x")

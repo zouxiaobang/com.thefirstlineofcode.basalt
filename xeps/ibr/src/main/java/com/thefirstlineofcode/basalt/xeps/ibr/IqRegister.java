@@ -1,9 +1,9 @@
 package com.thefirstlineofcode.basalt.xeps.ibr;
 
 import com.thefirstlineofcode.basalt.oxm.convention.annotations.ProtocolObject;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
 import com.thefirstlineofcode.basalt.xeps.oob.XOob;
 import com.thefirstlineofcode.basalt.xeps.xdata.XData;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
 
 @ProtocolObject(namespace="jabber:iq:register", localName="query")
 public class IqRegister {

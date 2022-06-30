@@ -1,6 +1,6 @@
 package com.thefirstlineofcode.basalt.xeps.muc;
 
-import com.thefirstlineofcode.basalt.protocol.datetime.DateTime;
+import com.thefirstlineofcode.basalt.xmpp.datetime.DateTime;
 
 public class History {
 	private int maxChars;

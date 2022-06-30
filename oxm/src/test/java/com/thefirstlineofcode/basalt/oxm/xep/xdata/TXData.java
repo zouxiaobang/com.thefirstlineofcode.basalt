@@ -13,7 +13,7 @@ import com.thefirstlineofcode.basalt.oxm.conversion.validators.TXDataValidationC
 @ValidationClass(TXDataValidationClass.class)
 @ProtocolObject(namespace="jabber:x:data", localName="x")
 public class TXData {
-	public static final com.thefirstlineofcode.basalt.protocol.core.Protocol PROTOCOL = new com.thefirstlineofcode.basalt.protocol.core.Protocol("jabber:x:data", "x");
+	public static final com.thefirstlineofcode.basalt.xmpp.core.Protocol PROTOCOL = new com.thefirstlineofcode.basalt.xmpp.core.Protocol("jabber:x:data", "x");
 	
 	public enum Type {
 		FORM,

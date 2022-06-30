@@ -4,8 +4,8 @@ import com.thefirstlineofcode.basalt.oxm.conversion.ConversionException;
 import com.thefirstlineofcode.basalt.oxm.conversion.IConverter;
 import com.thefirstlineofcode.basalt.oxm.xep.xdata.TXData;
 import com.thefirstlineofcode.basalt.oxm.xep.xdata.TXData.Type;
-import com.thefirstlineofcode.basalt.protocol.core.ProtocolException;
-import com.thefirstlineofcode.basalt.protocol.core.stanza.error.BadRequest;
+import com.thefirstlineofcode.basalt.xmpp.core.ProtocolException;
+import com.thefirstlineofcode.basalt.xmpp.core.stanza.error.BadRequest;
 
 public class TString2XDataTypeConverter implements IConverter<String, TXData.Type> {
 

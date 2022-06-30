@@ -2,7 +2,7 @@ package com.thefirstlineofcode.basalt.oxm.conversion.converters;
 
 import com.thefirstlineofcode.basalt.oxm.conversion.ConversionException;
 import com.thefirstlineofcode.basalt.oxm.conversion.IConverter;
-import com.thefirstlineofcode.basalt.protocol.datetime.Time;
+import com.thefirstlineofcode.basalt.xmpp.datetime.Time;
 
 public class String2TimeConverter implements IConverter<String, Time> {
 

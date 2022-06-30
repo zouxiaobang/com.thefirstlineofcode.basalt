@@ -4,9 +4,9 @@ import com.thefirstlineofcode.basalt.oxm.translating.IProtocolWriter;
 import com.thefirstlineofcode.basalt.oxm.translating.ITranslatingFactory;
 import com.thefirstlineofcode.basalt.oxm.translating.ITranslator;
 import com.thefirstlineofcode.basalt.oxm.translating.ITranslatorFactory;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
-import com.thefirstlineofcode.basalt.protocol.core.stream.sasl.Failure;
-import com.thefirstlineofcode.basalt.protocol.core.stream.sasl.Failure.ErrorCondition;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.core.stream.sasl.Failure;
+import com.thefirstlineofcode.basalt.xmpp.core.stream.sasl.Failure.ErrorCondition;
 
 public class FailureTranslatorFactory implements ITranslatorFactory<Failure> {
 	private static final ITranslator<Failure> translator = new FailureTranslator();

@@ -10,9 +10,9 @@ import com.thefirstlineofcode.basalt.oxm.convention.NamingConventionParserFactor
 import com.thefirstlineofcode.basalt.oxm.xep.command.TCommand;
 import com.thefirstlineofcode.basalt.oxm.xep.xdata.TField;
 import com.thefirstlineofcode.basalt.oxm.xep.xdata.TXData;
-import com.thefirstlineofcode.basalt.protocol.core.IqProtocolChain;
-import com.thefirstlineofcode.basalt.protocol.core.ProtocolChain;
-import com.thefirstlineofcode.basalt.protocol.core.stanza.Iq;
+import com.thefirstlineofcode.basalt.xmpp.core.IqProtocolChain;
+import com.thefirstlineofcode.basalt.xmpp.core.ProtocolChain;
+import com.thefirstlineofcode.basalt.xmpp.core.stanza.Iq;
 
 import junit.framework.Assert;
 

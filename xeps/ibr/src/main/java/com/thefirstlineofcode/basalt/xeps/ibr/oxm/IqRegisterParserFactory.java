@@ -8,15 +8,15 @@ import com.thefirstlineofcode.basalt.oxm.parsing.IParserFactory;
 import com.thefirstlineofcode.basalt.oxm.parsing.IParsingContext;
 import com.thefirstlineofcode.basalt.oxm.parsing.IParsingPath;
 import com.thefirstlineofcode.basalt.oxm.parsing.ParserAdaptor;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
-import com.thefirstlineofcode.basalt.protocol.core.ProtocolException;
-import com.thefirstlineofcode.basalt.protocol.core.stanza.error.BadRequest;
 import com.thefirstlineofcode.basalt.xeps.ibr.IqRegister;
 import com.thefirstlineofcode.basalt.xeps.ibr.RegistrationField;
 import com.thefirstlineofcode.basalt.xeps.ibr.RegistrationForm;
 import com.thefirstlineofcode.basalt.xeps.ibr.Remove;
 import com.thefirstlineofcode.basalt.xeps.oob.XOob;
 import com.thefirstlineofcode.basalt.xeps.xdata.XData;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.core.ProtocolException;
+import com.thefirstlineofcode.basalt.xmpp.core.stanza.error.BadRequest;
 
 public class IqRegisterParserFactory implements IParserFactory<IqRegister> {
 	@Override

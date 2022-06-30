@@ -7,9 +7,9 @@ import com.thefirstlineofcode.basalt.oxm.translating.ITranslatingFactory;
 import com.thefirstlineofcode.basalt.oxm.translating.ITranslator;
 import com.thefirstlineofcode.basalt.oxm.translating.ITranslatorFactory;
 import com.thefirstlineofcode.basalt.oxm.translators.core.stanza.StanzaTranslator;
-import com.thefirstlineofcode.basalt.protocol.core.LangText;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
-import com.thefirstlineofcode.basalt.protocol.im.stanza.Presence;
+import com.thefirstlineofcode.basalt.xmpp.core.LangText;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.im.stanza.Presence;
 
 public class PresenceTranslatorFactory implements ITranslatorFactory<Presence> {
 	private static final ITranslator<Presence> translator = new PresenceTranslator();

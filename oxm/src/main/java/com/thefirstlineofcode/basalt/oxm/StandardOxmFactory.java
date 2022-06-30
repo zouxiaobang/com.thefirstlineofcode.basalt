@@ -6,9 +6,9 @@ import com.thefirstlineofcode.basalt.oxm.parsing.IParsingFactory;
 import com.thefirstlineofcode.basalt.oxm.translating.ITranslatingFactory;
 import com.thefirstlineofcode.basalt.oxm.translators.im.MessageTranslatorFactory;
 import com.thefirstlineofcode.basalt.oxm.translators.im.PresenceTranslatorFactory;
-import com.thefirstlineofcode.basalt.protocol.core.ProtocolChain;
-import com.thefirstlineofcode.basalt.protocol.im.stanza.Message;
-import com.thefirstlineofcode.basalt.protocol.im.stanza.Presence;
+import com.thefirstlineofcode.basalt.xmpp.core.ProtocolChain;
+import com.thefirstlineofcode.basalt.xmpp.im.stanza.Message;
+import com.thefirstlineofcode.basalt.xmpp.im.stanza.Presence;
 
 public class StandardOxmFactory extends MinimumOxmFactory {
 	public StandardOxmFactory(IParsingFactory parsingFactory, ITranslatingFactory translatingFactory) {

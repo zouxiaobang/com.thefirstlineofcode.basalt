@@ -1,6 +1,6 @@
 package com.thefirstlineofcode.basalt.oxm.parsing;
 
-import com.thefirstlineofcode.basalt.protocol.core.stanza.Stanza;
+import com.thefirstlineofcode.basalt.xmpp.core.stanza.Stanza;
 
 public class ParsingException extends RuntimeException {
 	private static final long serialVersionUID = -6198730769256774136L;

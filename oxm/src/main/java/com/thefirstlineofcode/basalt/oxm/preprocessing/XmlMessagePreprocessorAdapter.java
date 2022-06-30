@@ -4,8 +4,8 @@ import java.io.UnsupportedEncodingException;
 
 import com.thefirstlineofcode.basalt.oxm.parsing.BadMessageException;
 import com.thefirstlineofcode.basalt.oxm.xml.preprocessing.XmlMessagePreprocessor;
-import com.thefirstlineofcode.basalt.protocol.Constants;
-import com.thefirstlineofcode.basalt.protocol.core.ProtocolException;
+import com.thefirstlineofcode.basalt.xmpp.Constants;
+import com.thefirstlineofcode.basalt.xmpp.core.ProtocolException;
 
 public class XmlMessagePreprocessorAdapter implements IMessagePreprocessor {
 	private static int DEFAULT_MAX_BUFFER_SIZE = 1024 * 1024;

@@ -9,10 +9,10 @@ import com.thefirstlineofcode.basalt.oxm.annotations.ProcessAttributes;
 import com.thefirstlineofcode.basalt.oxm.annotations.ProcessText;
 import com.thefirstlineofcode.basalt.oxm.parsing.BadMessageException;
 import com.thefirstlineofcode.basalt.oxm.parsing.IParsingContext;
-import com.thefirstlineofcode.basalt.protocol.core.JabberId;
-import com.thefirstlineofcode.basalt.protocol.core.ProtocolException;
-import com.thefirstlineofcode.basalt.protocol.core.stream.Stream;
-import com.thefirstlineofcode.basalt.protocol.core.stream.error.InvalidXml;
+import com.thefirstlineofcode.basalt.xmpp.core.JabberId;
+import com.thefirstlineofcode.basalt.xmpp.core.ProtocolException;
+import com.thefirstlineofcode.basalt.xmpp.core.stream.Stream;
+import com.thefirstlineofcode.basalt.xmpp.core.stream.error.InvalidXml;
 
 @Parser(namespace="http://etherx.jabber.org/streams", localName="stream", objectType=Stream.class)
 public class StreamParser {

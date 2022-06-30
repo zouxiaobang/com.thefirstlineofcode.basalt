@@ -3,7 +3,7 @@ package com.thefirstlineofcode.basalt.oxm.parsing;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.thefirstlineofcode.basalt.protocol.core.ProtocolChain;
+import com.thefirstlineofcode.basalt.xmpp.core.ProtocolChain;
 
 public class ParsingContext<T> implements IParsingContext<T> {
 	private ProtocolChain protocolChain;

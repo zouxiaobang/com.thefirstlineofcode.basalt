@@ -4,9 +4,9 @@ import com.thefirstlineofcode.basalt.oxm.Value;
 import com.thefirstlineofcode.basalt.oxm.annotations.Parser;
 import com.thefirstlineofcode.basalt.oxm.annotations.ProcessText;
 import com.thefirstlineofcode.basalt.oxm.parsing.IParsingContext;
-import com.thefirstlineofcode.basalt.protocol.core.ProtocolException;
-import com.thefirstlineofcode.basalt.protocol.core.stream.error.BadFormat;
-import com.thefirstlineofcode.basalt.protocol.core.stream.tls.StartTls;
+import com.thefirstlineofcode.basalt.xmpp.core.ProtocolException;
+import com.thefirstlineofcode.basalt.xmpp.core.stream.error.BadFormat;
+import com.thefirstlineofcode.basalt.xmpp.core.stream.tls.StartTls;
 
 @Parser(namespace="urn:ietf:params:xml:ns:xmpp-tls", localName="starttls", objectType=StartTls.class)
 public class StartTlsParser {

@@ -2,11 +2,11 @@ package com.thefirstlineofcode.basalt.oxm.parsing;
 
 import java.util.List;
 
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
-import com.thefirstlineofcode.basalt.protocol.core.ProtocolChain;
-import com.thefirstlineofcode.basalt.protocol.core.stanza.Stanza;
-import com.thefirstlineofcode.basalt.protocol.core.stream.Feature;
-import com.thefirstlineofcode.basalt.protocol.core.stream.Features;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.core.ProtocolChain;
+import com.thefirstlineofcode.basalt.xmpp.core.stanza.Stanza;
+import com.thefirstlineofcode.basalt.xmpp.core.stream.Feature;
+import com.thefirstlineofcode.basalt.xmpp.core.stream.Features;
 
 public class FlawedProtocolObject {
 	public static final Protocol PROTOCOL = new Protocol("urn:lep:flawed", "object");

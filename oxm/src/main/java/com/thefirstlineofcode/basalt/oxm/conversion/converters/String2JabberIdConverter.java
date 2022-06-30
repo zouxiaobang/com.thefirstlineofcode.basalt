@@ -2,8 +2,8 @@ package com.thefirstlineofcode.basalt.oxm.conversion.converters;
 
 import com.thefirstlineofcode.basalt.oxm.conversion.ConversionException;
 import com.thefirstlineofcode.basalt.oxm.conversion.IConverter;
-import com.thefirstlineofcode.basalt.protocol.core.JabberId;
-import com.thefirstlineofcode.basalt.protocol.core.MalformedJidException;
+import com.thefirstlineofcode.basalt.xmpp.core.JabberId;
+import com.thefirstlineofcode.basalt.xmpp.core.MalformedJidException;
 
 public class String2JabberIdConverter implements IConverter<String, JabberId> {
 

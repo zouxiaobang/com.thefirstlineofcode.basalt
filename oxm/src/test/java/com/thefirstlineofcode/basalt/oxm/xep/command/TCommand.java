@@ -2,7 +2,7 @@ package com.thefirstlineofcode.basalt.oxm.xep.command;
 
 import com.thefirstlineofcode.basalt.oxm.convention.annotations.ProtocolObject;
 import com.thefirstlineofcode.basalt.oxm.xep.xdata.TXData;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
 
 @ProtocolObject(namespace="http://jabber.org/protocol/commands", localName="command")
 public class TCommand {

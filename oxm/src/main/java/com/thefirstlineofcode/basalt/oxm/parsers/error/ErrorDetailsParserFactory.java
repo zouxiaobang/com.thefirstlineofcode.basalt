@@ -14,8 +14,8 @@ import com.thefirstlineofcode.basalt.oxm.parsing.IParsingPath;
 import com.thefirstlineofcode.basalt.oxm.parsing.ParserAdaptor;
 import com.thefirstlineofcode.basalt.oxm.parsing.ParsingContext;
 import com.thefirstlineofcode.basalt.oxm.parsing.ParsingUtils;
-import com.thefirstlineofcode.basalt.protocol.core.LangText;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.core.LangText;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
 
 public abstract class ErrorDetailsParserFactory implements IParserFactory<Object> {
 	private static final String PATH_ROOT = "/";

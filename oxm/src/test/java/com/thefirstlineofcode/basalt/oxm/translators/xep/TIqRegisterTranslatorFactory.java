@@ -8,7 +8,7 @@ import com.thefirstlineofcode.basalt.oxm.xep.ibr.TIqRegister;
 import com.thefirstlineofcode.basalt.oxm.xep.ibr.TRegistrationField;
 import com.thefirstlineofcode.basalt.oxm.xep.ibr.TRegistrationForm;
 import com.thefirstlineofcode.basalt.oxm.xep.ibr.TRemove;
-import com.thefirstlineofcode.basalt.protocol.core.Protocol;
+import com.thefirstlineofcode.basalt.xmpp.core.Protocol;
 
 public class TIqRegisterTranslatorFactory implements ITranslatorFactory<TIqRegister> {
 	private ITranslator<TIqRegister> translator = new IqRegisterTranslator();

@@ -7,8 +7,8 @@ import java.util.List;
 import com.thefirstlineofcode.basalt.oxm.preprocessing.IMessagePreprocessor;
 import com.thefirstlineofcode.basalt.oxm.preprocessing.NonWhitespaceFindingResult;
 import com.thefirstlineofcode.basalt.oxm.preprocessing.OutOfMaxBufferSizeException;
-import com.thefirstlineofcode.basalt.protocol.core.ProtocolException;
-import com.thefirstlineofcode.basalt.protocol.core.stream.error.XmlNotWellFormed;
+import com.thefirstlineofcode.basalt.xmpp.core.ProtocolException;
+import com.thefirstlineofcode.basalt.xmpp.core.stream.error.XmlNotWellFormed;
 
 public class BinaryMessagePreprocessor implements IMessagePreprocessor {
 	private static final char CHAR_HEART_BEAT = ' ';
